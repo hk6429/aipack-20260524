@@ -57,8 +57,10 @@
   body.presenting header,
   body.presenting footer,
   body.presenting aside,
-  body.presenting .no-print,
+  body.presenting #bottomNote,
   body.presenting .right-panel { display:none !important; }
+  /* present 模式：只保留 prev/next 列，其他 no-print 一律藏 */
+  body.presenting .no-print:not(.present-nav) { display:none !important; }
   body.presenting main {
     display:block !important;
     grid-template-columns: none !important;
@@ -67,22 +69,71 @@
     margin: 0 !important;
     height: 100vh;
   }
-  body.presenting section { height:100vh; display:flex; align-items:center; justify-content:center; }
+  body.presenting section {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:center;
+    padding: 2vh 4vw;
+    box-sizing:border-box;
+    gap: 1.5vh;
+  }
   body.presenting .stage {
-    background:white;
+    background:#0f172a;
     border:none;
     border-radius:0;
     box-shadow:none;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
     max-width: none;
-    padding: 4vh 6vw !important;
-    overflow-y:auto;
-    transform: scale(1);
+    padding: 0 !important;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
-  body.presenting .stage h2 { font-size: clamp(2rem, 4vw, 3.5rem) !important; }
-  body.presenting .stage .subtitle { font-size: clamp(1rem, 1.6vw, 1.4rem) !important; }
-  body.presenting .stage img { max-height: 70vh; object-fit: contain; margin: 0 auto; }
+  /* 簡報模式：藏掉 stage 內所有東西，只留主視覺圖 */
+  body.presenting .stage > *:not(#heroImgWrap) { display:none !important; }
+  body.presenting .stage #heroImgWrap {
+    margin: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  body.presenting .stage #heroImgWrap img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+  /* present 模式下的 prev/next 列：放大、置中、暗色背景 */
+  body.presenting .present-nav {
+    flex: 0 0 auto;
+    margin: 0 !important;
+    padding: 0.5rem 1rem;
+    background: rgba(15,23,42,.6);
+    border-radius: 9999px;
+    backdrop-filter: blur(6px);
+  }
+  body.presenting .present-nav button {
+    background: rgba(255,255,255,0.1) !important;
+    color: #fef3c7 !important;
+    border: 1px solid rgba(254,243,199,0.3) !important;
+    font-size: 1rem;
+    padding: 0.6rem 1.4rem !important;
+  }
+  body.presenting .present-nav button:hover {
+    background: rgba(255,255,255,0.2) !important;
+  }
+  body.presenting #slidePos { color: rgba(254,243,199,0.7) !important; font-size: 0.95rem; font-family: 'Courier New', monospace; }
   body.presenting .present-hud {
     position: fixed; bottom: 1rem; right: 1.5rem;
     background: rgba(15,23,42,.85); color: #fef3c7;
@@ -166,7 +217,7 @@
     </div>
 
     <!-- prev / next -->
-    <div class="no-print mt-4 flex items-center justify-between">
+    <div class="present-nav no-print mt-4 flex items-center justify-between">
       <button onclick="prevSlide()" class="bg-white border border-amber-900/10 px-5 py-2 rounded-lg text-sm hover:bg-paper">← 上一張</button>
       <div id="slidePos" class="text-sm text-ink/60"></div>
       <button onclick="nextSlide()" class="bg-rust text-white px-5 py-2 rounded-lg text-sm hover:bg-orange-700">下一張 →</button>
