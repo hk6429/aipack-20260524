@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2025 AIPACK 媒體識讀教案 — 一日全紀錄</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    fontFamily: {
+      sans: ['"Noto Sans TC"', 'system-ui', 'sans-serif'],
+      serif: ['"Noto Serif TC"', 'serif'],
+    },
+    colors: {
+      cream:'#FBF7EF', ink:'#1F2937', rust:'#C2410C', gold:'#B45309',
+      paper:'#F5EBD7', sage:'#3F6212', navy:'#1E293B'
+    },
+  } } };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#FBF7EF; color:#1F2937; font-family:'Noto Sans TC',system-ui,sans-serif; }
+  .serif{font-family:'Noto Serif TC',serif;}
+  .scroll-thin::-webkit-scrollbar{width:6px;}
+  .scroll-thin::-webkit-scrollbar-thumb{background:#C2410C40;border-radius:3px;}
+  .slide-item{cursor:pointer;transition:all .15s ease;}
+  .slide-item.active{background:linear-gradient(90deg,#C2410C 0%,#EA580C 100%);color:white;font-weight:600;}
+  .slide-item:not(.active):hover{background:#F5EBD7;}
+  .title-bar{border-left:6px solid #C2410C;padding-left:1rem;}
+  .stage{background:white;border:1px solid #E5D8BD;border-radius:16px;box-shadow:0 6px 24px -10px rgba(31,41,55,.12);}
+  .tag{display:inline-block;padding:2px 10px;border-radius:9999px;font-size:.75rem;font-weight:500;}
+  .pill-小{background:#FEF3C7;color:#92400E;}
+  .pill-中{background:#FFE4E6;color:#9F1239;}
+  .pill-高{background:#ECFCCB;color:#3F6212;}
+  .pill-序{background:#E0E7FF;color:#3730A3;}
+  details>summary{list-style:none;cursor:pointer;}
+  details>summary::-webkit-details-marker{display:none;}
+  .ext-link{display:block;padding:.6rem .8rem;background:#FEF7E6;border-left:3px solid #B45309;border-radius:4px;font-size:.85rem;color:#92400E;margin-bottom:.4rem;transition:background .15s;}
+  .ext-link:hover{background:#FDE68A;}
+  .student-card{background:linear-gradient(135deg,#FEF3C7 0%,#FED7AA 100%);border:1px solid #FCD34D;border-radius:12px;padding:1rem;}
+  .grain {
+    background-image:
+      radial-gradient(rgba(180,83,9,0.05) 1px, transparent 1px),
+      radial-gradient(rgba(31,41,55,0.03) 1px, transparent 1px);
+    background-size: 24px 24px, 16px 16px;
+  }
+  @media print {
+    .no-print{display:none!important;}
+    .stage{box-shadow:none;border:none;}
+    body{background:white;}
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ============ HEADER ============ -->
+<header class="bg-navy text-cream">
+  <div class="max-w-7xl mx-auto px-6 py-8 text-center">
+    <h1 class="serif text-3xl md:text-5xl font-bold">2025 AIPACK 媒體識讀教案 — 一日全紀錄</h1>
+    <div class="mt-4 flex flex-wrap items-center justify-center gap-4 text-sm text-cream/80">
+      <span>陳乃誠（大乃老師）</span>
+      <span class="opacity-40">｜</span>
+      <span>竹光國中　國文教師＋資訊組長</span>
+      <span class="opacity-40">｜</span>
+      <span>2026-05-24　現場成果</span>
+    </div>
+    <div class="mt-2 text-xs text-cream/60">共 32 張 · 三份完整教案（國小 5 下 / 國中 8 下 / 高中三）+ 參與夥伴</div>
+  </div>
+  <div class="bg-navy/95 border-t border-cream/10 no-print">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex flex-wrap justify-center gap-2 text-sm">
+      <button onclick="presentMode()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">▶ 全螢幕播放</button>
+      <button onclick="window.print()" class="bg-cream/10 hover:bg-cream/20 px-4 py-2 rounded-lg">🖨 列印 / 存 PDF</button>
+      <a href="../00-專案說明/README.md" class="bg-cream/10 hover:bg-cream/20 px-4 py-2 rounded-lg">📘 專案 README</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MAIN LAYOUT ============ -->
+<main class="max-w-[1600px] mx-auto px-4 lg:px-6 py-6 grid lg:grid-cols-[260px_1fr_320px] gap-4">
+
+  <!-- LEFT: SLIDE INDEX -->
+  <aside class="no-print bg-white rounded-xl border border-amber-900/10 p-3 lg:sticky lg:top-4 lg:self-start lg:max-h-[calc(100vh-2rem)] overflow-y-auto scroll-thin">
+    <div class="text-xs text-ink/50 font-semibold tracking-wider px-2 pb-2">投影片目錄 · 32 張</div>
+    <nav id="slideNav" class="space-y-1 text-sm"></nav>
+  </aside>
+
+  <!-- CENTER: SLIDE STAGE -->
+  <section>
+    <div class="stage p-8 md:p-12 min-h-[600px]" id="stage">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- prev / next -->
+    <div class="no-print mt-4 flex items-center justify-between">
+      <button onclick="prevSlide()" class="bg-white border border-amber-900/10 px-5 py-2 rounded-lg text-sm hover:bg-paper">← 上一張</button>
+      <div id="slidePos" class="text-sm text-ink/60"></div>
+      <button onclick="nextSlide()" class="bg-rust text-white px-5 py-2 rounded-lg text-sm hover:bg-orange-700">下一張 →</button>
+    </div>
+
+    <!-- 下方補充說明 -->
+    <div class="mt-6 bg-paper/50 border-l-4 border-gold rounded-r-xl p-5" id="bottomNote">
+      <!-- rendered -->
+    </div>
+  </section>
+
+  <!-- RIGHT: NOTES + STUDENT VIEW + EXTENSIONS -->
+  <aside class="space-y-4 no-print">
+    <!-- 我的筆記 -->
+    <div class="bg-white rounded-xl border border-amber-900/10 p-4">
+      <div class="flex items-center gap-2 mb-2">
+        <span>💬</span><h3 class="font-bold text-sm">我的筆記</h3>
+      </div>
+      <textarea id="noteBox" placeholder="這頁的想法、學員提問、改進構想…&#10;按 ⌘+S 自動存到瀏覽器"
+        class="w-full h-32 p-2 text-sm border border-amber-900/10 rounded resize-none focus:outline-none focus:border-rust"></textarea>
+      <div class="text-[10px] text-ink/40 mt-1">每張投影片獨立筆記 · localStorage 自動儲存</div>
+    </div>
+
+    <!-- 學員視角 -->
+    <div class="student-card">
+      <div class="flex items-center gap-2 mb-2">
+        <span>📌</span><h3 class="font-bold text-sm">本頁重點（學員視角）</h3>
+      </div>
+      <div id="studentView" class="text-sm leading-relaxed text-amber-900"></div>
+    </div>
+
+    <!-- 延伸教材 -->
+    <div class="bg-white rounded-xl border border-amber-900/10 p-4">
+      <div class="flex items-center gap-2 mb-3">
+        <span>📚</span><h3 class="font-bold text-sm">延伸教材</h3>
+      </div>
+      <div id="extensions"></div>
+    </div>
+  </aside>
+
+</main>
+
+<footer class="bg-navy text-cream/70 py-6 text-center text-xs mt-10">
+  <div>陳乃誠 · 2025 AIPACK 媒體識讀教案 · 2026-05-24　·　方律元三層次理論 × 夢 N AIPACK 公版</div>
+</footer>
+
+<!-- ============ DATA ============ -->
+<script>
+const SECTION_PILL = { '序幕':'pill-序', '國小教案':'pill-小', '國中教案':'pill-中', '高中教案':'pill-高', '尾聲':'pill-序' };
+
+const SLIDES = [
+  // ========== COVER (00) ==========
+  {
+    id:'00', section:'序幕', title:'今天我們做了三件事',
+    subtitle:'一天 × 三學程 × 一套理論',
+    body: `
+      <div class="space-y-6">
+        <p class="text-lg text-ink/80 leading-relaxed">用方律元「媒體識讀三層次」當骨架，串接夢 N <strong>AIPACK 公版</strong>（從 TPACK 演進），
+        在一天內完成<strong class="text-rust">國小 5 下 / 國中 8 下 / 高中三</strong>三份可直接帶進課堂的教案。</p>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 text-center">
+            <div class="serif text-5xl font-bold text-amber-700">壹</div>
+            <div class="mt-2 text-sm font-bold">事實層次</div>
+            <div class="text-xs text-ink/60 mt-1">判斷真偽</div>
+          </div>
+          <div class="bg-orange-50 border-2 border-rust rounded-xl p-5 text-center">
+            <div class="serif text-5xl font-bold text-rust">貳</div>
+            <div class="mt-2 text-sm font-bold">立場層次</div>
+            <div class="text-xs text-ink/60 mt-1">辨識框架</div>
+          </div>
+          <div class="bg-lime-50 border-2 border-sage rounded-xl p-5 text-center">
+            <div class="serif text-5xl font-bold text-sage">參</div>
+            <div class="mt-2 text-sm font-bold">批判層次</div>
+            <div class="text-xs text-ink/60 mt-1">獨立倡議</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-4 gap-3 text-center">
+          <div class="bg-white border rounded-lg p-3"><div class="text-3xl font-bold text-rust">3</div><div class="text-xs">教案</div></div>
+          <div class="bg-white border rounded-lg p-3"><div class="text-3xl font-bold text-rust">9</div><div class="text-xs">節次</div></div>
+          <div class="bg-white border rounded-lg p-3"><div class="text-3xl font-bold text-rust">4</div><div class="text-xs">數位工具</div></div>
+          <div class="bg-white border rounded-lg p-3"><div class="text-3xl font-bold text-rust">19</div><div class="text-xs">工作紀錄</div></div>
+        </div>
+        <div class="bg-paper/60 rounded-xl p-5 text-sm leading-relaxed">
+          <strong class="text-rust">今天簡報怎麼看：</strong>第 1-10 張＝國小 5 下、第 11-20 張＝國中 8 下、第 21-30 張＝高中三。
+          每份教案都依「教案封面 → 設計理念 → 文本素材 → 節 1 辨識 → 節 2 思辨 → 節 3 倡議 → 評量延伸」十張展開。
+        </div>
+      </div>`,
+    bottom:'這份成果由 19 份工作紀錄、3 份 docx、8 份 PDF 整合而成。三份教案共用同一套理論，但工具與表達結構依年級遞進：國小用 PR 法、國中用 PREPA、高中用 PREPA-A。',
+    student:'「老師今天要帶我們爬一座三層樓的房子：先看清楚事實（一樓）、再看出立場（二樓）、最後做出自己的判斷與行動（頂樓）。」',
+    ext:[
+      {t:'方律元〈不只是事實查核：台灣高中教育現場沒教的媒體識讀三層次〉The News Lens', u:'https://www.thenewslens.com/'},
+      {t:'夢 N AIPACK 公版說明（從 TPACK 演進）', u:'#'},
+      {t:'親子天下：媒體素養專題', u:'https://www.parenting.com.tw/'},
+    ],
+  },
+
+  // ========== 國小 (01-10) — 依 v1_國小國語001-懶人包大解密 docx 更新 ==========
+  {
+    id:'01', section:'國小教案', title:'國小 5 下｜懶人包大解密',
+    subtitle:'教案封面｜3 節 9 活動',
+    body:`
+      <div class="space-y-5">
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div class="bg-amber-50 p-4 rounded-lg"><strong>對象</strong><br />國小五年級下學期</div>
+          <div class="bg-amber-50 p-4 rounded-lg"><strong>節數</strong><br />3 節 × 40 分 ・ 9 活動</div>
+          <div class="bg-amber-50 p-4 rounded-lg"><strong>主文本</strong><br />翰林 5 下第三單元第 8 課〈懶人包大解密〉張靜如</div>
+          <div class="bg-amber-50 p-4 rounded-lg"><strong>對應層次</strong><br />事實 → 立場 → 製作（三節遞進）</div>
+        </div>
+        <div class="bg-white border-l-4 border-rust p-4">
+          <strong class="text-rust">學習目標</strong>
+          <ul class="mt-2 text-sm space-y-1 list-disc list-inside">
+            <li>了解懶人包訊息的立場與真偽，避免接收誇大不實訊息</li>
+            <li>用「新聞查核流程圖」與 5W 識讀法分辨各類訊息</li>
+            <li>完成 5 欄懶人包解密單，判斷一則訊息是否值得轉發</li>
+            <li>整合新聞內容，擷取重點摘要與訂定吸睛標題</li>
+            <li>用 ChatGPT 生圖製作客觀懶人包並上傳 Padlet 互動</li>
+          </ul>
+        </div>
+        <div class="flex gap-2 flex-wrap">
+          <span class="tag pill-小">Padlet</span>
+          <span class="tag pill-小">因材網 E 度</span>
+          <span class="tag pill-小">ChatGPT</span>
+          <span class="tag pill-小">Cofacts</span>
+          <span class="tag pill-小">5W 識讀</span>
+        </div>
+        <div class="text-xs text-ink/55">設計者：賴秋江、趙蕙英、馬孟平　·　議題融入：媒體素養</div>
+      </div>`,
+    bottom:'國小階段重點：從「會分辨」到「會發聲」。文本只用一篇〈懶人包大解密〉當骨架，靠三節 9 個活動把識讀變成可被孩子帶回家的事。',
+    student:'「懶人包看起來很方便，可是它會不會把重要的東西刪掉？我能不能自己做一個真的客觀的，給家人看？」',
+    ext:[
+      {t:'翰林 5 下第 8 課〈懶人包大解密〉備課資源', u:'#'},
+      {t:'國小完整教案 docx（最新版）', u:'../04-教案-國小/國小國語001-懶人包大解密+良言一句三冬暖-媒體識讀.docx'},
+      {t:'方律元三層次原文 The News Lens', u:'https://www.thenewslens.com/'},
+    ],
+  },
+  {
+    id:'02', section:'國小教案', title:'設計理念｜三層次國小化轉譯',
+    subtitle:'國小 5 下',
+    body:`
+      <div class="space-y-5">
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="bg-rose-50 border-l-4 border-rose-500 p-5">
+            <div class="text-xs text-rose-700 font-bold tracking-wider">傳統做法</div>
+            <p class="mt-2 text-sm">直接講「媒體識讀」「假新聞辨識」——名詞抽象、流程不清，孩子記得詞、做不來。</p>
+          </div>
+          <div class="bg-emerald-50 border-l-4 border-emerald-500 p-5">
+            <div class="text-xs text-emerald-700 font-bold tracking-wider">本教案做法</div>
+            <p class="mt-2 text-sm">用「懶人包」當切口（每天都看到），三節走完：先建立<strong>懷疑</strong>，再學會<strong>查證</strong>，最後親手<strong>產出</strong>一個客觀懶人包。</p>
+          </div>
+        </div>
+        <div class="bg-paper/60 rounded-xl p-5">
+          <div class="font-bold mb-3">三層次 × 三節對應</div>
+          <ul class="space-y-2 text-sm">
+            <li><span class="tag pill-小 mr-2">節 1 · 事實</span>懶人包是真的嗎？　建立懷疑＋新聞查核流程圖＋5W 識讀</li>
+            <li><span class="tag pill-小 mr-2">節 2 · 立場</span>誰決定刪了什麼？　查核工具箱＋AI 協查＋5 欄解密單 + ORID</li>
+            <li><span class="tag pill-小 mr-2">節 3 · 製作</span>從讀者到作者　擷取重點＋AI 優化＋ChatGPT 生圖＋Padlet 公開展</li>
+          </ul>
+        </div>
+        <div class="bg-amber-50/60 p-4 rounded-lg text-sm">
+          <strong>數位整合層次：</strong>S（學習吧素材推送）→ A（Padlet 即時匯流）→ M（查核工具箱）→ R（請 AI 幫我查證、AI 生圖）。
+        </div>
+      </div>`,
+    bottom:'國小階段：理論詞彙隱形、動作要明顯。三節 9 活動的關鍵是「每個活動都有明確產出可被同學看見」——這是 Padlet 在這套設計裡的真正用途。',
+    student:'「老師沒講『立場』兩個字，但我做完 9 個活動，發現自己已經會分辨了，還做出一張可以給阿嬤看的懶人包。」',
+    ext:[
+      {t:'方律元〈媒體識讀三層次〉The News Lens', u:'https://www.thenewslens.com/'},
+      {t:'AIPACK 公版說明（從 TPACK 演進）', u:'#'},
+    ],
+  },
+  {
+    id:'03', section:'國小教案', title:'文本與素材｜課本×新聞×LINE 截圖',
+    subtitle:'國小 5 下',
+    body:`
+      <div class="grid md:grid-cols-2 gap-5">
+        <div>
+          <h4 class="font-bold text-rust mb-3">📕 教科書文本</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="bg-amber-50 p-3 rounded">翰林 5 下第 8 課〈懶人包大解密〉張靜如<br /><span class="text-xs text-ink/55">三段：為什麼有懶人包／一張圖新聞怎麼來的／重點不一定等於全部</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-rust mb-3">📰 補充新聞素材</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="bg-orange-50 p-3 rounded">同一新聞兩版懶人包：主婦版 vs 農業版</li>
+            <li class="bg-orange-50 p-3 rounded">4 張懶人包圖卡（2 真 2 假，混合題材）</li>
+            <li class="bg-orange-50 p-3 rounded">LINE 群組常見轉傳懶人包截圖</li>
+            <li class="bg-orange-50 p-3 rounded">國語日報 / 學習吧「這周世界發生什麼事」</li>
+          </ul>
+        </div>
+        <div class="md:col-span-2">
+          <h4 class="font-bold text-rust mb-3">🛠 學習單清單</h4>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
+            <div class="bg-paper/60 p-3 rounded text-center">📋 新聞查核流程圖</div>
+            <div class="bg-paper/60 p-3 rounded text-center">🃏 5 招看一下口訣卡</div>
+            <div class="bg-paper/60 p-3 rounded text-center">🔍 5W 識讀單</div>
+            <div class="bg-paper/60 p-3 rounded text-center">🗒 5 欄懶人包解密單</div>
+          </div>
+        </div>
+      </div>`,
+    bottom:'素材原則：課本一篇、新聞「2 真 + 2 假」、LINE 截圖一張。讓孩子從「課本世界」直接走進「家人手機世界」。',
+    student:'「老師說 LINE 群組裡的訊息也可以變成上課內容，這比讀課文有趣多了。」',
+    ext:[
+      {t:'國小完整教案 docx', u:'../04-教案-國小/國小國語001-懶人包大解密+良言一句三冬暖-媒體識讀.docx'},
+      {t:'國語日報', u:'https://www.mdnkids.com/'},
+      {t:'學習吧（教育部）', u:'https://www.learnmode.net/'},
+    ],
+  },
+  {
+    id:'04', section:'國小教案', title:'1-1 一張圖新聞的誕生｜誰決定刪掉什麼',
+    subtitle:'事實層次｜10 分',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-amber-100/60 p-4 rounded-lg flex items-center gap-3">
+          <div class="text-3xl">📰</div>
+          <div><div class="font-bold">10 分鐘 · 同題兩版對照</div><div class="text-xs text-ink/60">主婦版（強調菜價）vs 農業版（強調蟲害）</div></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-3 text-sm">
+          <div class="bg-white border p-4 rounded-lg">
+            <div class="font-bold text-rust">教師動作</div>
+            <ul class="mt-1 text-ink/70 space-y-1 list-disc list-inside">
+              <li>共讀課文三段標題</li>
+              <li>展示同一新聞兩版懶人包</li>
+              <li>金句收尾：「精簡＝有東西被刪掉，刪掉的可能就是你需要的」</li>
+            </ul>
+          </div>
+          <div class="bg-white border p-4 rounded-lg">
+            <div class="font-bold text-rust">學生動作</div>
+            <ul class="mt-1 text-ink/70 space-y-1 list-disc list-inside">
+              <li>3 分鐘小組討論：兩版差在哪？誰被放大？誰被刪？</li>
+              <li>結果上傳 Padlet</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-4 rounded-lg text-sm">
+          <strong>Padlet 數位效益（A 改善）：</strong>30 人答案一次看見，教師掃讀後選 3 組分享，取代「全班舉手只有少數人發言」。
+        </div>
+      </div>`,
+    bottom:'這個活動是整套教案的引信。10 分鐘內讓孩子親眼看見「同一件事可以剪出兩種版本」，從此再看到任何懶人包都會多想一秒。',
+    student:'「主婦版只講菜貴，農業版只講蟲，到底哪個才是真的？我才發現原來懶人包是『有人決定要讓我看什麼』。」',
+    ext:[
+      {t:'翰林 5 下第 8 課三段標題', u:'#'},
+      {t:'Padlet（最多 3 面免費）', u:'https://padlet.com/'},
+    ],
+  },
+  {
+    id:'05', section:'國小教案', title:'1-2 新聞查核流程圖｜5 招看一下',
+    subtitle:'事實層次｜15 分',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-orange-50 border border-orange-200 p-5 rounded-xl">
+          <h4 class="font-bold text-rust mb-3">5 招看一下口訣（停・看・查・想・傳）</h4>
+          <div class="grid grid-cols-5 gap-2 text-center text-sm">
+            <div class="bg-white p-2 rounded"><strong>停</strong><br /><span class="text-xs text-ink/60">停 30 秒</span></div>
+            <div class="bg-white p-2 rounded"><strong>看</strong><br /><span class="text-xs text-ink/60">來源、尾巴</span></div>
+            <div class="bg-white p-2 rounded"><strong>查</strong><br /><span class="text-xs text-ink/60">事實、比對</span></div>
+            <div class="bg-white p-2 rounded"><strong>想</strong><br /><span class="text-xs text-ink/60">立場、誇大？</span></div>
+            <div class="bg-white p-2 rounded"><strong>傳</strong><br /><span class="text-xs text-ink/60">傳不傳？</span></div>
+          </div>
+        </div>
+        <div class="bg-white border p-4 rounded-lg text-sm">
+          <strong>實作流程：</strong>教師發 4 張懶人包圖卡（2 真 2 假混合題材）→ 兩人一組 5 分鐘照流程圖跑一遍 → 上 Padlet「真假投票牆」 → 教師公布答案＋拆解每招關鍵字。
+        </div>
+        <div class="bg-paper/60 p-3 rounded-lg text-sm">
+          <strong>金句：</strong>「不確定就先停下來，不要急著轉發。」
+        </div>
+      </div>`,
+    bottom:'「5 招看一下」最大功能是把抽象的查核變成可口訣化的肌肉記憶。每個動詞配一個動作，孩子下次看到可疑訊息會自動跑這 5 步。',
+    student:'「停看查想傳——這跟過馬路口訣很像耶。我以後看 LINE 訊息也要先『停』一下。」',
+    ext:[
+      {t:'新聞查核流程圖學習單', u:'#'},
+      {t:'Cofacts 真的假的', u:'https://cofacts.tw/'},
+    ],
+  },
+  {
+    id:'06', section:'國小教案', title:'1-3 5W 識讀法｜先看尾巴 + Chrome 鎖頭',
+    subtitle:'事實層次｜15 分',
+    body:`
+      <div class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="bg-amber-50 p-5 rounded-xl">
+            <h4 class="font-bold text-amber-800 mb-3">5W 識讀單</h4>
+            <ul class="space-y-1 text-sm">
+              <li><strong>Who</strong>　誰發的、誰被影響</li>
+              <li><strong>What</strong>　說了什麼</li>
+              <li><strong>When</strong>　什麼時候、是否過時</li>
+              <li><strong>Where</strong>　在哪裡發、來源網域</li>
+              <li><strong>Why</strong>　為什麼這樣寫、立場是什麼</li>
+            </ul>
+          </div>
+          <div class="bg-orange-50 p-5 rounded-xl">
+            <h4 class="font-bold text-rust mb-3">先看尾巴 + Chrome 鎖頭</h4>
+            <ul class="space-y-1 text-sm">
+              <li><code class="bg-white px-2">.gov</code> 政府　<code class="bg-white px-2">.edu</code> 學校</li>
+              <li><code class="bg-white px-2">.org</code> 組織　<code class="bg-white px-2">.com</code> 商業</li>
+              <li><code class="bg-white px-2">.idv</code> 個人</li>
+              <li class="mt-3 pt-2 border-t">🔒 安全 ・ ⓘ 資訊 ・ ⚠ 不安全</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-3 rounded-lg text-sm">
+          <strong>金句：</strong>「5W 把懶人包拆成 5 塊，少一塊就要懷疑。」　|　學生上 Padlet 配對交換檢查（Padlet 個人化任務 A 改善）。
+        </div>
+      </div>`,
+    bottom:'5W 是「問問題的習慣」；先看尾巴與 Chrome 鎖頭是「秒判的視覺確認」。兩套並用，國小生就能做出比多數成人更嚴謹的初步判斷。',
+    student:'「我打開外婆傳的連結，發現尾巴是 .blog，原來這只是某個人的部落格——不是醫院、不是政府，難怪講的事情那麼怪。」',
+    ext:[
+      {t:'Kathy Schrock 5W 教學表', u:'https://www.schrockguide.net/'},
+      {t:'TWNIC 網域型態說明', u:'https://www.twnic.tw/'},
+      {t:'Chrome 安全性圖示說明', u:'https://support.google.com/chrome/answer/95617'},
+    ],
+  },
+  {
+    id:'07', section:'國小教案', title:'2-1+2-2 查核工具箱｜請 AI 幫我查',
+    subtitle:'立場層次｜12+15 分',
+    body:`
+      <div class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="bg-rose-50 p-5 rounded-xl">
+            <h4 class="font-bold text-rose-700 mb-3">2-1 查核工具箱（12 分）</h4>
+            <ul class="text-sm space-y-1">
+              <li>· Cofacts 真的假的</li>
+              <li>· 台灣事實查核中心</li>
+              <li>· MyGoPen 麥擱騙</li>
+            </ul>
+            <p class="text-xs mt-3 text-ink/60">3 人一組 → 拿 LINE 群組懶人包截圖 → 先 Cofacts 搜尋 → 查無再上事實查核中心 → 結果＋判斷上 Padlet。</p>
+          </div>
+          <div class="bg-lime-50 p-5 rounded-xl">
+            <h4 class="font-bold text-sage mb-3">2-2 請 AI 幫我查（15 分）</h4>
+            <p class="text-sm">教師示範提示語：</p>
+            <div class="bg-white p-2 rounded mt-1 text-xs italic">「請幫我查證這則訊息是不是真的，並列出 3 個查證來源（含網址）。訊息：[貼訊息]」</div>
+            <p class="text-xs mt-3 text-ink/60">學生用因材網 E 度／ChatGPT → 逐一點開來源驗證 → 找不到網頁就是假來源。</p>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-3 rounded-lg text-sm">
+          <strong>R 重新定義：</strong>讓國小生能進行多源比對的關鍵，是「自己動手查」而非「老師說這是假的」。AI 是助手，每個來源都要自己點開確認。
+        </div>
+      </div>`,
+    bottom:'這兩個活動串連起來才是完整邏輯：先用人類做的查核資料庫（Cofacts）兜底，再用 AI 找更廣的來源——但 AI 會幻覺，每個來源都要驗證，這是 AI 素養的核心訓練。',
+    student:'「老師說 AI 給的網址有時候是假的，要自己點開看到網頁才算。這比直接信 AI 還難，但很有道理。」',
+    ext:[
+      {t:'Cofacts 真的假的', u:'https://cofacts.tw/'},
+      {t:'台灣事實查核中心', u:'https://tfc-taiwan.org.tw/'},
+      {t:'MyGoPen', u:'https://www.mygopen.com/'},
+      {t:'因材網 E 度', u:'https://edu.edge.tw/'},
+    ],
+  },
+  {
+    id:'08', section:'國小教案', title:'2-3 5 欄解密單｜ORID 思辨背後原因',
+    subtitle:'立場層次｜13 分',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-white border-2 border-rose-300 rounded-xl overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-rose-100">
+              <tr><th class="p-2">①來源</th><th class="p-2">②事實</th><th class="p-2">③立場</th><th class="p-2">④紅旗</th><th class="p-2">⑤結論</th></tr>
+            </thead>
+            <tbody><tr class="divide-x text-center">
+              <td class="p-2">誰發的<br />什麼網域</td>
+              <td class="p-2">去掉立場後<br />剩什麼</td>
+              <td class="p-2">被放大／<br />被刪掉</td>
+              <td class="p-2">誇大／催促／<br />要個資</td>
+              <td class="p-2">值不值得<br />轉發</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="bg-orange-50 p-4 rounded-lg">
+          <h4 class="font-bold text-rust mb-2">ORID 思辨假訊息背後原因</h4>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+            <div class="bg-white p-2 rounded"><strong>O</strong> 客觀：說了什麼</div>
+            <div class="bg-white p-2 rounded"><strong>R</strong> 感受：為什麼有人信</div>
+            <div class="bg-white p-2 rounded"><strong>I</strong> 詮釋：想得到什麼<br />（流量／賣商品／帶風向）</div>
+            <div class="bg-white p-2 rounded"><strong>D</strong> 行動：下次怎麼做</div>
+          </div>
+        </div>
+      </div>`,
+    bottom:'5 欄解密單是「結構化判斷」、ORID 是「動機推理」——兩者搭配，讓國小生第一次接觸「為什麼會有人散播假訊息」這個高階問題。',
+    student:'「我以前覺得假訊息就是壞人發的。今天才發現有時候只是想賣東西，或想要流量。動機不同，要小心的地方也不同。」',
+    ext:[
+      {t:'ORID 焦點討論法簡介', u:'#'},
+      {t:'5 欄解密單模板', u:'#'},
+    ],
+  },
+  {
+    id:'09', section:'國小教案', title:'3-1+3-2 從新聞到摘要｜AI 優化 + 生圖',
+    subtitle:'製作層次｜10+15 分',
+    body:`
+      <div class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="bg-amber-50 p-5 rounded-xl">
+            <h4 class="font-bold text-amber-800 mb-3">3-1 擷取重點＋訂定吸睛標題（10 分）</h4>
+            <ol class="text-sm space-y-1 list-decimal list-inside">
+              <li>教師提供國語日報／學習吧新聞</li>
+              <li>2 人一組共讀，挑 3 重點 + 1 結論</li>
+              <li>訂「吸睛但客觀」標題（不誇大、不情緒詞）</li>
+            </ol>
+            <div class="text-xs mt-3 text-amber-700 italic">金句：吸睛不等於誇大，吸睛是把重點講清楚。</div>
+          </div>
+          <div class="bg-lime-50 p-5 rounded-xl">
+            <h4 class="font-bold text-sage mb-3">3-2 E 度／ChatGPT 優化＋生圖（15 分）</h4>
+            <p class="text-xs italic bg-white p-2 rounded">「我是國小五年級，請幫我把這則新聞做成客觀懶人包：標題吸引但不誇大、3 重點、1 句結論。」</p>
+            <ul class="text-xs mt-2 list-disc list-inside text-ink/70">
+              <li>比對 AI 版與自己版，決定採用哪些（不可整段照貼）</li>
+              <li>ChatGPT 生圖：IG 1080×1080、明亮、卡通、適合國小</li>
+              <li>檢核圖卡文字與內容是否符合原新聞，不符就改提示語重生</li>
+            </ul>
+          </div>
+        </div>
+      </div>`,
+    bottom:'這兩個活動把「會分辨」往「會發聲」推進一步。重點在「比對 AI 版本與自己版本」——讓 AI 是助手而非代寫，這是新課綱數位素養最核心的能力。',
+    student:'「我寫的標題太老氣，AI 寫的太誇大，最後我把兩個合起來。原來 AI 不是給我答案，是給我選擇。」',
+    ext:[
+      {t:'因材網 E 度 AI 對話', u:'https://edu.edge.tw/'},
+      {t:'ChatGPT', u:'https://chatgpt.com/'},
+      {t:'學習吧「這周世界發生什麼事」', u:'https://www.learnmode.net/'},
+    ],
+  },
+  {
+    id:'10', section:'國小教案', title:'3-3 客觀懶人包上線｜Padlet + 家庭任務',
+    subtitle:'製作層次｜15 分 + 課後',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-sage/10 border-2 border-sage p-5 rounded-xl">
+          <h4 class="font-bold text-sage mb-3">3-3 客觀懶人包公開展（15 分）</h4>
+          <ol class="text-sm space-y-1 list-decimal list-inside">
+            <li>上傳作品到 Padlet「客觀懶人包公開展」</li>
+            <li>互評：選 3 張按愛心＋留<strong>具體回饋</strong>（不可只說「讚」），要指出「標題哪裡客觀／重點哪裡清楚／哪裡可以再改」</li>
+            <li>教師挑 3 件作品全班導讀，回扣 5 欄解密單＋5W 識讀法</li>
+          </ol>
+        </div>
+        <div class="bg-rose-50 p-4 rounded-lg">
+          <h4 class="font-bold text-rose-700 mb-2">📨 課後家庭任務</h4>
+          <p class="text-sm">把懶人包傳給一位家人（爺爺奶奶／爸爸媽媽）→ 記錄對方反應 → 下週課堂分享：家人看完說了什麼？</p>
+        </div>
+        <div class="bg-paper/60 p-3 rounded-lg text-sm">
+          <strong>A 改善：</strong>Padlet 公開展形式讓學生從「為老師寫」變成「為同學寫」，提升內在動機。
+        </div>
+      </div>`,
+    bottom:'整套教案的最後一哩：讓作品離開教室、進到家庭餐桌。家庭任務是這套設計與一般識讀課最大的不同——學習真的要被「使用」才算完成。',
+    student:'「我把懶人包傳給阿嬤，她回我『以後我也要先停看查想傳』。我覺得這比考 100 分還開心。」',
+    ext:[
+      {t:'國小完整教案 docx', u:'../04-教案-國小/國小國語001-懶人包大解密+良言一句三冬暖-媒體識讀.docx'},
+      {t:'Padlet 教育版', u:'https://padlet.com/dashboard'},
+      {t:'親子天下：媒體素養家庭活動', u:'https://www.parenting.com.tw/'},
+    ],
+  },
+
+  // ========== 國中 (11-20) — 依國中國文002 docx 更新 ==========
+  {
+    id:'11', section:'國中教案', title:'國中 8 下｜客觀事實×資訊失序×倡議行動',
+    subtitle:'教案封面｜3 節 9 活動',
+    body:`
+      <div class="space-y-5">
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div class="bg-rose-50 p-4 rounded-lg"><strong>對象</strong><br />國中八年級下學期</div>
+          <div class="bg-rose-50 p-4 rounded-lg"><strong>節數</strong><br />3 節 × 45 分 ・ 9 活動</div>
+          <div class="bg-rose-50 p-4 rounded-lg"><strong>主文本</strong><br />翰林 8 下 P92-93 客觀事實/主觀意見 ＋ P94-95 議論文舉例 ＋ P178-187 面對假訊息</div>
+          <div class="bg-rose-50 p-4 rounded-lg"><strong>對應層次</strong><br />事實 → 立場 → 思辨倡議</div>
+        </div>
+        <div class="bg-white border-l-4 border-rust p-4">
+          <strong class="text-rust">學習目標</strong>
+          <ul class="mt-2 text-sm space-y-1 list-disc list-inside">
+            <li>用 5W 識讀法與媒體產製六格圖，辨識客觀事實與主觀意見</li>
+            <li>解讀資訊失序三類型＋假訊息七形式，完成四欄閱讀筆記</li>
+            <li>透過 ORID＋四角辯論覺察同溫層，產出個人立場宣言</li>
+            <li>用 PREPA 表達架構結合議論文舉例三段，撰寫倡議稿</li>
+            <li>用 Canva 製作倡議卡，向家人或同儕傳達識讀責任</li>
+          </ul>
+        </div>
+        <div class="flex gap-2 flex-wrap">
+          <span class="tag pill-中">NotebookLM ⭐</span>
+          <span class="tag pill-中">Padlet</span>
+          <span class="tag pill-中">Google 反搜</span>
+          <span class="tag pill-中">學習吧</span>
+          <span class="tag pill-中">Canva 教育版</span>
+          <span class="tag pill-中">Mentimeter</span>
+        </div>
+        <div class="text-xs text-ink/55">設計者：陳乃誠（主筆）・宋怡慧・陳茂松・溫展浩・馬孟平・賴秋江・趙蕙英　·　共備：Claude</div>
+      </div>`,
+    bottom:'國中端的躍升：從「會分辨」到「會發聲」。9 個活動完整對應方律元三層次，且每一節都有「課本文本＋數位工具＋上台產出」三件套——這就是 AIPACK 的精神。',
+    student:'「8 年級才發現原來課文〈良言一句三冬暖〉的議論文結構，就是上台講話用的 PREPA。國文不只是讀，是要拿來說、拿來寫倡議稿。」',
+    ext:[
+      {t:'國中國文 002 完整教案 docx', u:'../03-教案-國中/國中國文002-客觀事實與主觀意見+面對假訊息-媒體識讀.docx'},
+      {t:'方律元〈媒體識讀三層次〉The News Lens', u:'https://www.thenewslens.com/'},
+      {t:'翰林 8 下備課用書', u:'#'},
+    ],
+  },
+  {
+    id:'12', section:'國中教案', title:'設計理念｜五大工具×四大策略×三大內容',
+    subtitle:'國中 8 下',
+    body:`
+      <div class="space-y-5">
+        <div class="grid md:grid-cols-3 gap-3 text-sm">
+          <div class="bg-emerald-50 p-4 rounded-xl">
+            <div class="text-xs text-emerald-700 font-bold tracking-wider">五大數位工具</div>
+            <ul class="mt-2 space-y-1">
+              <li>· NotebookLM</li>
+              <li>· Padlet</li>
+              <li>· Google 反搜＋網址檢核</li>
+              <li>· Canva</li>
+              <li>· 學習吧</li>
+            </ul>
+          </div>
+          <div class="bg-rose-50 p-4 rounded-xl">
+            <div class="text-xs text-rose-700 font-bold tracking-wider">四大教學策略</div>
+            <ul class="mt-2 space-y-1">
+              <li>· ORID 焦點討論法</li>
+              <li>· 四角辯論</li>
+              <li>· PREPA 表達架構</li>
+              <li>· 反方建造者</li>
+            </ul>
+          </div>
+          <div class="bg-amber-50 p-4 rounded-xl">
+            <div class="text-xs text-amber-700 font-bold tracking-wider">三大內容知識</div>
+            <ul class="mt-2 space-y-1">
+              <li>· 資訊失序辨識</li>
+              <li>· 媒體再現解構</li>
+              <li>· 議論文舉例寫作</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-paper/60 rounded-xl p-5">
+          <div class="font-bold mb-3">SAMR 整合層次</div>
+          <div class="grid grid-cols-4 gap-2 text-xs text-center">
+            <div class="bg-white p-2 rounded">學習吧（S 替代）</div>
+            <div class="bg-white p-2 rounded">Padlet / Mentimeter（A 改善）</div>
+            <div class="bg-white p-2 rounded">NotebookLM / Canva（M 修改）</div>
+            <div class="bg-white p-2 rounded">Google 反搜（R 重新定義）</div>
+          </div>
+        </div>
+      </div>`,
+    bottom:'這套設計把「同題異源比對」這個傳統識讀痛點交給 NotebookLM——老師備課從 60 分鐘變 5 分鐘，學生卻能進行專業級多源分析。R 重新定義的關鍵就在這。',
+    student:'「老師說以前要影印三份報紙才能對照，現在我們直接在 NotebookLM 上跑，課堂時間都拿來討論立場——這比讀報紙好玩多了。」',
+    ext:[
+      {t:'NotebookLM（Google 免費）', u:'https://notebooklm.google.com/'},
+      {t:'學習吧（教育部）', u:'https://www.learnmode.net/'},
+      {t:'SAMR 整合層次說明', u:'#'},
+    ],
+  },
+  {
+    id:'13', section:'國中教案', title:'文本與素材｜翰林三課×同題異源',
+    subtitle:'國中 8 下',
+    body:`
+      <div class="space-y-4">
+        <div class="grid md:grid-cols-3 gap-3 text-sm">
+          <div class="bg-rose-50 p-4 rounded-lg">
+            <div class="font-bold text-rose-700">翰林 P92-93</div>
+            <div class="text-xs mt-1">閱讀思考〈讀懂客觀事實與主觀意見〉</div>
+            <div class="text-xs mt-2 text-ink/60">→ 對應節 1 事實</div>
+          </div>
+          <div class="bg-rose-50 p-4 rounded-lg">
+            <div class="font-bold text-rose-700">翰林 P178-187</div>
+            <div class="text-xs mt-1">自學選文二〈面對假訊息，其實我可以這麼做〉</div>
+            <div class="text-xs mt-2 text-ink/60">→ 對應節 2 立場</div>
+          </div>
+          <div class="bg-rose-50 p-4 rounded-lg">
+            <div class="font-bold text-rose-700">翰林 P94-95</div>
+            <div class="text-xs mt-1">寫作進階〈議論文本的舉例〉＋〈良言一句三冬暖〉</div>
+            <div class="text-xs mt-2 text-ink/60">→ 對應節 3 思辨倡議</div>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-4 rounded-lg">
+          <strong class="text-rust">同題異源新聞組合（NotebookLM 用）</strong>
+          <p class="text-sm mt-2">6 組各拿一組三則同主題新聞：<strong>聯合報 / 自由時報 / 中央社 / 內容農場</strong>。
+          範例議題：〈外來寄生蟲入侵高麗菜〉、〈荔枝椿象噴臭液〉、巴黎奧運性別爭議、八家將諧音標籤、原住民愛喝酒刻板印象。</p>
+        </div>
+        <div class="bg-amber-50 p-4 rounded-lg text-sm">
+          <strong>學生作業檔（附件）：</strong>四欄筆記模板（活動一）、ORID 焦點討論任務單（活動二）、PREPA 倡議稿模板＋Canva 倡議卡（活動三）。
+        </div>
+      </div>`,
+    bottom:'三課對應三節，內容遞進：客觀事實 → 媒體框架 → 倡議寫作。〈良言一句三冬暖〉這篇議論文在第 3 節擔任 PREPA 鷹架的範本，是國中端「文本即工具」的最佳實踐。',
+    student:'「課文〈良言一句三冬暖〉以前讀過就忘了。沒想到第三節老師拆給我們看，原來這就是 PREPA 五段——我以後寫倡議稿都可以套這個結構。」',
+    ext:[
+      {t:'翰林 8 下備課用書 P178-187', u:'#'},
+      {t:'國中教案 docx', u:'../03-教案-國中/國中國文002-客觀事實與主觀意見+面對假訊息-媒體識讀.docx'},
+      {t:'學習吧任務單模板', u:'https://www.learnmode.net/'},
+    ],
+  },
+  {
+    id:'14', section:'國中教案', title:'1-1 開場破題｜媒體產製六格圖',
+    subtitle:'事實層次｜10 分',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-rose-50 p-4 rounded-xl">
+          <h4 class="font-bold text-rose-700 mb-3">六格產製流程（每格之間都有「守門人」）</h4>
+          <div class="grid grid-cols-3 gap-2 text-xs">
+            <div class="bg-white p-2 rounded"><strong>① 新聞事件發生</strong><br /><span class="text-ink/55">誰看到？誰錯過？</span></div>
+            <div class="bg-white p-2 rounded"><strong>② 新聞探訪</strong><br /><span class="text-ink/55">訪誰？漏訪誰？</span></div>
+            <div class="bg-white p-2 rounded"><strong>③ 撰寫新聞</strong><br /><span class="text-ink/55">放什麼／刪什麼／用什麼字</span></div>
+            <div class="bg-white p-2 rounded"><strong>④ 主管編輯／定稿</strong><br /><span class="text-ink/55">標題、版位、頭條</span></div>
+            <div class="bg-white p-2 rounded"><strong>⑤ 呈現</strong><br /><span class="text-ink/55">配圖、剪輯、節奏</span></div>
+            <div class="bg-white p-2 rounded"><strong>⑥ 閱聽人</strong><br /><span class="text-ink/55">接收、解讀、轉發</span></div>
+          </div>
+        </div>
+        <div class="bg-amber-50 p-4 rounded-lg text-sm">
+          <strong>三大延伸觀念：</strong>守門人理論（Gatekeeping）／議題設定（Agenda Setting，第 4 格主管定稿那刻決定大家會討論什麼）／媒體再現（鏡頭、字體背後的政治經濟結構）。
+        </div>
+        <div class="bg-paper/60 p-3 rounded-lg text-sm">
+          <strong>實作：</strong>學生觀看〈外來寄生蟲入侵高麗菜〉〈荔枝椿象噴臭液〉（翰林 P92-93），個別圈出客觀事實與主觀意見字句 → 師生對答整理。
+        </div>
+      </div>`,
+    bottom:'六格圖是國中端最強的「結構化思考工具」。它讓學生意識到：你看到的新聞不是真相，而是經過 5 道篩選的「被選擇過的版本」。從此再讀新聞會自動問：「這格被誰守了？」',
+    student:'「原來我看到的新聞是第 6 格，前面 5 格我都看不到。記者選了什麼、編輯改了什麼、誰沒被訪——這些都是真相的一部分。」',
+    ext:[
+      {t:'媒體產製六格圖學習單（附件一）', u:'../07-工作紀錄/2026-05-24-019-媒體產製六格圖詳解.md'},
+      {t:'守門人理論／議題設定／媒體再現補充', u:'#'},
+    ],
+  },
+  {
+    id:'15', section:'國中教案', title:'1-2 NotebookLM 同題異源｜5W＋四欄筆記',
+    subtitle:'事實層次｜20 分',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-emerald-50 border-2 border-emerald-300 p-5 rounded-xl">
+          <h4 class="font-bold text-emerald-700 mb-3">操作流程</h4>
+          <ol class="text-sm space-y-1 list-decimal list-inside">
+            <li>教師展示 5W 識讀法海報：Who / What / When / Where / Why</li>
+            <li>6 組學生各從學習吧推送的三則同主題新聞（聯合報／自由時報／中央社／內容農場）<strong>上傳到 NotebookLM</strong></li>
+            <li>對 NotebookLM 提問三題：共同事實、各家詮釋、最不可信原因</li>
+            <li>把 AI 回答與自己判斷比對，填入四欄筆記前兩欄</li>
+          </ol>
+        </div>
+        <div class="bg-white border-2 border-rose-300 rounded-xl overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-rose-100">
+              <tr><th class="p-2">源頭</th><th class="p-2">內容</th><th class="p-2">立場</th><th class="p-2">我的判斷</th></tr>
+            </thead>
+            <tbody><tr class="divide-x text-center">
+              <td class="p-2">誰寫、網域、日期</td>
+              <td class="p-2">3 句話摘要</td>
+              <td class="p-2">形容詞、省略</td>
+              <td class="p-2">相信幾分、為何</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="bg-paper/60 p-3 rounded-lg text-sm">
+          <strong>M 修改：</strong>NotebookLM 重新設計同題比對教學流程；學生對 AI 回答提問再驗證，建立「不盲信 AI」的識讀能力。
+        </div>
+      </div>`,
+    bottom:'這 20 分鐘是整套教案最關鍵的躍升。學生第一次同時讀三家媒體＋一個 AI 助理，腦中自動建立「源頭、內容、立場、判斷」四層次。',
+    student:'「我們上傳三篇新聞，NotebookLM 三秒生對照表，可是我們發現它把『內容農場』寫得跟『中央社』一樣中性——所以我們要修正它的判斷。」',
+    ext:[
+      {t:'NotebookLM 教學', u:'https://notebooklm.google.com/'},
+      {t:'四欄閱讀筆記學習單（附件二）', u:'#'},
+      {t:'學習吧任務單模板', u:'https://www.learnmode.net/'},
+    ],
+  },
+  {
+    id:'16', section:'國中教案', title:'1-3 Google 反搜｜網域判讀＋Chrome 鎖頭',
+    subtitle:'事實層次｜15 分',
+    body:`
+      <div class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="bg-orange-50 p-5 rounded-xl">
+            <h4 class="font-bold text-rust mb-3">先看尾巴 + WHOIS</h4>
+            <ul class="space-y-1 text-sm">
+              <li><code class="bg-white px-2">.gov</code>　政府　<code class="bg-white px-2">.edu</code>　學校</li>
+              <li><code class="bg-white px-2">.org</code>　組織　<code class="bg-white px-2">.com</code>　商業</li>
+              <li><code class="bg-white px-2">.idv</code>　個人</li>
+              <li class="text-xs mt-2 text-ink/60">用 Google 反搜工具列查 WHOIS 註冊單位</li>
+            </ul>
+          </div>
+          <div class="bg-amber-50 p-5 rounded-xl">
+            <h4 class="font-bold text-amber-800 mb-3">Chrome 鎖頭符號</h4>
+            <ul class="space-y-2 text-sm">
+              <li>🔒 安全（HTTPS）</li>
+              <li>ⓘ 資訊或不安全</li>
+              <li>⚠ 不安全或危險</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-3 rounded-lg text-sm">
+          <strong>R 重新定義：</strong>Google 反搜＋WHOIS 一鍵查網址溯源，讓國中生也能進行專業級查證。學生將判讀結果填入四欄筆記後兩欄（立場／我的判斷），組內互評後上 Padlet。
+        </div>
+        <div class="bg-rose-50 p-3 rounded-lg text-sm">
+          <strong>金句：</strong>事實層次不是相信誰，是「為什麼相信」。
+        </div>
+      </div>`,
+    bottom:'這個活動把網域判讀從「靠老師講」升級到「自己用 Google 工具查 WHOIS」。國中生第一次擁有「網址溯源」的真實技能，這是 AI 時代的識讀基本功。',
+    student:'「我把那篇內容農場的網址查 WHOIS，發現註冊單位是國外公司、註冊日期才 3 個月前——這怎麼可能是可信的新聞媒體？」',
+    ext:[
+      {t:'Google 圖片反搜', u:'https://images.google.com/'},
+      {t:'TinEye', u:'https://tineye.com/'},
+      {t:'Chrome 安全圖示說明', u:'https://support.google.com/chrome/answer/95617'},
+      {t:'網域判讀＋鎖頭辨識學習單（附件三）', u:'#'},
+    ],
+  },
+  {
+    id:'17', section:'國中教案', title:'2-1 資訊失序三類｜媒體再現三類',
+    subtitle:'立場層次｜12 分',
+    body:`
+      <div class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="bg-rose-50 p-5 rounded-xl">
+            <h4 class="font-bold text-rose-700 mb-3">資訊失序三類</h4>
+            <ul class="space-y-2 text-sm">
+              <li><strong>錯誤訊息</strong>　無惡意（誤傳）</li>
+              <li><strong>不實訊息</strong>　有惡意但符合事實（斷章取義）</li>
+              <li><strong>惡意訊息</strong>　有惡意捏造（假新聞）</li>
+            </ul>
+          </div>
+          <div class="bg-orange-50 p-5 rounded-xl">
+            <h4 class="font-bold text-rust mb-3">媒體再現三類</h4>
+            <ul class="space-y-2 text-sm">
+              <li><strong>誤導誤報</strong>　標題與內容不一致</li>
+              <li><strong>刻板印象</strong>　性別／族群／職業</li>
+              <li><strong>置入行銷</strong>　商業利益偽裝報導</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-4 rounded-lg text-sm">
+          <strong>Mentimeter 即時投票（A 改善）：</strong>學生觀看〈大數據工具化與精準行銷〉短片片段後，匿名投票「你最常被哪一類影響？」全班看即時長條圖，教師回應結果。讓害羞學生願意表態，避免傳統舉手投票的同儕壓力。
+        </div>
+      </div>`,
+    bottom:'12 分鐘給出「資訊失序」與「媒體再現」兩套分類詞彙——讓國中生有共同的語言去描述他們每天看到的網路現象。Mentimeter 是讓「不敢說的孩子也被聽見」的關鍵設計。',
+    student:'「我以前覺得假新聞就一種。原來分『有沒有惡意』『內容真不真』兩個維度，會有三種不同的情況——下次討論時可以更精準。」',
+    ext:[
+      {t:'Mentimeter 即時投票', u:'https://www.mentimeter.com/'},
+      {t:'〈大數據工具化與精準行銷〉素材', u:'../02-素材庫/大數據工具化與精準行銷如何改變我們的生活.pdf'},
+      {t:'資訊失序 First Draft 報告', u:'#'},
+    ],
+  },
+  {
+    id:'18', section:'國中教案', title:'2-2 ORID 焦點討論｜2-3 四角辯論＋立場宣言',
+    subtitle:'立場層次｜18+15 分',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-amber-50 p-5 rounded-xl">
+          <h4 class="font-bold text-amber-800 mb-3">2-2 ORID 解剖風向新聞（18 分）</h4>
+          <p class="text-xs text-ink/60 mb-2">三選一案例：巴黎奧運性別爭議／八家將諧音標籤／原住民愛喝酒刻板印象</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+            <div class="bg-white p-2 rounded"><strong>O</strong> 客觀<br />報導陳述什麼</div>
+            <div class="bg-white p-2 rounded"><strong>R</strong> 主觀感受<br />第一直覺</div>
+            <div class="bg-white p-2 rounded"><strong>I</strong> 詮釋<br />誰被忽略／誰得利</div>
+            <div class="bg-white p-2 rounded"><strong>D</strong> 行動決定<br />會不會轉發、為何</div>
+          </div>
+        </div>
+        <div class="bg-rose-50 p-5 rounded-xl">
+          <h4 class="font-bold text-rose-700 mb-3">2-3 四角辯論＋立場宣言（15 分）</h4>
+          <p class="text-sm mb-2">議題：<strong>演算法推薦的同溫層，該不該主動打破？</strong></p>
+          <p class="text-xs text-ink/60 mb-2">教室四角站「強烈同意／同意／不同意／強烈不同意」→ 每角代表 30 秒陳述 → 其他人可中途換邊（要說明被誰打動）。</p>
+          <div class="bg-white p-3 rounded text-sm italic">
+            「我的立場是 ______，因為 ______，但我願意聽 ______ 的聲音。」<br />
+            <span class="text-xs text-ink/55 not-italic">每位學生寫 60 字立場宣言上傳 Padlet</span>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-3 rounded-lg text-sm">
+          <strong>金句：</strong>立場層次不是中立，是「<strong>透明的主觀</strong>」。
+        </div>
+      </div>`,
+    bottom:'ORID 是個人鷹架、四角辯論是群體互動。「但我願意聽 ___ 的聲音」這句宣言設計，是整套教案最有靈魂的細節——讓國中生練習「保有立場卻不關上門」。',
+    student:'「我從『同意打破同溫層』走到『不同意』再走回『同意』。最後寫立場宣言時，我寫『我願意聽不同意的聲音』——這是我這學期最誠實的一句話。」',
+    ext:[
+      {t:'ORID 焦點討論學習單（附件四）', u:'#'},
+      {t:'四角辯論＋立場宣言學習單（附件五）', u:'#'},
+      {t:'Padlet 立場宣言牆', u:'https://padlet.com/'},
+    ],
+  },
+  {
+    id:'19', section:'國中教案', title:'3-1 議論文舉例｜PREPA 鷹架',
+    subtitle:'思辨倡議｜12 分',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-emerald-50 p-5 rounded-xl">
+          <h4 class="font-bold text-emerald-700 mb-3">〈良言一句三冬暖〉議論文舉例三段</h4>
+          <ol class="text-sm space-y-1 list-decimal list-inside">
+            <li><strong>說明論點</strong></li>
+            <li><strong>提出論據</strong>（棒球教練 / 甲乙獵人妻子 / 凱末爾正反例）</li>
+            <li><strong>歸納結論</strong></li>
+          </ol>
+        </div>
+        <div class="bg-lime-50 border-2 border-sage p-5 rounded-xl">
+          <h4 class="font-bold text-sage mb-3">PREPA 對照五段</h4>
+          <div class="grid grid-cols-5 gap-2 text-xs text-center">
+            <div class="bg-white p-2 rounded"><strong>P</strong>oint<br />主張</div>
+            <div class="bg-white p-2 rounded"><strong>R</strong>eason<br />理由</div>
+            <div class="bg-white p-2 rounded"><strong>E</strong>xample<br />案例</div>
+            <div class="bg-white p-2 rounded"><strong>P</strong>oint<br />重申</div>
+            <div class="bg-white p-2 rounded"><strong>A</strong>ction<br />行動呼籲</div>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-3 rounded-lg text-sm">
+          <strong>實作：</strong>小組對應〈良言一句三冬暖〉每個段落填入 PREPA 五格 → 發現議論文與口語表達同骨架。
+        </div>
+      </div>`,
+    bottom:'這 12 分鐘把「課本文本」與「上台演講」之間的橋打通——〈良言一句三冬暖〉不再是要背的課文，而是學生未來每次倡議都會用到的結構範本。',
+    student:'「凱末爾、棒球教練、甲乙獵人妻子——這三個例子原來是 PREPA 的 Example 段。國文老師說的議論文，跟周震宇老師教的 PREPA 是同一件事！」',
+    ext:[
+      {t:'周震宇 PREPA 表達架構', u:'#'},
+      {t:'〈良言一句三冬暖〉PREPA 對照表', u:'#'},
+    ],
+  },
+  {
+    id:'20', section:'國中教案', title:'3-2 反方建造者＋倡議稿｜3-3 Canva＋90 秒發表',
+    subtitle:'思辨倡議｜18+15 分',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-amber-50 p-5 rounded-xl">
+          <h4 class="font-bold text-amber-800 mb-3">3-2 反方建造者＋倡議稿（18 分）</h4>
+          <p class="text-xs text-ink/60 mb-2">三選一主題：反假訊息給家人／反網路霸凌給同學／反刻板印象給社群朋友</p>
+          <ol class="text-sm space-y-1 list-decimal list-inside">
+            <li>用「反方建造者」策略：先寫對立意見最強的<strong>三個論點</strong>，再寫自己的回應</li>
+            <li>用 PREPA 五格在學習吧任務單完成倡議稿（150 字內）</li>
+          </ol>
+        </div>
+        <div class="bg-rose-50 p-5 rounded-xl">
+          <h4 class="font-bold text-rose-700 mb-3">3-3 Canva 倡議卡＋90 秒發表＋互評（15 分）</h4>
+          <ol class="text-sm space-y-1 list-decimal list-inside">
+            <li>Canva 教育版範本，把 PREPA 稿濃縮成倡議卡（IG 方形 + LINE 直式）</li>
+            <li>每組派代表上台 90 秒口頭發表，採 PREPA 架構</li>
+            <li>同學在 Padlet 評量區依四向度互評：內容紮實／結構清晰／語調穩定／視覺吸睛</li>
+            <li>家庭作業：最終倡議卡發送給一位家人或同學，拍對方回應截圖</li>
+          </ol>
+        </div>
+        <div class="bg-paper/60 p-3 rounded-lg text-sm">
+          <strong>金句（教師結語）：</strong>從「會分辨」到「會發聲」，識讀的終點是<strong>行動</strong>。
+        </div>
+      </div>`,
+    bottom:'「反方建造者」是這套教案最深的設計——先寫對立意見最強的三點，再寫自己回應。國中生練習「先理解對方再說服對方」，這是公共討論最稀缺的能力。',
+    student:'「老師說要先寫對方最強的三個理由再回應，比想像中困難。可是寫完之後，我發現自己的主張變得更有說服力——因為我真的考慮過反方了。」',
+    ext:[
+      {t:'PREPA 倡議稿模板（附件六）', u:'#'},
+      {t:'Canva 倡議卡＋發表互評學習單（附件七）', u:'#'},
+      {t:'Canva 教育版申請', u:'https://www.canva.com/zh_tw/education/'},
+      {t:'Padlet 教育版', u:'https://padlet.com/'},
+    ],
+  },
+
+  // ========== 高中 (21-30) ==========
+  {
+    id:'21', section:'高中教案', title:'高中三｜棘刺刻猴＋蘋果的滋味',
+    subtitle:'教案封面',
+    body:`
+      <div class="space-y-5">
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div class="bg-lime-50 p-4 rounded-lg"><strong>適用對象</strong><br />高中三年級</div>
+          <div class="bg-lime-50 p-4 rounded-lg"><strong>節數</strong><br />3 節 × 50 分鐘</div>
+          <div class="bg-lime-50 p-4 rounded-lg"><strong>主文本</strong><br />〈棘刺刻猴〉＋〈蘋果的滋味〉</div>
+          <div class="bg-lime-50 p-4 rounded-lg"><strong>對應層次</strong><br />事實 → 立場 → 批判倡議（深化版）</div>
+        </div>
+        <div class="bg-white border-l-4 border-sage p-4">
+          <strong class="text-sage">學習目標</strong>
+          <ul class="mt-2 text-sm space-y-1 list-disc list-inside">
+            <li>能用韓非子「指其術之原」邏輯，檢驗當代假新聞</li>
+            <li>能用「媒體產製六格圖」拆解小說與新聞的框架建構</li>
+            <li>能用 PREPA-A 結構，產出 30 秒批判短片（CapCut）</li>
+          </ul>
+        </div>
+        <div class="flex gap-2 flex-wrap">
+          <span class="tag pill-高">Padlet</span>
+          <span class="tag pill-高">NotebookLM</span>
+          <span class="tag pill-高">Canva</span>
+          <span class="tag pill-高">CapCut ⭐</span>
+          <span class="tag pill-高">PREPA-A</span>
+        </div>
+      </div>`,
+    bottom:'高中端的關鍵在「古典文本當作媒體識讀的鏡子」。韓非子兩千年前就在教查證邏輯，黃春明寫蘋果就在拆媒體框架——古文不只是背誦，是當代素養的活教材。',
+    student:'「沒想到棘刺刻猴跟假新聞有關。讀完突然覺得：原來這篇文章不是『古人講的故事』，是『古人教我們的方法』。」',
+    ext:[
+      {t:'高中國文 003 docx 主檔（含附錄一二）', u:'../05-教案-高中/高中國文003-棘刺刻猴+蘋果的滋味-媒體識讀.docx'},
+      {t:'例 3 文科改寫工作紀錄', u:'../07-工作紀錄/2026-05-24-015-例3文科改寫.md'},
+    ],
+  },
+  {
+    id:'22', section:'高中教案', title:'設計理念｜為什麼用古典文本切媒體識讀？',
+    subtitle:'高中三',
+    body:`
+      <div class="space-y-5">
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="bg-slate-50 border-l-4 border-slate-400 p-5">
+            <div class="text-xs text-slate-700 font-bold tracking-wider">傳統高中國文</div>
+            <p class="mt-2 text-sm">讀棘刺刻猴＝講韓非子的政治寓意；讀蘋果＝講黃春明的鄉土寫實。兩篇都「過去式」、與當代生活斷裂。</p>
+          </div>
+          <div class="bg-emerald-50 border-l-4 border-emerald-500 p-5">
+            <div class="text-xs text-emerald-700 font-bold tracking-wider">本教案做法</div>
+            <p class="mt-2 text-sm">把兩篇當「媒體識讀工具箱」：韓非子＝事實查核邏輯；黃春明＝媒體框架解構。古文活了，識讀也接地。</p>
+          </div>
+        </div>
+        <div class="bg-paper/60 rounded-xl p-5">
+          <div class="font-bold mb-3">古典 ↔ 當代對應表</div>
+          <table class="w-full text-sm mt-2">
+            <thead class="bg-lime-100">
+              <tr><th class="p-2 text-left">古典文本</th><th class="p-2 text-left">識讀工具</th><th class="p-2 text-left">當代應用</th></tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr><td class="p-2">〈棘刺刻猴〉</td><td class="p-2">指其術之原＋物理可能性</td><td class="p-2">查證假新聞、保健謠言</td></tr>
+              <tr><td class="p-2">〈蘋果的滋味〉</td><td class="p-2">媒體產製六格圖</td><td class="p-2">解構新聞報導與廣告</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>`,
+    bottom:'高中三的學生會升學、會獨立面對訊息。把古文當「思考方法的活字典」，比起讓他們背註釋有用得多。這也是 108 課綱「素養」二字最具體的實踐。',
+    student:'「我準備學測都覺得課文沒用，但這節課讓我發現：原來韓非子的方法現在還用得到。突然國文變得不那麼像在浪費時間。」',
+    ext:[
+      {t:'方律元三層次原文', u:'https://www.thenewslens.com/'},
+      {t:'108 課綱核心素養說明', u:'#'},
+    ],
+  },
+  {
+    id:'23', section:'高中教案', title:'文本與素材｜古今三重奏',
+    subtitle:'高中三',
+    body:`
+      <div class="space-y-4">
+        <div class="grid md:grid-cols-3 gap-4 text-sm">
+          <div class="bg-lime-50 p-4 rounded-lg">
+            <div class="font-bold text-sage">古典文本 ①</div>
+            <div class="mt-1">〈棘刺刻猴〉</div>
+            <div class="text-xs mt-2 text-ink/60">韓非子・外儲說</div>
+          </div>
+          <div class="bg-lime-50 p-4 rounded-lg">
+            <div class="font-bold text-sage">古典文本 ②</div>
+            <div class="mt-1">〈蘋果的滋味〉</div>
+            <div class="text-xs mt-2 text-ink/60">黃春明・1972</div>
+          </div>
+          <div class="bg-orange-50 p-4 rounded-lg">
+            <div class="font-bold text-rust">當代對照素材</div>
+            <div class="mt-1">3 則當週假新聞</div>
+            <div class="text-xs mt-2 text-ink/60">查核中心 / MyGoPen</div>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-4 rounded-lg">
+          <strong class="text-sage">教案附錄</strong>
+          <ul class="mt-2 text-sm space-y-1 list-disc list-inside">
+            <li>附錄一：〈棘刺刻猴〉全文＋白話翻譯</li>
+            <li>附錄二：〈蘋果的滋味〉文本資訊＋黃春明訪談摘要</li>
+          </ul>
+        </div>
+      </div>`,
+    bottom:'素材安排「古典 × 古典 × 當代」三重奏：兩篇課文＋當週時事。讓學生在「閱讀理解」與「現實應用」之間反覆穿梭，避免讀古文只停在註釋層次。',
+    student:'「我以為高三只是衝刺學測，沒想到老師找了當週的假新聞當素材。原來課文跟生活可以這樣連起來。」',
+    ext:[
+      {t:'高中國文 003 docx（含附錄一二全文）', u:'../05-教案-高中/高中國文003-棘刺刻猴+蘋果的滋味-媒體識讀.docx'},
+      {t:'台灣事實查核中心', u:'https://tfc-taiwan.org.tw/'},
+      {t:'黃春明小說選讀', u:'#'},
+    ],
+  },
+  {
+    id:'24', section:'高中教案', title:'節 1·活動 1｜韓非子查核邏輯',
+    subtitle:'事實層次｜辨識',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-amber-50 border-l-4 border-amber-500 p-5 rounded-r-xl">
+          <div class="font-bold text-amber-800 mb-2">原文關鍵句</div>
+          <p class="italic text-sm">「指其術之原，物（事）有不可窮者。」<br /><span class="text-xs text-ink/60">→ 追問方法的根本，事情有不可成立的地方。</span></p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-white border p-4 rounded-lg">
+            <div class="font-bold text-sage">古典版</div>
+            <p class="text-sm mt-2">衛人說能在棘刺尖刻猴。燕王要他展示，問：「你的刀比棘刺細嗎？」→ 問刀子，破假象。</p>
+          </div>
+          <div class="bg-white border p-4 rounded-lg">
+            <div class="font-bold text-rust">當代版</div>
+            <p class="text-sm mt-2">某保健食品說「3 天治好糖尿病」。問：「臨床試驗在哪？樣本多少人？」→ 問方法，破謠言。</p>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-4 rounded-lg text-sm">
+          <strong>分組任務：</strong>找一則當週的可疑訊息，仿韓非子句法寫一句「指其術之原」的查核提問。
+        </div>
+      </div>`,
+    bottom:'這是全教案最有「文白互通」效果的一頁。讓學生發現：兩千年前的查證邏輯，跟今天反詐騙的方法本質完全一樣。古文不是死的。',
+    student:'「我寫的『指其術之原』是：『減肥藥廣告，請問你能告訴我你的成分原理嗎？』突然覺得韓非子是個 KOL。」',
+    ext:[
+      {t:'韓非子原文與註釋', u:'#'},
+      {t:'MyGoPen 案例庫', u:'https://www.mygopen.com/'},
+    ],
+  },
+  {
+    id:'25', section:'高中教案', title:'節 1·活動 2｜物理可能性檢驗',
+    subtitle:'事實層次｜辨識',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-orange-50 p-5 rounded-xl">
+          <h4 class="font-bold text-rust mb-3">三層檢驗</h4>
+          <ol class="text-sm space-y-2 list-decimal list-inside">
+            <li><strong>物理可能</strong>：這件事在物理上做得到嗎？（棘刺刻猴 → 刀比棘刺細才行）</li>
+            <li><strong>時間可能</strong>：這個時間內能完成嗎？（3 天治好糖尿病？）</li>
+            <li><strong>資源可能</strong>：需要的條件存在嗎？（民間單位有 FDA 等級設備？）</li>
+          </ol>
+        </div>
+        <div class="bg-paper/60 p-4 rounded-lg text-sm">
+          <strong>實作：</strong>每組挑 3 則社群轉傳訊息，用三層檢驗過濾。產出「可信 / 存疑 / 不可信」分類表，發表在 Padlet。
+        </div>
+      </div>`,
+    bottom:'高中端的事實層次不只是「查資料」，要會「邏輯推理」。物理／時間／資源三層檢驗，是不需要外部資料就能初步過濾的「思想實驗」工具。',
+    student:'「我們組查到一則『某 App 一夜賺百萬』，用時間 + 資源檢驗就過不去。連 Google 都不用查就知道是假的。」',
+    ext:[
+      {t:'科普版「假新聞物理檢驗」案例', u:'#'},
+      {t:'PanSci 泛科學：科學素養', u:'https://pansci.asia/'},
+    ],
+  },
+  {
+    id:'26', section:'高中教案', title:'節 2·活動 1｜媒體產製六格圖',
+    subtitle:'立場層次｜思辨',
+    body:`
+      <div class="space-y-4">
+        <div class="grid grid-cols-3 gap-2 text-sm">
+          <div class="bg-white border-2 p-3 rounded text-center">
+            <div class="font-bold">① 誰生產</div>
+            <div class="text-xs mt-1 text-ink/60">記者/媒體機構</div>
+          </div>
+          <div class="bg-white border-2 p-3 rounded text-center">
+            <div class="font-bold">② 為誰生產</div>
+            <div class="text-xs mt-1 text-ink/60">讀者群/廣告主</div>
+          </div>
+          <div class="bg-white border-2 p-3 rounded text-center">
+            <div class="font-bold">③ 用什麼形式</div>
+            <div class="text-xs mt-1 text-ink/60">頭條/評論/配圖</div>
+          </div>
+          <div class="bg-white border-2 p-3 rounded text-center">
+            <div class="font-bold">④ 強調什麼</div>
+            <div class="text-xs mt-1 text-ink/60">標題用詞/重複</div>
+          </div>
+          <div class="bg-white border-2 p-3 rounded text-center">
+            <div class="font-bold">⑤ 省略什麼</div>
+            <div class="text-xs mt-1 text-ink/60">沒寫的細節</div>
+          </div>
+          <div class="bg-white border-2 p-3 rounded text-center">
+            <div class="font-bold">⑥ 影響什麼</div>
+            <div class="text-xs mt-1 text-ink/60">讀者印象/行為</div>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-4 rounded-lg text-sm">
+          <strong>文本應用：</strong>用六格圖拆解〈蘋果的滋味〉中，美國軍車撞車事件如何被「媒體化」處理。
+        </div>
+      </div>`,
+    bottom:'六格圖是高中端最關鍵的識讀工具。讓學生看見：媒體不是「中性的傳聲筒」，而是「主動的框架建構者」。用小說來練，比直接拿新聞練更安全（沒有立場敏感）。',
+    student:'「拆〈蘋果的滋味〉的六格圖，才發現黃春明早就在寫『媒體怎麼建構真實』。我以前只覺得這是一篇悲傷的故事。」',
+    ext:[
+      {t:'媒體產製六格圖詳解（工作紀錄）', u:'../07-工作紀錄/2026-05-24-019-媒體產製六格圖詳解.md'},
+      {t:'黃春明〈蘋果的滋味〉文本資訊', u:'../05-教案-高中/高中國文003-棘刺刻猴+蘋果的滋味-媒體識讀.docx'},
+    ],
+  },
+  {
+    id:'27', section:'高中教案', title:'節 2·活動 2｜立場宣言＋同題異源',
+    subtitle:'立場層次｜思辨',
+    body:`
+      <div class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="bg-lime-50 p-5 rounded-xl">
+            <h4 class="font-bold text-sage mb-3">立場宣言（個人）</h4>
+            <p class="text-sm">每人用 200 字寫一份「我對 ___ 議題的立場」，包含：</p>
+            <ul class="text-sm mt-2 list-disc list-inside">
+              <li>我的主張</li>
+              <li>我的資料來源</li>
+              <li>我承認的不確定</li>
+            </ul>
+          </div>
+          <div class="bg-rose-50 p-5 rounded-xl">
+            <h4 class="font-bold text-rose-700 mb-3">同題異源（NotebookLM）</h4>
+            <p class="text-sm">就同一議題，比對：</p>
+            <ul class="text-sm mt-2 list-disc list-inside">
+              <li>1 篇學術論文（Google Scholar）</li>
+              <li>1 篇主流媒體</li>
+              <li>1 個社群熱門貼文（FB / Threads / X）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-4 rounded-lg text-sm">
+          <strong>關鍵練習：</strong>「我承認的不確定」這欄是高中端最重要的素養——願意說「我還不知道」，比假裝什麼都知道更難。
+        </div>
+      </div>`,
+    bottom:'「承認不確定」是這節課最進階的能力。台灣社會的對話品質常因為「不能輸」而崩塌，這節課讓學生練習「我目前的判斷是 X，但如果有 Y 證據我會改」。',
+    student:'「以前寫議論文都要『斬釘截鐵』，現在老師說可以寫『不確定』，反而我覺得文章更有說服力，因為很真。」',
+    ext:[
+      {t:'NotebookLM 學術版用法', u:'https://notebooklm.google.com/'},
+      {t:'Google Scholar', u:'https://scholar.google.com/'},
+    ],
+  },
+  {
+    id:'28', section:'高中教案', title:'節 3·活動 1｜CapCut 30 秒批判短片',
+    subtitle:'批判層次｜倡議',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-sage/10 border-2 border-sage p-5 rounded-xl">
+          <h4 class="font-bold text-sage mb-3">短片規格</h4>
+          <ul class="text-sm space-y-1">
+            <li>📐 9:16 直立短片（TikTok / IG Reels / YouTube Shorts）</li>
+            <li>⏱ 30 秒</li>
+            <li>🎬 工具：CapCut（手機免費，AI 字幕一鍵生成）</li>
+            <li>📝 主題：「當代棘刺刻猴」or「當代蘋果的滋味」</li>
+          </ul>
+        </div>
+        <div class="bg-paper/60 p-5 rounded-xl">
+          <h4 class="font-bold mb-3">30 秒劇本結構</h4>
+          <ul class="text-sm space-y-1">
+            <li>0-5"　Hook：丟一個驚人事實或提問</li>
+            <li>5-15"　Reveal：揭露「這事的媒體框架」</li>
+            <li>15-25"　Reflect：拉到古典文本對照</li>
+            <li>25-30"　CTA：呼籲一個具體行動</li>
+          </ul>
+        </div>
+      </div>`,
+    bottom:'CapCut 是 Gen Z 母語級的工具，學生本來就會用。把他們會的東西變成課堂作業，學習投入度立刻拉滿。30 秒是 TikTok 演算法的甜蜜點，學會的是「真實世界的傳播能力」。',
+    student:'「我平常就在拍 TikTok，沒想到可以用來交作業。我這次做的是『減肥藥的當代棘刺』，朋友都說很酷。」',
+    ext:[
+      {t:'CapCut 下載（手機免費）', u:'https://www.capcut.com/'},
+      {t:'CapCut AI 字幕教學', u:'#'},
+      {t:'TikTok 短片敘事結構', u:'#'},
+    ],
+  },
+  {
+    id:'29', section:'高中教案', title:'節 3·活動 2｜PREPA-A 倡議行動方案',
+    subtitle:'批判層次｜倡議',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-lime-50 border-2 border-sage p-5 rounded-xl">
+          <h4 class="font-bold text-sage mb-3">PREPA-A 六段結構（高中專用）</h4>
+          <div class="space-y-2 text-sm">
+            <div><span class="bg-lime-200 px-2 py-1 rounded font-bold">P</span>oint　主張</div>
+            <div><span class="bg-lime-200 px-2 py-1 rounded font-bold">R</span>eason　理由</div>
+            <div><span class="bg-lime-200 px-2 py-1 rounded font-bold">E</span>xample　證據（含學術／媒體／社群三源）</div>
+            <div><span class="bg-lime-200 px-2 py-1 rounded font-bold">P</span>oint　重申</div>
+            <div><span class="bg-lime-200 px-2 py-1 rounded font-bold">A</span>ction　呼籲行動</div>
+            <div><span class="bg-yellow-200 px-2 py-1 rounded font-bold">A</span>dvanced　進階倡議：可被複製的方案（一頁說明書）</div>
+          </div>
+        </div>
+        <div class="bg-paper/60 p-4 rounded-lg text-sm">
+          <strong>產出物：</strong>30 秒短片 ＋ 一頁倡議方案說明書（含執行步驟、目標族群、效益指標）。
+        </div>
+      </div>`,
+    bottom:'PREPA-A 多了「Advanced：可被複製的方案」——這是把「個人主張」升級為「社會方案」的關鍵跳躍。高中生不只要會說，要會設計可被執行的事。',
+    student:'「老師說 Action 是『叫別人做』，Advanced 是『告訴別人怎麼做』。差一個動詞，責任完全不同。」',
+    ext:[
+      {t:'周震宇 PREPA-DPA 進階課程', u:'#'},
+      {t:'倡議方案說明書範本', u:'#'},
+    ],
+  },
+  {
+    id:'30', section:'高中教案', title:'評量規準＋當代棘刺/蘋果作品集',
+    subtitle:'高中三｜總結',
+    body:`
+      <div class="space-y-4">
+        <div class="bg-white border-2 border-sage rounded-xl overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-lime-100">
+              <tr><th class="p-3 text-left">評量向度</th><th class="p-3">A 級</th><th class="p-3">B 級</th><th class="p-3">C 級</th></tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3">韓非子查核邏輯應用</td><td class="text-center">指其術之原句法精準</td><td class="text-center">提問合理</td><td class="text-center">流於形式</td></tr>
+              <tr><td class="p-3">媒體六格圖分析</td><td class="text-center">六格深刻＋連結文本</td><td class="text-center">六格完整</td><td class="text-center">缺格或表面</td></tr>
+              <tr><td class="p-3">CapCut 短片</td><td class="text-center">敘事結構＋訊息密度</td><td class="text-center">完成度高</td><td class="text-center">技術問題</td></tr>
+              <tr><td class="p-3">PREPA-A 方案</td><td class="text-center">可被複製＋有指標</td><td class="text-center">六段完整</td><td class="text-center">行動模糊</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="bg-paper/60 p-4 rounded-lg text-sm">
+          <strong>學年延伸：</strong>選最佳 5 件作品送「全國媒體素養創作比賽」，並彙整成《當代棘刺/蘋果》電子作品集。
+        </div>
+      </div>`,
+    bottom:'高中端的成果不只是「分數」，而是「可被外部世界看到的東西」。送比賽、做電子作品集，讓學習真的成為履歷的一部分——這對升學備審也是直接的加分。',
+    student:'「我的短片進了班級作品集，老師說會放到學校 IG。這是我第一次覺得，課堂作業可以是『真的有人會看到的作品』。」',
+    ext:[
+      {t:'高中完整教案 docx（含附錄一二）', u:'../05-教案-高中/高中國文003-棘刺刻猴+蘋果的滋味-媒體識讀.docx'},
+      {t:'例 3 文科改寫工作紀錄', u:'../07-工作紀錄/2026-05-24-015-例3文科改寫.md'},
+      {t:'全國學生媒體素養比賽資訊', u:'#'},
+    ],
+  },
+  {
+    id:'31', section:'尾聲', title:'參與夥伴｜AIPACK共備工作坊合影',
+    subtitle:'2026-05-24 · 共學現場',
+    body:`
+      <div class="space-y-5">
+        <div class="rounded-2xl overflow-hidden border-2 border-amber-300 shadow-lg bg-navy">
+          <img src="slides/participants.png" alt="AIPACK共備工作坊參與夥伴合影 Q 版日式風格" class="w-full h-auto block" />
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+          <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg"><strong class="text-rust">場域</strong><br/>竹光國中・自我領導力研習教室</div>
+          <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg"><strong class="text-rust">日期</strong><br/>2026-05-24</div>
+          <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg"><strong class="text-rust">主題</strong><br/>方律元三層次 × AIPACK 公版</div>
+          <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg"><strong class="text-rust">學程</strong><br/>國小 5 下 / 國中 8 下 / 高中三</div>
+          <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg"><strong class="text-rust">產出</strong><br/>3 份 docx + 31 張投影片</div>
+          <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg"><strong class="text-rust">後續</strong><br/>送各班試教 + 公開發佈</div>
+        </div>
+      </div>`,
+    bottom:'一天能做完三份教案，靠的不是一個人，是整桌人一起把雛形撞出來。Q 版風格收尾，讓這場研習不只是檔案，而是有溫度的共學現場。',
+    student:'「老師桌上那幾杯咖啡，看起來就是我們今天的能量來源。下次也想去那個教室坐一坐。」',
+    ext:[
+      {t:'AIPACK 專案 README', u:'../00-專案說明/README.md'},
+      {t:'工作紀錄全集', u:'../07-工作紀錄/'},
+    ],
+  },
+];
+
+// ============ RENDER ============
+let current = 0;
+
+function renderNav() {
+  const nav = document.getElementById('slideNav');
+  let lastSection = '';
+  let html = '';
+  SLIDES.forEach((s, i) => {
+    if (s.section !== lastSection) {
+      html += `<div class="text-[10px] text-ink/40 font-bold tracking-widest mt-3 mb-1 px-2">${s.section.toUpperCase()}</div>`;
+      lastSection = s.section;
+    }
+    html += `<div class="slide-item rounded px-3 py-2 ${i===current?'active':''}" data-idx="${i}">
+      <span class="font-mono text-xs opacity-70 mr-2">${s.id}</span>${s.title.replace(/｜.*$/,'')}
+    </div>`;
+  });
+  nav.innerHTML = html;
+  nav.querySelectorAll('.slide-item').forEach(el => {
+    el.addEventListener('click', () => goTo(parseInt(el.dataset.idx)));
+  });
+}
+
+function renderSlide() {
+  const s = SLIDES[current];
+  const pillCls = SECTION_PILL[s.section] || 'pill-序';
+  document.getElementById('stage').innerHTML = `
+    <div class="flex items-center gap-3 text-xs mb-4">
+      <span class="font-mono text-ink/50">${String(current).padStart(2,'0')} / 30</span>
+      <span class="opacity-30">·</span>
+      <span class="tag ${pillCls}">${s.section}</span>
+      ${s.subtitle ? `<span class="text-ink/50">${s.subtitle}</span>` : ''}
+    </div>
+    <h2 class="serif text-3xl md:text-4xl font-bold title-bar mb-6">${s.title}</h2>
+    <div class="mb-6 rounded-xl overflow-hidden border border-amber-900/10 bg-navy/5" id="heroImgWrap">
+      <img src="slides/${s.id}.png" alt="${s.title}"
+           class="w-full h-auto block"
+           onerror="document.getElementById('heroImgWrap').style.display='none'">
+    </div>
+    <div>${s.body}</div>
+  `;
+  document.getElementById('bottomNote').innerHTML = `
+    <div class="text-xs font-bold text-gold tracking-wider mb-2">💡 教學者註解</div>
+    <p class="text-sm leading-relaxed text-ink/85">${s.bottom}</p>
+  `;
+  document.getElementById('studentView').innerHTML = `<p>${s.student}</p>`;
+  document.getElementById('extensions').innerHTML = s.ext.map(e =>
+    `<a href="${e.u}" target="_blank" rel="noopener" class="ext-link">${e.t}</a>`
+  ).join('');
+  document.getElementById('slidePos').textContent = `${current+1} / ${SLIDES.length}`;
+  document.querySelectorAll('.slide-item').forEach((el,i) => {
+    el.classList.toggle('active', i===current);
+  });
+  loadNote();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function goTo(i) {
+  saveNote();
+  current = Math.max(0, Math.min(SLIDES.length-1, i));
+  renderSlide();
+}
+function nextSlide(){ goTo(current+1); }
+function prevSlide(){ goTo(current-1); }
+
+// note storage
+function loadNote() {
+  const k = 'aipack-note-' + SLIDES[current].id;
+  document.getElementById('noteBox').value = localStorage.getItem(k) || '';
+}
+function saveNote() {
+  const k = 'aipack-note-' + SLIDES[current].id;
+  localStorage.setItem(k, document.getElementById('noteBox').value);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  renderNav();
+  renderSlide();
+  // keyboard
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'TEXTAREA') {
+      if ((e.metaKey||e.ctrlKey) && e.key==='s') { e.preventDefault(); saveNote(); }
+      return;
+    }
+    if (e.key==='ArrowRight' || e.key===' ') { e.preventDefault(); nextSlide(); }
+    if (e.key==='ArrowLeft') { e.preventDefault(); prevSlide(); }
+  });
+});
+
+function presentMode() {
+  if (document.fullscreenElement) document.exitFullscreen();
+  else document.documentElement.requestFullscreen();
+}
+</script>
+
+</body>
+</html>
