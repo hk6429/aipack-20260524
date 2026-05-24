@@ -235,9 +235,14 @@
       <div class="flex items-center gap-2 mb-2">
         <span>💬</span><h3 class="font-bold text-sm">我的筆記</h3>
       </div>
-      <textarea id="noteBox" placeholder="這頁的想法、學員提問、改進構想…&#10;按 ⌘+S 自動存到瀏覽器"
-        class="w-full h-32 p-2 text-sm border border-amber-900/10 rounded resize-none focus:outline-none focus:border-rust"></textarea>
-      <div class="text-[10px] text-ink/40 mt-1">每張投影片獨立筆記 · localStorage 自動儲存</div>
+      <textarea id="noteBox" placeholder="這頁的想法、學員提問、改進構想…"
+        class="w-full h-24 p-2 text-sm border border-amber-900/10 rounded resize-none focus:outline-none focus:border-rust"></textarea>
+      <div class="mt-2 flex items-center gap-2">
+        <input type="date" id="noteDate" class="text-xs border border-amber-900/10 rounded px-2 py-1.5 focus:outline-none focus:border-rust" />
+        <button onclick="addNote()" class="ml-auto bg-rust hover:bg-orange-700 text-white text-xs font-semibold px-3 py-1.5 rounded">💾 送出</button>
+      </div>
+      <div id="noteList" class="mt-3 space-y-2 max-h-64 overflow-y-auto scroll-thin"></div>
+      <div class="text-[10px] text-ink/40 mt-2">每張投影片獨立 · localStorage 永久儲存 · 點 ✕ 可刪除單筆</div>
     </div>
 
     <!-- 學員視角 -->
@@ -1137,7 +1142,7 @@ const SLIDES = [
     '「我準備學測都覺得課文沒用，但這節課讓我發現：原來韓非子的方法現在還用得到。突然國文變得不那麼像在浪費時間。老師把〈棘刺刻猴〉跟黃春明〈蘋果的滋味〉放在一起，前者是「古典的查證」、後者是「當代的媒體再現」，兩篇本來互不相干，今天卻變成同一個主題——「我們怎麼知道我們以為的真實是真的」。我以前讀課文是為了考試，今天讀完是為了「下一次有人騙我，我能識破」。對高三生來說，這個收穫比解題技巧還大，因為解題技巧考完就沒用，識讀能力是一輩子的。國文老師其實一直在偷偷教我們生存技能。」',
     ext:[
       {t:'方律元三層次原文', u:'https://www.thenewslens.com/'},
-      {t:'108 課綱核心素養說明', u:'readme.html'},
+      {t:'108 課綱核心素養說明', u:'curriculum-108.html'},
     ],
   },
   {
@@ -1231,7 +1236,7 @@ const SLIDES = [
     student:
     '「我們組查到一則『某 App 一夜賺百萬』，用時間 + 資源檢驗就過不去。連 Google 都不用查就知道是假的。老師教的「物理檢驗」三層——物理（這件事在物理世界發生得了嗎）、時間（時間軸合理嗎）、資源（要這麼多錢／人／設備，這個人有嗎）——我們組套在那則「一夜賺百萬」廣告上：要一夜賺百萬，他要有本金、要有市場、要有時機，這三個只要少一個就不可能。結果我們連網站都不用點開就破解了。原來高三的識讀不是查很多資料，是先用邏輯篩一遍，把那些「物理上不可能」的事直接排除。這比任何工具都快。」',
     ext:[
-      {t:'科普版「假新聞物理檢驗」案例', u:'readme.html'},
+      {t:'科普版「假新聞物理檢驗」案例', u:'physics-fake-news.html'},
       {t:'PanSci 泛科學：科學素養', u:'https://pansci.asia/'},
     ],
   },
@@ -1311,7 +1316,7 @@ const SLIDES = [
     student:
     '「以前寫議論文都要『斬釘截鐵』，現在老師說可以寫『不確定』，反而我覺得文章更有說服力，因為很真。老師讓我們寫「立場宣言」——不是寫「我支持 X」，是寫「我承認我的不確定」。我寫的是：「我相信 AI 會改變教育，但我不確定改變的方向是好是壞，所以我選擇先用、再觀察。」寫的時候很怕被笑（因為高中作文都要「義正詞嚴」），結果老師說這種「承認不確定」反而是更高階的識讀能力——因為這代表我知道自己看到的不是全貌。我覺得這節課最大的收穫不是寫什麼，是發現「不確定」也可以是一種立場，而且是一種誠實的立場。」',
     ext:[
-      {t:'NotebookLM 學術版用法', u:'https://notebooklm.google.com/'},
+      {t:'NotebookLM 學術版用法', u:'notebooklm-academic.html'},
       {t:'Google Scholar', u:'https://scholar.google.com/'},
     ],
   },
@@ -1343,9 +1348,9 @@ const SLIDES = [
     student:
     '「我平常就在拍 TikTok，沒想到可以用來交作業。我這次做的是『減肥藥的當代棘刺』，朋友都說很酷。老師讓我們用 CapCut 做 30 秒短片，題目是「找一個當代版的棘刺刻猴」——找一個誇張到不可能的廣告，用韓非子的方式拆解。我選的是一則「兩週瘦 10 公斤」的減肥藥廣告，前 5 秒先放廣告本身，中間 15 秒用「指其術之原」拆解（成分原理是什麼？臨床數據在哪？兩週瘦 10 公斤的物理代謝可能嗎？），最後 10 秒給結論。朋友看完留言「我媽剛買了同款」、「我以後不會再相信這種廣告了」。原來「我會拍短片」這件事可以變成識讀工具，不只是娛樂。」',
     ext:[
-      {t:'CapCut 下載（手機免費）', u:'https://www.capcut.com/'},
-      {t:'CapCut AI 字幕教學', u:'readme.html'},
-      {t:'TikTok 短片敘事結構', u:'readme.html'},
+      {t:'CapCut 下載（手機免費）', u:'capcut-guide.html#download'},
+      {t:'CapCut AI 字幕教學', u:'capcut-guide.html#subtitle'},
+      {t:'TikTok 短片敘事結構', u:'capcut-guide.html#narrative'},
     ],
   },
   {
@@ -1372,7 +1377,7 @@ const SLIDES = [
     student:
     '「老師說 Action 是『叫別人做』，Advanced 是『告訴別人怎麼做』。差一個動詞，責任完全不同。PREPA-A 比 PREPA 多了一個 Advanced——「可被複製的倡議方案」。老師說國中可以停在 Action（「請大家停看查想傳」），但高中要進階到 Advanced（「請大家停看查想傳，方法是：先打開原連結、查 WHOIS、看網域尾巴、再用 NotebookLM 比對三個來源」）。前者是口號，後者是 SOP。我以前寫倡議稿都到 Action 就結束，覺得「呼籲完就好」，今天才知道高中的識讀要做到「別人照著做就能複製」。這個要求比較難，但寫完發現自己的論述變得很扎實——因為我必須真的知道怎麼做才能教別人做。」',
     ext:[
-      {t:'周震宇 PREPA-DPA 進階課程', u:'readme.html'},
+      {t:'周震宇 PREPA-DPA 進階課程', u:'prepa-dpa.html'},
       {t:'倡議方案說明書範本', u:'readme.html'},
     ],
   },
@@ -1499,15 +1504,62 @@ function goTo(i) {
 function nextSlide(){ goTo(current+1); }
 function prevSlide(){ goTo(current-1); }
 
-// note storage
+// note storage（多筆 + 日期）
+function noteKey() { return 'aipack-notes-' + SLIDES[current].id; }
+function readNotes() {
+  try { return JSON.parse(localStorage.getItem(noteKey()) || '[]'); }
+  catch(e) { return []; }
+}
+function writeNotes(arr) { localStorage.setItem(noteKey(), JSON.stringify(arr)); }
+function todayStr() {
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
 function loadNote() {
-  const k = 'aipack-note-' + SLIDES[current].id;
-  document.getElementById('noteBox').value = localStorage.getItem(k) || '';
+  // 重設輸入欄
+  document.getElementById('noteBox').value = '';
+  const dateEl = document.getElementById('noteDate');
+  if (dateEl) dateEl.value = todayStr();
+  renderNoteList();
 }
-function saveNote() {
-  const k = 'aipack-note-' + SLIDES[current].id;
-  localStorage.setItem(k, document.getElementById('noteBox').value);
+function renderNoteList() {
+  const list = document.getElementById('noteList');
+  if (!list) return;
+  const notes = readNotes();
+  if (!notes.length) {
+    list.innerHTML = '<div class="text-[11px] text-ink/40 italic py-2 text-center">尚無筆記 ✏️</div>';
+    return;
+  }
+  list.innerHTML = notes.slice().reverse().map((n) => {
+    const realIdx = notes.indexOf(n);
+    return `<div class="bg-paper/60 border border-amber-900/10 rounded p-2 text-xs">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="font-mono text-rust text-[10px] font-bold">📅 ${n.date}</span>
+        <button onclick="delNote(${realIdx})" class="ml-auto text-ink/40 hover:text-rust text-[10px]">✕</button>
+      </div>
+      <div class="whitespace-pre-wrap text-ink/85 leading-relaxed">${n.content.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+    </div>`;
+  }).join('');
 }
+function addNote() {
+  const box = document.getElementById('noteBox');
+  const dateEl = document.getElementById('noteDate');
+  const content = (box.value || '').trim();
+  if (!content) { box.focus(); return; }
+  const date = dateEl.value || todayStr();
+  const notes = readNotes();
+  notes.push({ date, content, ts: Date.now() });
+  writeNotes(notes);
+  box.value = '';
+  renderNoteList();
+}
+function delNote(idx) {
+  const notes = readNotes();
+  notes.splice(idx, 1);
+  writeNotes(notes);
+  renderNoteList();
+}
+function saveNote() { /* legacy no-op，避免換頁時誤觸 */ }
 document.addEventListener('DOMContentLoaded', () => {
   renderNav();
   renderSlide();

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>科普版「假新聞物理檢驗」案例｜AIPACK 媒體識讀</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#FBF7EF; --cream:#F5EBD7; --ink:#1F2937; --rust:#C2410C; --gold:#B45309; --navy:#1E3A5F; --line:rgba(196,65,12,0.18); }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Noto Sans TC',sans-serif; line-height:1.85; }
+  .topbar { background:var(--navy); color:#F5EBD7; padding:.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; }
+  .topbar .crumb .tag { background:var(--rust); color:white; padding:.15rem .55rem; border-radius:999px; font-size:.7rem; letter-spacing:.05em; font-weight:700; margin-right:.6rem; }
+  .topbar a { color:#FCD34D; text-decoration:none; font-size:.85rem; }
+  .container { max-width:920px; margin:0 auto; padding:2.5rem 1.5rem 6rem; }
+  h1 { font-family:'Noto Serif TC',serif; font-size:2rem; border-bottom:3px solid var(--rust); padding-bottom:.6rem; margin-bottom:.4rem; }
+  .sub { color:#6B7280; font-size:.9rem; margin-bottom:2rem; }
+  .lead { background:var(--cream); padding:1rem 1.25rem; border-left:4px solid var(--rust); border-radius:0 8px 8px 0; font-size:.95rem; margin-bottom:2.5rem; }
+  h2 { font-family:'Noto Serif TC',serif; font-size:1.5rem; color:white; background:linear-gradient(135deg,#1E3A5F,#0F2540); padding:.7rem 1rem; border-radius:8px; margin-top:3rem; margin-bottom:1.25rem; }
+  h3 { font-size:1.15rem; color:var(--rust); margin-top:1.75rem; margin-bottom:.6rem; border-left:5px solid var(--rust); padding-left:.6rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; background:#fff; font-size:.9rem; border-radius:8px; overflow:hidden; border:1px solid var(--line); }
+  th, td { padding:.6rem .8rem; text-align:left; border:1px solid var(--line); vertical-align:top; }
+  thead th { background:var(--cream); color:var(--rust); font-weight:700; }
+  ul, ol { padding-left:1.5rem; } li { margin:.35rem 0; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin:1rem 0; }
+  @media (max-width:720px){ .grid-2,.grid-3 { grid-template-columns:1fr; } }
+  .card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:1rem 1.25rem; }
+  .card.red { background:#FEF2F2; border-color:#FCA5A5; }
+  .card.green { background:#F0FDF4; border-color:#86EFAC; }
+  .card.yellow { background:#FEFCE8; border-color:#FDE68A; }
+  .card.blue { background:#EFF6FF; border-color:#93C5FD; }
+  .card-title { font-weight:700; margin-bottom:.5rem; }
+  .case { background:#fff; border:2px solid var(--line); border-radius:12px; padding:1.5rem; margin:2rem 0; box-shadow:0 2px 8px rgba(0,0,0,0.03); }
+  .case-header { display:flex; align-items:center; gap:.7rem; margin-bottom:1rem; }
+  .case-tag { background:var(--rust); color:white; padding:.2rem .6rem; border-radius:999px; font-size:.75rem; font-weight:700; }
+  .case-title { font-family:'Noto Serif TC',serif; font-size:1.3rem; font-weight:700; }
+  .layer { background:var(--cream); padding:.8rem 1rem; border-radius:8px; margin:.7rem 0; border-left:4px solid var(--gold); }
+  .layer-label { font-weight:700; color:var(--rust); font-size:.85rem; letter-spacing:.05em; margin-bottom:.3rem; }
+  blockquote { border-left:4px solid var(--gold); background:rgba(245,235,215,0.55); margin:1rem 0; padding:.7rem 1rem; border-radius:0 8px 8px 0; color:#4B5563; font-size:.9rem; }
+  code { background:#FEF3C7; color:#92400E; padding:.1rem .35rem; border-radius:4px; font-size:.85em; }
+  .footer-back { text-align:center; margin-top:3rem; padding-top:1.5rem; border-top:1px dashed var(--line); }
+  .footer-back a { display:inline-block; margin:0 .5rem; color:var(--rust); text-decoration:none; font-weight:600; padding:.4rem .9rem; border:1px solid var(--line); border-radius:6px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="crumb"><span class="tag">高中節 1</span>科普版「假新聞物理檢驗」案例</div>
+  <a href="index.html">← 回成果網站</a>
+</div>
+<div class="container">
+
+<h1>🔬 科普版「假新聞物理檢驗」案例集</h1>
+<div class="sub">對應高中三節 1 活動 2「物理／時間／資源三層過濾」 · 5 個課堂可直接用的案例</div>
+
+<div class="lead">
+  「物理檢驗」是把韓非子「指其術之原」翻譯成現代科普版：<strong>任何宣稱，先用物理、時間、資源三層過濾，不用查資料就能擋下 80% 的可疑訊息。</strong>本頁整理 5 個經典案例，從減肥廣告到 AI 神話，每個案例都附三層檢驗的對話腳本，可直接帶進課堂。
+</div>
+
+<h2>三層檢驗速覽</h2>
+
+<div class="grid-3">
+  <div class="card red">
+    <div class="card-title">🌐 物理層</div>
+    <p>這件事在物理世界發生得了嗎？需要違反守恆定律、生理代謝、化學反應的速度極限嗎？</p>
+  </div>
+  <div class="card yellow">
+    <div class="card-title">⏱ 時間層</div>
+    <p>達成宣稱的時間軸合理嗎？需要的研發、測試、量產時間有沒有被壓縮到不可能？</p>
+  </div>
+  <div class="card green">
+    <div class="card-title">💰 資源層</div>
+    <p>達成這件事需要的人、錢、設備，當事人具備嗎？單一個體能完成需要團隊規模的事嗎？</p>
+  </div>
+</div>
+
+<blockquote>三層過濾只要任何一層通不過，就可以暫時不必再查證——這比 Google 反搜更快。</blockquote>
+
+<!-- ============ 案例 1 ============ -->
+<div class="case">
+  <div class="case-header">
+    <span class="case-tag">案例 1</span>
+    <span class="case-title">「兩週瘦 10 公斤，不用運動不用節食」</span>
+  </div>
+  <div class="layer">
+    <div class="layer-label">🌐 物理層</div>
+    <p>1 公斤脂肪約 7,700 大卡。瘦 10 公斤脂肪 = 77,000 大卡赤字。14 天平均每天需赤字 5,500 大卡——但成年人 BMR（基礎代謝）約 1,400-1,800 大卡。<strong>每天赤字超過總攝入熱量是不可能的</strong>（除非器官停止運作）。</p>
+  </div>
+  <div class="layer">
+    <div class="layer-label">⏱ 時間層</div>
+    <p>真正的脂肪燃燒速率上限約每週 0.5-1 公斤（醫學共識）。兩週 10 公斤 = 速率 10 倍——若可能，<strong>世界肥胖症協會早就推廣</strong>。</p>
+  </div>
+  <div class="layer">
+    <div class="layer-label">💰 資源層</div>
+    <p>不必檢驗——前兩層已擋下。</p>
+  </div>
+  <p><strong>結論：</strong>物理層直接否決。學生回家對話：「媽，這種廣告連算都不用算就知道是假的。」</p>
+</div>
+
+<!-- ============ 案例 2 ============ -->
+<div class="case">
+  <div class="case-header">
+    <span class="case-tag">案例 2</span>
+    <span class="case-title">「某 AI 課程，學完一週月入十萬」</span>
+  </div>
+  <div class="layer">
+    <div class="layer-label">🌐 物理層</div>
+    <p>知識變現本身物理可行，本層通過。</p>
+  </div>
+  <div class="layer">
+    <div class="layer-label">⏱ 時間層</div>
+    <p>「學完一週」= 7 天養成可變現技能。實際上 AI 應用要從 prompt → 部署 → 客戶接洽 → 收款，至少 3-6 個月。<strong>7 天連客戶都還沒談完</strong>。</p>
+  </div>
+  <div class="layer">
+    <div class="layer-label">💰 資源層</div>
+    <p>月入十萬需要：固定客戶池、行銷管道、產出能力。<strong>一個剛學完的新手沒有任何一項</strong>。廣告若聲稱「100% 學員都做到」，那必須有平均樣本——但常用的話術是「最頂尖學員月入十萬」，這跟「最頂尖網球員年入千萬」一樣是樣本偏差。</p>
+  </div>
+  <p><strong>結論：</strong>時間 + 資源層共同否決。學生產出：用 PREPA-A 寫一段「請出示您 100 位學員的平均月收入中位數」。</p>
+</div>
+
+<!-- ============ 案例 3 ============ -->
+<div class="case">
+  <div class="case-header">
+    <span class="case-tag">案例 3</span>
+    <span class="case-title">「一夜致富，某 App 自動賺錢」</span>
+  </div>
+  <div class="layer">
+    <div class="layer-label">🌐 物理層</div>
+    <p>金錢轉移物理可能（轉帳是合法行為），本層通過。</p>
+  </div>
+  <div class="layer">
+    <div class="layer-label">⏱ 時間層</div>
+    <p>「一夜」= 8 小時。若真有 App 8 小時自動賺一個人的年薪，<strong>創辦人為何要分享給陌生人</strong>？他自己跑 100 個帳號一年就能買下一條街。</p>
+  </div>
+  <div class="layer">
+    <div class="layer-label">💰 資源層</div>
+    <p>不必檢驗——時間層已暴露邏輯破口。</p>
+  </div>
+  <p><strong>結論：</strong>時間層 + 動機反證。延伸思考：<strong>「為什麼他要告訴你？」</strong>是物理檢驗以外，最強的第四層過濾——若一個方法真的高效，分享的成本＞ 收益，理性人不會分享。</p>
+</div>
+
+<!-- ============ 案例 4 ============ -->
+<div class="case">
+  <div class="case-header">
+    <span class="case-tag">案例 4</span>
+    <span class="case-title">「某神奇水可治百病」</span>
+  </div>
+  <div class="layer">
+    <div class="layer-label">🌐 物理層</div>
+    <p>「治百病」= 同一物質要能：殺菌、抑癌、降血壓、平血糖、修復神經⋯⋯。這些機制在生化上互相矛盾（殺菌劑通常傷害正常細胞、降血壓藥常拉肚子）。<strong>單一物質不可能同時滿足對立的藥理需求</strong>。</p>
+  </div>
+  <div class="layer">
+    <div class="layer-label">⏱ 時間層</div>
+    <p>「百病」分布在不同器官系統，藥理作用時間從幾分鐘到幾個月不等。聲稱「短時間見效」與「治百病」自相矛盾——若真能瞬間作用全身，副作用會劇烈到無法上市。</p>
+  </div>
+  <div class="layer">
+    <div class="layer-label">💰 資源層</div>
+    <p>若真有此物，全球藥廠和 WHO 早已介入。<strong>「個人發現的萬靈藥」</strong>違背現代醫學數十萬人的研發體系——不是不可能，但機率極低。</p>
+  </div>
+  <p><strong>結論：</strong>三層全部不通過。對應〈棘刺刻猴〉的「指其術之原」現代版：「請出示這款水的成分、作用機轉、雙盲臨床試驗。」</p>
+</div>
+
+<!-- ============ 案例 5 ============ -->
+<div class="case">
+  <div class="case-header">
+    <span class="case-tag">案例 5</span>
+    <span class="case-title">「政府要對 LINE 通話收稅」（家族群組常見謠言）</span>
+  </div>
+  <div class="layer">
+    <div class="layer-label">🌐 物理層</div>
+    <p>政府要對特定 App 通話收稅，技術上需要識別「這次通話是不是 LINE」——這需要監聽全部加密流量。<strong>LINE 通話為端到端加密，政府無法在不破壞加密的前提下計費</strong>。</p>
+  </div>
+  <div class="layer">
+    <div class="layer-label">⏱ 時間層</div>
+    <p>稅法修訂需立法院三讀，最快 3-6 個月。若真有此議案，<strong>主流媒體早會出現相關新聞</strong>，不會只在 LINE 家族群流傳。</p>
+  </div>
+  <div class="layer">
+    <div class="layer-label">💰 資源層</div>
+    <p>建立「LINE 通話計費系統」需要全國電信業協作，涉及預算上百億。<strong>這類規模的政策不可能無聲無息</strong>。</p>
+  </div>
+  <p><strong>結論：</strong>典型 LINE 家族群謠言。物理層的「端到端加密」可作教學素材，順便講解 HTTPS 與訊息安全。</p>
+</div>
+
+<h2>課堂使用 SOP</h2>
+<ol>
+  <li><strong>學生帶素材：</strong>每人從家族 LINE 群或 IG 截一則「看起來怪怪的」訊息進教室。</li>
+  <li><strong>三層過濾單：</strong>發學習單，分物理／時間／資源三欄，學生自行勾選哪一層不通過。</li>
+  <li><strong>同桌互檢：</strong>同桌交換過濾單，互相質疑「你說物理不可能，請說明理由」。</li>
+  <li><strong>產 PREPA-A 句：</strong>每組選一則最有把握的，寫出一句「指其術之原」風格的查證問句。</li>
+  <li><strong>30 秒短片：</strong>進入 CapCut 把整套檢驗拍成短片（對應節 3 活動 1）。</li>
+</ol>
+
+<blockquote>
+  ⚠️ 物理檢驗不是絕對保證，是 <strong>第一層過濾器</strong>。通過物理檢驗仍需查證；未通過則可省下 80% 查證時間。教學上強調「省力工具」而不是「萬能工具」。
+</blockquote>
+
+<div class="footer-back">
+  <a href="index.html">← 回成果網站</a>
+  <a href="lesson-shs.html">高中三完整教案</a>
+  <a href="capcut-guide.html">CapCut 短片教學</a>
+  <a href="prepa-dpa.html">PREPA-A 進階筆記</a>
+</div>
+
+</div>
+</body>
+</html>

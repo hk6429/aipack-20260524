@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CapCut 30 秒批判短片實作指南｜AIPACK 媒體識讀</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#FBF7EF; --cream:#F5EBD7; --ink:#1F2937; --rust:#C2410C; --gold:#B45309; --navy:#1E3A5F; --line:rgba(196,65,12,0.18); }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Noto Sans TC',sans-serif; line-height:1.8; }
+  .topbar { background:var(--navy); color:#F5EBD7; padding:.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+  .topbar .crumb { font-size:.95rem; }
+  .topbar .crumb .tag { background:var(--rust); color:white; padding:.15rem .55rem; border-radius:999px; font-size:.7rem; letter-spacing:.05em; font-weight:700; margin-right:.6rem; }
+  .topbar a { color:#FCD34D; text-decoration:none; font-size:.85rem; }
+  .topbar a:hover { color:#FDE68A; }
+  .container { max-width:960px; margin:0 auto; padding:2.5rem 1.5rem 6rem; }
+  h1 { font-family:'Noto Serif TC',serif; font-size:2rem; color:var(--ink); border-bottom:3px solid var(--rust); padding-bottom:.6rem; margin-bottom:.4rem; }
+  .sub { color:#6B7280; font-size:.9rem; margin-bottom:2rem; }
+  .lead { background:var(--cream); padding:1rem 1.25rem; border-left:4px solid var(--rust); border-radius:0 8px 8px 0; font-size:.95rem; margin-bottom:2.5rem; }
+  h2 { font-family:'Noto Serif TC',serif; font-size:1.5rem; color:white; background:linear-gradient(135deg,#1E3A5F,#0F2540); padding:.7rem 1rem; border-radius:8px; margin-top:3rem; margin-bottom:1.25rem; }
+  h3 { font-size:1.1rem; color:var(--rust); margin-top:1.5rem; margin-bottom:.6rem; border-left:5px solid var(--rust); padding-left:.6rem; }
+  h4 { font-size:1rem; color:var(--gold); margin:1rem 0 .4rem; }
+  .toc { background:#fff; border:1px solid var(--line); border-radius:10px; padding:1rem 1.25rem; margin-bottom:2rem; }
+  .toc-title { font-weight:700; color:var(--rust); margin-bottom:.5rem; }
+  .toc a { color:var(--ink); text-decoration:none; }
+  .toc a:hover { color:var(--rust); text-decoration:underline; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin:1rem 0; }
+  @media (max-width:720px){ .grid-2, .grid-3 { grid-template-columns:1fr; } }
+  .card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:1rem 1.25rem; }
+  .card.cream { background:var(--cream); }
+  .card.green { background:#F0FDF4; border-color:#86EFAC; }
+  .card.blue { background:#EFF6FF; border-color:#93C5FD; }
+  .card.orange { background:#FFF7ED; border-color:#FDBA74; }
+  .card.yellow { background:#FEFCE8; border-color:#FDE68A; }
+  .card-title { font-weight:700; color:var(--ink); margin-bottom:.5rem; }
+  .platform { display:flex; gap:.6rem; flex-wrap:wrap; margin:.6rem 0; }
+  .platform a { background:#1F2937; color:#FCD34D; padding:.5rem .9rem; border-radius:8px; text-decoration:none; font-size:.85rem; font-weight:600; }
+  .platform a:hover { background:#374151; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; background:#fff; font-size:.9rem; border-radius:8px; overflow:hidden; border:1px solid var(--line); }
+  th, td { padding:.6rem .8rem; text-align:left; border:1px solid var(--line); vertical-align:top; }
+  thead th { background:var(--cream); color:var(--rust); font-weight:700; }
+  .step { background:#fff; border-left:4px solid var(--rust); padding:.8rem 1rem; margin:.5rem 0; border-radius:0 8px 8px 0; }
+  .step-num { display:inline-block; background:var(--rust); color:white; width:1.8rem; height:1.8rem; border-radius:50%; text-align:center; line-height:1.8rem; font-weight:700; margin-right:.5rem; }
+  blockquote { border-left:4px solid var(--gold); background:rgba(245,235,215,0.55); margin:1rem 0; padding:.7rem 1rem; border-radius:0 8px 8px 0; color:#4B5563; font-size:.9rem; }
+  ul, ol { padding-left:1.5rem; }
+  li { margin:.3rem 0; }
+  code { background:#FEF3C7; color:#92400E; padding:.1rem .35rem; border-radius:4px; font-size:.85em; }
+  .timeline { position:relative; margin:1.5rem 0; padding-left:2rem; border-left:3px solid var(--rust); }
+  .timeline-item { margin-bottom:1.25rem; position:relative; }
+  .timeline-item::before { content:''; position:absolute; left:-2.6rem; top:.3rem; width:1.1rem; height:1.1rem; background:var(--rust); border-radius:50%; border:3px solid white; box-shadow:0 0 0 2px var(--rust); }
+  .timeline-sec { font-family:'Courier New',monospace; font-weight:700; color:var(--rust); font-size:.85rem; }
+  .footer-back { text-align:center; margin-top:3rem; padding-top:1.5rem; border-top:1px dashed var(--line); }
+  .footer-back a { display:inline-block; margin:0 .5rem; color:var(--rust); text-decoration:none; font-weight:600; padding:.4rem .9rem; border:1px solid var(--line); border-radius:6px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="crumb"><span class="tag">高中工具</span>CapCut 30 秒批判短片實作指南</div>
+  <a href="index.html">← 回成果網站</a>
+</div>
+
+<div class="container">
+
+<h1>🎬 CapCut 30 秒批判短片實作指南</h1>
+<div class="sub">下載入口 · AI 字幕教學 · 短片敘事結構 — 對應高中三節 3「當代棘刺／當代蘋果」批判短片任務</div>
+
+<div class="lead">
+  高中三〈棘刺刻猴〉＋〈蘋果的滋味〉教案的節 3 活動 1：學生在 30 秒內，用 CapCut 完成一支「當代棘刺／當代蘋果」批判短片。本頁整合三件事——<strong>① 工具怎麼下載、② AI 字幕怎麼用、③ 30 秒敘事結構怎麼設計</strong>——讓學生能直接動工。
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 目錄</div>
+  <ol>
+    <li><a href="#download">下載：iOS / Android / 桌面版（皆免費）</a></li>
+    <li><a href="#subtitle">AI 字幕教學：3 分鐘做出整支影片字幕</a></li>
+    <li><a href="#narrative">30 秒批判短片敘事結構（5+15+10）</a></li>
+    <li><a href="#rubric">教師端評量規準</a></li>
+  </ol>
+</div>
+
+<!-- =================== 下載 =================== -->
+<h2 id="download">① CapCut 下載入口</h2>
+
+<p>CapCut 由字節跳動（ByteDance，TikTok 母公司）開發，<strong>手機版完全免費</strong>，桌面版基礎功能也免費（部分 AI 與素材需付費）。教學現場推薦：</p>
+
+<div class="grid-3">
+  <div class="card green">
+    <div class="card-title">📱 iOS</div>
+    <p>App Store 搜尋「CapCut」即可。需 iOS 13 以上。</p>
+    <div class="platform"><a href="https://apps.apple.com/tw/app/capcut/id1500855883" target="_blank" rel="noopener">App Store 下載</a></div>
+  </div>
+  <div class="card green">
+    <div class="card-title">🤖 Android</div>
+    <p>Google Play 搜尋「CapCut」即可。需 Android 8.0 以上。</p>
+    <div class="platform"><a href="https://play.google.com/store/apps/details?id=com.lemon.lvoverseas" target="_blank" rel="noopener">Google Play 下載</a></div>
+  </div>
+  <div class="card blue">
+    <div class="card-title">💻 桌面版</div>
+    <p>Windows / macOS 皆可，介面比手機版更適合精修。</p>
+    <div class="platform"><a href="https://www.capcut.com/" target="_blank" rel="noopener">官網下載（capcut.com）</a></div>
+  </div>
+</div>
+
+<div class="card yellow" style="margin-top:1rem;">
+  <div class="card-title">⚠️ 教學現場注意</div>
+  <ul>
+    <li>登入可用 TikTok、Google、Facebook 帳號，建議學生用「校用 Google 帳號」登入，避免個人化追蹤汙染學習素材。</li>
+    <li>學生若有「不想登入」需求，CapCut 手機版支援「免登入直接編輯」，作品在本機儲存。</li>
+    <li>輸出設定建議：<code>1080×1920（9:16 直立）</code>、<code>30fps</code>、<code>原畫質</code>，學測前最後一週前先讓學生熟悉這三項。</li>
+  </ul>
+</div>
+
+<!-- =================== AI 字幕 =================== -->
+<h2 id="subtitle">② AI 字幕教學：3 分鐘做出整支影片字幕</h2>
+
+<p>CapCut 的「自動字幕」是 ByteDance 自家語音辨識，<strong>中文（含台灣國語）辨識率高、產出 .srt 可二次修正</strong>。對 30 秒批判短片來說，字幕是「讓批判訊息密度拉滿」的關鍵——觀眾在演算法推送的環境下會關靜音滑，沒有字幕的批判 = 沒人看到。</p>
+
+<h3>手機版步驟（5 步驟）</h3>
+
+<div class="step">
+  <span class="step-num">1</span><strong>匯入影片：</strong>開啟 CapCut → 點「+ 新增專案」→ 選擇要加字幕的影片片段。
+</div>
+<div class="step">
+  <span class="step-num">2</span><strong>進入字幕工具：</strong>底部工具列點「文字」→「自動字幕」。
+</div>
+<div class="step">
+  <span class="step-num">3</span><strong>選擇語言：</strong>下拉選單選「中文（繁體）」或「中文（普通話）」，按「開始」。
+</div>
+<div class="step">
+  <span class="step-num">4</span><strong>等待辨識：</strong>30 秒影片約 5-10 秒就跑完。整段影片字幕會自動依語音時間軸對齊。
+</div>
+<div class="step">
+  <span class="step-num">5</span><strong>逐字校正：</strong>點任一段字幕可進入編輯，修正辨識錯誤的字（教學現場常錯：人名、品牌名、數字）。
+</div>
+
+<h3>桌面版步驟（更精準）</h3>
+<ol>
+  <li>匯入素材到時間軸 → 上方功能列「字幕」→「自動字幕」</li>
+  <li>勾選「同時生成翻譯字幕」可一鍵產出中英雙語（高中升學備審加分）</li>
+  <li>右側面板選字型、大小、底框（黑底白字最易讀，演算法 thumbnail 也最清楚）</li>
+  <li>輸出時勾選「字幕嵌入畫面」，避免上傳 TikTok / IG Reels 時字幕被吃掉</li>
+</ol>
+
+<div class="card cream">
+  <div class="card-title">💡 字幕設計教學要點</div>
+  <ul>
+    <li><strong>字數：</strong>每段字幕不超過 15 字，否則觀眾來不及讀</li>
+    <li><strong>底框：</strong>用黑底＋白字＋細描邊，淺色背景照樣看得到</li>
+    <li><strong>關鍵字加色：</strong>批判關鍵字（如「指其術之原」「物理檢驗」）用金色或紅色突顯，3 秒內讓觀眾抓到重點</li>
+    <li><strong>時間軸：</strong>字幕進場比語音早 0.2 秒，符合滑動閱讀節奏</li>
+  </ul>
+</div>
+
+<!-- =================== 敘事結構 =================== -->
+<h2 id="narrative">③ 30 秒批判短片敘事結構（5+15+10）</h2>
+
+<p>TikTok / IG Reels / YouTube Shorts 的演算法給每支影片的「黃金 3 秒」決定觀眾是否續看。30 秒批判短片的鐵則：<strong>前 5 秒設鉤、中 15 秒拆解、末 10 秒收結＋行動呼籲</strong>。</p>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-sec">00:00 – 00:05　🪝 前 5 秒：設鉤（Hook）</div>
+    <p>直接秀出「被質疑的對象」——可以是廣告截圖、新聞標題、AI 生成圖。<strong>不要自我介紹</strong>、不要 logo 開場，第一秒就要打中觀眾。</p>
+    <p>常用 hook 句型：</p>
+    <ul>
+      <li>「這則廣告聲稱⋯⋯，是真的嗎？」</li>
+      <li>「兩千年前的韓非子早就破解了這種把戲。」</li>
+      <li>「我用一個方法，三秒拆穿這個騙局。」</li>
+    </ul>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-sec">00:05 – 00:20　🔍 中 15 秒：拆解（Break）</div>
+    <p>把批判工具具體套用一次，給觀眾「方法」而非「結論」。對應高中教案的兩條工具線：</p>
+    <ul>
+      <li><strong>韓非子線（指其術之原）：</strong>「請問你的成分原理是什麼？」「請問你的臨床數據在哪？」</li>
+      <li><strong>蘋果線（媒體再現六格）：</strong>誰被報導、為誰報導、用什麼角度、誰沒被說、結果是什麼。</li>
+    </ul>
+    <p>視覺處理：分割畫面（左廣告、右拆解）、放大圈選關鍵詞、AI 字幕同步打字機效果。</p>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-sec">00:20 – 00:30　🎯 末 10 秒：收結 + 行動（Close + CTA）</div>
+    <p>用 PREPA-A 的最後兩步：再次重申觀點 → 呼籲行動。</p>
+    <ul>
+      <li><strong>重申：</strong>「所以這則廣告的問題不是『誇張』，而是『無法被驗證』。」</li>
+      <li><strong>行動（Advanced）：</strong>給觀眾「可被複製的 SOP」——「下次看到健康廣告，先問三件事：成分原理、臨床數據、發佈日期。」</li>
+    </ul>
+    <p>結尾畫面：金句字卡＋自己的署名／班級代號，讓作品成為「可被引用的內容」。</p>
+  </div>
+</div>
+
+<h3>常見三種腳本模板</h3>
+
+<table>
+  <thead>
+    <tr><th>模板</th><th>適合題材</th><th>5 + 15 + 10 拆法</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>A. 古今對話</strong></td>
+      <td>當代誇張廣告 ＋〈棘刺刻猴〉</td>
+      <td>5 秒秀廣告 → 15 秒韓非子「指其術之原」拆解 → 10 秒給三問 SOP</td>
+    </tr>
+    <tr>
+      <td><strong>B. 六格圖拆解</strong></td>
+      <td>新聞報導 ＋〈蘋果的滋味〉</td>
+      <td>5 秒秀新聞標題 → 15 秒走完六格圖（誰／為誰／角度／工具／誰沒被說／結果）→ 10 秒問觀眾「你看到的是第幾格？」</td>
+    </tr>
+    <tr>
+      <td><strong>C. 物理檢驗</strong></td>
+      <td>「一夜致富」「七天瘦身」類詐騙</td>
+      <td>5 秒秀宣稱 → 15 秒走完物理／時間／資源三層過濾 → 10 秒給「下次先問三題」SOP</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- =================== 評量規準 =================== -->
+<h2 id="rubric">④ 教師端評量規準（對應教案）</h2>
+
+<table>
+  <thead>
+    <tr><th>向度</th><th>A 級</th><th>B 級</th><th>C 級</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>批判方法精準</td><td>套用韓非子查核或媒體六格 ≥ 4 步驟，邏輯完整</td><td>使用批判工具但僅完成主要 2-3 步驟</td><td>停留在「我覺得這是假的」感性論斷</td></tr>
+    <tr><td>30 秒敘事密度</td><td>前 5 秒設鉤成功 + 中 15 秒方法清楚 + 末 10 秒給 SOP</td><td>三段都到位但節奏拖沓或字數過多</td><td>缺少 hook 或無行動呼籲</td></tr>
+    <tr><td>字幕與視覺</td><td>AI 字幕全程嵌入、關鍵字加色、黑底白字</td><td>有字幕但偶有錯字或字幅過大</td><td>無字幕或字幕跑出畫面</td></tr>
+    <tr><td>PREPA-A 行動</td><td>給「可被複製的 SOP」（步驟、數字、檢核點）</td><td>有 Action（呼籲）但缺 Advanced（怎麼做）</td><td>只有結論，沒有行動指引</td></tr>
+  </tbody>
+</table>
+
+<blockquote>
+  教學現場提醒：30 秒短片並非「縮短版的長片」，而是「另一種文法」。教師端示範片不必追求美感，重點是 <strong>5 + 15 + 10 的節奏清楚、批判方法明確、CTA 可複製</strong>——學生會主動把美學優化到極致，方法論才是老師要把關的。
+</blockquote>
+
+<div class="footer-back">
+  <a href="index.html">← 回成果網站</a>
+  <a href="lesson-shs.html">高中三完整教案</a>
+  <a href="prepa-dpa.html">PREPA-A 進階筆記</a>
+  <a href="readme.html">📘 專案 README</a>
+</div>
+
+</div>
+</body>
+</html>

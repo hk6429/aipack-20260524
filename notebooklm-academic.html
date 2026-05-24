@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>NotebookLM 學術版用法｜AIPACK 媒體識讀</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#FBF7EF; --cream:#F5EBD7; --ink:#1F2937; --rust:#C2410C; --gold:#B45309; --navy:#1E3A5F; --line:rgba(196,65,12,0.18); }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Noto Sans TC',sans-serif; line-height:1.8; }
+  .topbar { background:var(--navy); color:#F5EBD7; padding:.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+  .topbar .crumb .tag { background:var(--rust); color:white; padding:.15rem .55rem; border-radius:999px; font-size:.7rem; letter-spacing:.05em; font-weight:700; margin-right:.6rem; }
+  .topbar a { color:#FCD34D; text-decoration:none; font-size:.85rem; }
+  .container { max-width:920px; margin:0 auto; padding:2.5rem 1.5rem 6rem; }
+  h1 { font-family:'Noto Serif TC',serif; font-size:2rem; border-bottom:3px solid var(--rust); padding-bottom:.6rem; margin-bottom:.4rem; }
+  .sub { color:#6B7280; font-size:.9rem; margin-bottom:2rem; }
+  .lead { background:var(--cream); padding:1rem 1.25rem; border-left:4px solid var(--rust); border-radius:0 8px 8px 0; font-size:.95rem; margin-bottom:2.5rem; }
+  h2 { font-family:'Noto Serif TC',serif; font-size:1.5rem; color:white; background:linear-gradient(135deg,#1E3A5F,#0F2540); padding:.7rem 1rem; border-radius:8px; margin-top:3rem; margin-bottom:1.25rem; }
+  h3 { font-size:1.1rem; color:var(--rust); margin-top:1.5rem; margin-bottom:.5rem; border-left:5px solid var(--rust); padding-left:.6rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; background:#fff; font-size:.9rem; border-radius:8px; overflow:hidden; border:1px solid var(--line); }
+  th, td { padding:.6rem .8rem; text-align:left; border:1px solid var(--line); vertical-align:top; }
+  thead th { background:var(--cream); color:var(--rust); font-weight:700; }
+  ul, ol { padding-left:1.5rem; } li { margin:.3rem 0; }
+  code { background:#FEF3C7; color:#92400E; padding:.1rem .35rem; border-radius:4px; font-size:.85em; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; }
+  @media (max-width:720px){ .grid-2,.grid-3 { grid-template-columns:1fr; } }
+  .card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:1rem 1.2rem; }
+  .card.cream { background:var(--cream); }
+  .card.green { background:#F0FDF4; border-color:#86EFAC; }
+  .card.blue { background:#EFF6FF; border-color:#93C5FD; }
+  .card.yellow { background:#FEFCE8; border-color:#FDE68A; }
+  .card-title { font-weight:700; margin-bottom:.5rem; color:var(--ink); }
+  .step { background:#fff; border-left:4px solid var(--rust); padding:.8rem 1rem; margin:.5rem 0; border-radius:0 8px 8px 0; }
+  .step-num { display:inline-block; background:var(--rust); color:white; width:1.8rem; height:1.8rem; border-radius:50%; text-align:center; line-height:1.8rem; font-weight:700; margin-right:.5rem; }
+  blockquote { border-left:4px solid var(--gold); background:rgba(245,235,215,0.55); margin:1rem 0; padding:.7rem 1rem; border-radius:0 8px 8px 0; color:#4B5563; font-size:.9rem; }
+  .footer-back { text-align:center; margin-top:3rem; padding-top:1.5rem; border-top:1px dashed var(--line); }
+  .footer-back a { display:inline-block; margin:0 .5rem; color:var(--rust); text-decoration:none; font-weight:600; padding:.4rem .9rem; border:1px solid var(--line); border-radius:6px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="crumb"><span class="tag">高中／國中工具</span>NotebookLM 學術版（Plus / Pro）用法</div>
+  <a href="index.html">← 回成果網站</a>
+</div>
+<div class="container">
+
+<h1>📓 NotebookLM 學術版（Plus / Pro）用法</h1>
+<div class="sub">Google AI Studio 出品 · 對應國中 8 下節 2「同題異源新聞比對」、高中三節 1「物理檢驗」</div>
+
+<div class="lead">
+  NotebookLM 的「<strong>學術版用法</strong>」指的不是某個特殊版本，而是把它<strong>當作學術 RAG（Retrieval-Augmented Generation）工具</strong>使用的工作流。本頁說明：① 何時用 NotebookLM、② 教學現場 5 步驟、③ NotebookLM Plus 與免費版差異、④ 媒體識讀課堂的 3 種典型任務。
+</div>
+
+<h2>① 為什麼是 NotebookLM，而不是 ChatGPT？</h2>
+
+<table>
+  <thead><tr><th>需求</th><th>ChatGPT</th><th>NotebookLM</th></tr></thead>
+  <tbody>
+    <tr><td>「我給的這份文件，請只用這份回答」</td><td>容易幻覺、會引用外部知識</td><td><strong>強制 grounding：只用你上傳的來源</strong></td></tr>
+    <tr><td>每段回答附「來源句」</td><td>需特別 prompt 才有</td><td><strong>每句都有 footnote 反向定位到原文</strong></td></tr>
+    <tr><td>同題異源比對</td><td>分次貼上、人工拼湊</td><td><strong>多來源同時匯入，一鍵生對照表</strong></td></tr>
+    <tr><td>語音摘要（Audio Overview）</td><td>無</td><td><strong>原生支援，兩位 AI 主持人雙語對談</strong></td></tr>
+    <tr><td>學生用後的引用偷懶</td><td>難追查</td><td><strong>引用句直接帶頁碼，老師易檢核</strong></td></tr>
+  </tbody>
+</table>
+
+<blockquote><strong>一句話：</strong>媒體識讀課要的不是「AI 給答案」，是「AI 幫我跑比對、我做判斷」——NotebookLM 的 grounding 與 footnote 正是這個工作流的關鍵。</blockquote>
+
+<h2>② 教學現場 5 步驟（國中／高中通用）</h2>
+
+<div class="step"><span class="step-num">1</span><strong>建立筆記本：</strong>到 <code>notebooklm.google.com</code> → 用 Google 帳號登入 → 點「新增筆記本」。校用 G Suite 帳號可直接登入。</div>
+<div class="step"><span class="step-num">2</span><strong>匯入來源（最多 50 個）：</strong>支援 PDF、Google Docs、網址、貼上文字、YouTube 連結。<strong>媒體識讀課的標配：同一則新聞 3 個不同媒體的版本，全部丟進來。</strong></div>
+<div class="step"><span class="step-num">3</span><strong>問結構化問題：</strong>不要問「這是真的嗎」，要問「請列出三家媒體報導同一事件的用詞差異，用表格呈現」「請找出每家獨有的細節（其他兩家沒有的）」。</div>
+<div class="step"><span class="step-num">4</span><strong>檢查 footnote：</strong>每句回答後的 <code>[1][2][3]</code> 點開，確認 AI 真的有引到原文，而不是把三家內容混在一起。</div>
+<div class="step"><span class="step-num">5</span><strong>產 Audio Overview：</strong>右側面板點「Audio Overview」→ 兩位 AI 主持人會生成 10-20 分鐘的對談摘要，學生通勤時可以聽，等於把預習變成 podcast。</div>
+
+<h2>③ 免費版 vs. NotebookLM Plus（學術版進階）</h2>
+
+<table>
+  <thead><tr><th>項目</th><th>免費版</th><th>NotebookLM Plus（Google One AI Premium / Workspace AI 內含）</th></tr></thead>
+  <tbody>
+    <tr><td>筆記本數量</td><td>100 個</td><td>500 個</td></tr>
+    <tr><td>每本筆記本來源數</td><td>50</td><td>300</td></tr>
+    <tr><td>每日查詢次數</td><td>50</td><td>500</td></tr>
+    <tr><td>每日 Audio Overview</td><td>3</td><td>20</td></tr>
+    <tr><td>客製化 AI 主持風格</td><td>否</td><td>✅（可指定深度／長度／口吻）</td></tr>
+    <tr><td>分析儀表板（誰看了什麼）</td><td>否</td><td>✅</td></tr>
+    <tr><td>適合場景</td><td>個人備課、班級示範</td><td>研究、跨課程系統化備課、論文寫作</td></tr>
+  </tbody>
+</table>
+
+<div class="card yellow">
+  <div class="card-title">💡 教師取得 Plus 的最划算路徑</div>
+  <ul>
+    <li><strong>個人：</strong>訂閱 Google One AI Premium（NT$650/月），含 NotebookLM Plus + Gemini Advanced + 2TB 雲端。</li>
+    <li><strong>學校：</strong>申請 Google Workspace for Education 的 AI 加值方案，全校教師統一啟用。</li>
+    <li><strong>學生：</strong>免費版 50 來源 / 50 查詢已足夠完成教案任務，不需付費。</li>
+  </ul>
+</div>
+
+<h2>④ 媒體識讀課堂的 3 種典型任務</h2>
+
+<h3>任務 A：同題異源新聞對照（國中 8 下節 2）</h3>
+<div class="card cream">
+  <p><strong>場景：</strong>一則「校園霸凌」新聞，分別在自由時報、中時、聯合報、某內容農場有 4 個版本。</p>
+  <p><strong>Prompt：</strong>「請用表格列出四家媒體報導本事件的差異，欄位包含：用詞情緒色彩、引用消息來源、是否提到加害者背景、結論立場。」</p>
+  <p><strong>學生產出：</strong>4×4 對照表 ＋ 自己加一欄「可信度評估」（含內容農場標紅）。</p>
+</div>
+
+<h3>任務 B：物理可能性檢驗（高中三節 1）</h3>
+<div class="card cream">
+  <p><strong>場景：</strong>學生帶來一則「一夜賺百萬」「七天瘦 10 公斤」廣告，匯入廣告原文 + 衛福部相關法規 + 學術論文。</p>
+  <p><strong>Prompt：</strong>「請用韓非子『指其術之原』的邏輯，列出這則廣告需要回答的三個物理可能性問題，並從上傳的法規與論文中找出反證。」</p>
+  <p><strong>學生產出：</strong>30 秒 CapCut 短片的腳本骨架（hook → 拆解 → CTA）。</p>
+</div>
+
+<h3>任務 C：教師備課的跨課文整合</h3>
+<div class="card cream">
+  <p><strong>場景：</strong>教師同時教翰林 8 下 P92-95、P94-95、P178-187 三課，希望找出三課的「共同核心概念」。</p>
+  <p><strong>Prompt：</strong>「請整合這三段課文，找出方律元媒體識讀三層次（事實／立場／批判倡議）在三課中的對應段落，並建議一個跨課的探究任務。」</p>
+  <p><strong>教師產出：</strong>完整教案骨架（9 活動 × 3 節）的初版。</p>
+</div>
+
+<h2>⑤ 三個容易踩的坑</h2>
+<div class="grid-3">
+  <div class="card blue">
+    <div class="card-title">坑 1：把它當搜尋引擎</div>
+    <p>NotebookLM <strong>只看你給的來源</strong>。沒上傳的資料它一概不知，不要問「最近的⋯⋯」這類問題。</p>
+  </div>
+  <div class="card blue">
+    <div class="card-title">坑 2：忘了檢查 footnote</div>
+    <p>AI 偶爾會「綜合多個來源後過度推論」。每段回答都要點 <code>[1][2]</code> 反查原文。</p>
+  </div>
+  <div class="card blue">
+    <div class="card-title">坑 3：用過大的來源</div>
+    <p>單一 PDF 超過 200 頁時辨識會分塊處理。教學現場最好先切章節再上傳。</p>
+  </div>
+</div>
+
+<blockquote>
+  ⚠️ <strong>關於「Gemini 1.5 Flash 1M context」：</strong>NotebookLM 底層使用 Google 的 Gemini 模型（會隨著時間更新），長 context 能力是引擎本身的特性，不是「學術版獨有」。本頁說的「學術版用法」是<strong>工作流</strong>，不是版本——任何人都可以在免費版上跑出學術級的查證流程，差別只在數量限制。
+</blockquote>
+
+<div class="footer-back">
+  <a href="index.html">← 回成果網站</a>
+  <a href="https://notebooklm.google.com/" target="_blank" rel="noopener">前往 NotebookLM 官網</a>
+  <a href="lesson-jhs.html">國中教案（節 2）</a>
+  <a href="lesson-shs.html">高中教案（節 1）</a>
+</div>
+
+</div>
+</body>
+</html>

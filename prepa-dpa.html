@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>周震宇 PREPA-DPA 進階課程筆記｜AIPACK 媒體識讀</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#FBF7EF; --cream:#F5EBD7; --ink:#1F2937; --rust:#C2410C;
+    --gold:#B45309; --navy:#1E3A5F; --line:rgba(196,65,12,0.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Noto Sans TC',sans-serif; line-height:1.85; }
+  .topbar { background:var(--navy); color:#F5EBD7; padding:.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+  .topbar .crumb { font-size:.95rem; }
+  .topbar .crumb .tag { background:var(--rust); color:white; padding:.15rem .55rem; border-radius:999px; font-size:.7rem; letter-spacing:.05em; font-weight:700; margin-right:.6rem; }
+  .topbar a { color:#FCD34D; text-decoration:none; font-size:.85rem; }
+  .topbar a:hover { color:#FDE68A; }
+  .container { max-width:980px; margin:0 auto; padding:2.5rem 1.5rem 6rem; }
+  h1 { font-family:'Noto Serif TC',serif; font-size:2rem; color:var(--ink); border-bottom:3px solid var(--rust); padding-bottom:.6rem; margin-bottom:.4rem; }
+  .sub { color:#6B7280; font-size:.9rem; margin-bottom:2rem; }
+  .lead { background:var(--cream); padding:1rem 1.25rem; border-left:4px solid var(--rust); border-radius:0 8px 8px 0; font-size:.95rem; margin-bottom:2.5rem; }
+  .lead a { color:var(--rust); }
+  h2 { font-family:'Noto Serif TC',serif; font-size:1.5rem; color:white; background:linear-gradient(135deg,#1E3A5F 0%,#0F2540 100%); padding:.7rem 1rem; border-radius:8px; margin-top:3rem; margin-bottom:1.25rem; }
+  h3 { font-size:1.15rem; color:var(--rust); margin-top:1.75rem; margin-bottom:.6rem; border-left:5px solid var(--rust); padding-left:.6rem; }
+  h4 { font-size:1rem; color:var(--gold); margin:1rem 0 .4rem; }
+
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0; }
+  .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin:1rem 0; }
+  .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:.8rem; margin:1rem 0; }
+  @media (max-width:720px){ .grid-2,.grid-3,.grid-4 { grid-template-columns:1fr; } }
+
+  .card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:1rem 1.2rem; }
+  .card.red { background:#FEF2F2; border-color:#FCA5A5; }
+  .card.orange { background:#FFF7ED; border-color:#FDBA74; }
+  .card.yellow { background:#FEFCE8; border-color:#FDE68A; }
+  .card.green { background:#F0FDF4; border-color:#86EFAC; }
+  .card.blue { background:#EFF6FF; border-color:#93C5FD; }
+  .card.purple { background:#FAF5FF; border-color:#C4B5FD; }
+  .card.pink { background:#FDF2F8; border-color:#F9A8D4; }
+  .card.brown { background:#FAF5F0; border-color:#D6BCA0; }
+  .card.gray { background:#F9FAFB; border-color:#D1D5DB; }
+  .card-title { font-weight:700; font-size:1rem; margin-bottom:.5rem; display:flex; align-items:center; gap:.4rem; }
+  .card-title .ico { font-size:1.1rem; }
+  .card details { margin:.4rem 0; }
+  .card details summary { font-weight:600; cursor:pointer; color:var(--ink); padding:.3rem 0; }
+  .card details > div, .card details > p { padding:.4rem .8rem; margin:.2rem 0; background:rgba(255,255,255,0.6); border-left:3px solid var(--rust); border-radius:0 6px 6px 0; font-size:.9rem; }
+
+  ul, ol { padding-left:1.5rem; }
+  li { margin:.25rem 0; }
+  blockquote { border-left:4px solid var(--gold); background:rgba(245,235,215,0.55); margin:1rem 0; padding:.7rem 1rem; border-radius:0 8px 8px 0; color:#4B5563; font-size:.9rem; }
+  code { background:#FEF3C7; color:#92400E; padding:.1rem .35rem; border-radius:4px; font-size:.85em; }
+  .kbd { display:inline-block; padding:.05rem .4rem; background:#1F2937; color:#FCD34D; border-radius:4px; font-family:'Courier New',monospace; font-size:.82rem; }
+
+  .stage-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin:1.25rem 0; }
+  .stage-flow .stage { background:#fff; border:2px solid var(--line); border-radius:10px; padding:.85rem; text-align:center; }
+  .stage-flow .stage-title { font-weight:700; color:var(--rust); margin-bottom:.5rem; }
+  .stage-flow .stage.brown { background:#FAF5F0; border-color:#D6BCA0; }
+  .stage-flow .stage.green { background:#F0FDF4; border-color:#86EFAC; }
+  .stage-flow .stage.blue { background:#EFF6FF; border-color:#93C5FD; }
+
+  .toc { background:#fff; border:1px solid var(--line); border-radius:10px; padding:1rem 1.25rem; margin-bottom:2rem; }
+  .toc-title { font-weight:700; color:var(--rust); margin-bottom:.6rem; font-size:.95rem; }
+  .toc ol { margin:0; padding-left:1.4rem; font-size:.92rem; }
+  .toc a { color:var(--ink); text-decoration:none; }
+  .toc a:hover { color:var(--rust); text-decoration:underline; }
+
+  .closing { text-align:center; font-family:'Noto Serif TC',serif; font-size:1.5rem; color:var(--rust); margin:3rem 0 1rem; padding:1.5rem; background:var(--cream); border-radius:12px; border:1px dashed var(--rust); }
+  .footer-back { text-align:center; margin-top:3rem; padding-top:1.5rem; border-top:1px dashed var(--line); }
+  .footer-back a { display:inline-block; margin:0 .5rem; color:var(--rust); text-decoration:none; font-weight:600; padding:.4rem .9rem; border:1px solid var(--line); border-radius:6px; }
+  .footer-back a:hover { background:var(--cream); }
+  .src-note { font-size:.8rem; color:#6B7280; text-align:center; margin-top:1.5rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="crumb"><span class="tag">高中進階</span>周震宇 PREPA-DPA 進階課程筆記</div>
+  <a href="index.html">← 回成果網站</a>
+</div>
+
+<div class="container">
+
+<h1>📚 第 66 期邏輯表達力筆記</h1>
+<div class="sub">周震宇老師｜邏輯表達讀書會第 66 期完整筆記 · 對應高中三 PREPA-A 進階倡議方案</div>
+
+<div class="lead">
+  這份筆記是周震宇老師「邏輯表達力」第 66 期讀書會的完整重點整理，包含 <strong>PR 法、KJ 法、PREPA 五步驟、4F 表達策略、ABC 異議處理、AHA 蒐集法</strong> 等高中三 PREPA-A 倡議方案實作所需的全部進階工具。
+  <br/><br/>
+  💡 核心理念：<strong>最重要的不是「說了什麼」，而是「對方理解了什麼」。</strong>
+</div>
+
+<div class="toc">
+  <div class="toc-title">📑 五大課程目錄</div>
+  <ol>
+    <li><a href="#c1">第一課：表達前的思考</a>（目的對象 × 情感帳戶 × 表達後 BE OPEN）</li>
+    <li><a href="#c2">第二課：思緒整理與形成觀點</a>（PR 法 × KJ 法）</li>
+    <li><a href="#c3">第三課：邏輯表達的 PREPA 架構</a>（五步驟完整版）</li>
+    <li><a href="#c4">第四課：以人為本的 4F 表達策略</a>（Fact / Feeling / Finding / Future）</li>
+    <li><a href="#c5">第五課：發表課程心得</a>（4P 魅力 × AHA × 心得分享流程）</li>
+  </ol>
+</div>
+
+<!-- ============ 第一課 ============ -->
+<h2 id="c1">第一課：表達前的思考</h2>
+
+<h3>前言：取材 → 萃練 → 表達</h3>
+<div class="grid-2">
+  <div class="card red">
+    <div class="card-title"><span class="ico">💻</span>素材與說話</div>
+    <p><strong>素材：</strong>取材 → 選擇好的素材 → 萃練</p>
+    <p><strong>說話：</strong>用自己的話說出來（樊登說書「讀懂一本書」法）</p>
+    <ol><li>條列式</li><li>別人的東西，轉化為自己的話</li></ol>
+  </div>
+  <div class="card orange">
+    <div class="card-title"><span class="ico">💻</span>ORIT 表達層次</div>
+    <ul>
+      <li><strong>說法：</strong>事情 → 別人的生命</li>
+      <li><strong>想法：</strong>感受 → 自己的生命</li>
+      <li><strong>做法：</strong>去做 → 融入自己的生命</li>
+    </ul>
+    <blockquote>三個層次：自信 → 自在（AHA）→ 自然（小組發表）</blockquote>
+  </div>
+</div>
+
+<h3>今天的提醒（學習者三角色 × 轉折語氣）</h3>
+<div class="grid-3">
+  <div class="card yellow">
+    <div class="card-title">三角色</div>
+    <ul><li>練習生</li><li>教練</li><li>啦啦隊</li></ul>
+  </div>
+  <div class="card green">
+    <div class="card-title">「雖然…但是」</div>
+    <p>轉折語氣是一種創造；<strong>感覺是一切的起點</strong>。</p>
+  </div>
+  <div class="card blue">
+    <div class="card-title">銜接與小整理</div>
+    <ul><li>銜接心情：我認為 / 存在感</li><li>小整理：頭尾串接、畫龍點睛</li></ul>
+  </div>
+</div>
+
+<h3>上課的提醒（流程 × 自信 × 金句）</h3>
+<div class="grid-2">
+  <div class="card red">
+    <div class="card-title"><span class="ico">💻</span>上課流程</div>
+    <p>問候 → 感受 → 內容 → 感謝</p>
+    <p><strong>自信是假議題；能力才是真議題。</strong></p>
+  </div>
+  <div class="card gray">
+    <div class="card-title">金句</div>
+    <ul>
+      <li>謙虛不代表委曲；觀點不代表對錯，只有新舊。</li>
+      <li>透過提問來幫助大家整理思緒。</li>
+      <li>形象能不能撐起內容？</li>
+      <li>TED 通常只到「說明」，未到 <code>call back</code>。</li>
+      <li>忘掉的東西，是你的氣質。</li>
+    </ul>
+  </div>
+</div>
+
+<h3>確認表達的目的與對象（四場景）</h3>
+<div class="grid-2">
+  <div class="card red">
+    <div class="card-title"><span class="ico">🔥</span>說服（聽眾多 × 正式感）</div>
+    <ul>
+      <li>急迫感</li>
+      <li>激勵感</li>
+      <li><strong>低階順應：</strong>講＝激勵感、聽＝被鼓勵</li>
+    </ul>
+  </div>
+  <div class="card orange">
+    <div class="card-title"><span class="ico">🔥</span>舞台（聽眾多 × 輕鬆感）</div>
+    <ul>
+      <li>好感（反差、想更多、持續傾聽）</li>
+      <li>歸屬感</li>
+      <li><strong>多數順應：</strong>講＝趣味性、聽＝好奇心</li>
+    </ul>
+  </div>
+  <div class="card blue">
+    <div class="card-title"><span class="ico">🔥</span>辦公桌（聽眾少 × 正式感）</div>
+    <ul>
+      <li>信任感（因為…所以）</li>
+      <li>交付感</li>
+      <li><strong>權力順應：</strong>講＝交付感、聽＝被重視</li>
+    </ul>
+  </div>
+  <div class="card green">
+    <div class="card-title"><span class="ico">🔥</span>餐桌（聽眾少 × 輕鬆感）</div>
+    <ul>
+      <li>安全感（被支持、降低防衛、陪伴）</li>
+      <li>從容感</li>
+      <li><strong>性格順應：</strong>講＝分享自我、聽＝被信任</li>
+    </ul>
+  </div>
+</div>
+
+<h3>情感帳戶：好感 → 安全感 → 信任感 → 急迫感 → 意義感（決定循環）</h3>
+<div class="stage-flow">
+  <div class="stage brown">
+    <div class="stage-title">不動階段</div>
+    <p>拒絕</p>
+  </div>
+  <div class="stage green">
+    <div class="stage-title">心動階段</div>
+    <p>聆聽 → 考慮 → 願意行動</p>
+  </div>
+  <div class="stage blue">
+    <div class="stage-title">行動階段</div>
+    <p>開始行動 → 一直行動</p>
+  </div>
+</div>
+
+<h3>選擇表達的方式</h3>
+<div class="grid-2">
+  <div class="card yellow">
+    <div class="card-title">論述類表達工具</div>
+    <ul>
+      <li>PR 法</li>
+      <li>關鍵字法</li>
+      <li>條例法</li>
+      <li>空性分析法</li>
+      <li><strong>PREPA 法</strong>（本期重點）</li>
+      <li>STAR 法</li>
+    </ul>
+  </div>
+  <div class="card purple">
+    <div class="card-title">敘事類表達工具</div>
+    <ul>
+      <li>順敘法</li>
+      <li>大結局法</li>
+      <li>懸疑法</li>
+      <li>故事法</li>
+    </ul>
+  </div>
+</div>
+
+<h3>表達後的心態：BE OPEN（三種回應 × ABC 異議處理）</h3>
+<div class="grid-3">
+  <div class="card gray"><strong>對方回應與你相同</strong></div>
+  <div class="card gray"><strong>對方回應與你不同</strong></div>
+  <div class="card gray"><strong>對方不知道怎麼回應</strong></div>
+</div>
+<div class="card green">
+  <div class="card-title">ABC 異議處理</div>
+  <ul>
+    <li><strong>A — Agree（認同）：</strong>同理心回應</li>
+    <li><strong>B — Build（補充）：</strong>在對方論點上加值</li>
+    <li><strong>C — Compare（比較）：</strong>以比較切入差異</li>
+  </ul>
+</div>
+
+<!-- ============ 第二課 ============ -->
+<h2 id="c2">第二課：思緒整理與形成觀點</h2>
+
+<div class="grid-2">
+  <div class="card brown">
+    <div class="card-title">PR 法（三個理由製造機）</div>
+    <ul>
+      <li><strong>Point：</strong>用 1 句話敘述觀點（「我的看法是…」「我的觀點是…」）</li>
+      <li><strong>Reason：</strong>提出 3 個理由：
+        <ol>
+          <li>主要的原因是…（事實）</li>
+          <li>而且…（邏輯脈絡）</li>
+          <li>除此之外…（感覺與感受）</li>
+        </ol>
+      </li>
+    </ul>
+    <blockquote>重要的事情，用三種方法講三次（各一次）。</blockquote>
+  </div>
+  <div class="card blue">
+    <div class="card-title">KJ 法（整理雜亂訊息）</div>
+    <ol>
+      <li><strong>整理：</strong>不批評，想到就寫</li>
+      <li><strong>分類：</strong>3–4 個項目為佳</li>
+      <li><strong>排序：</strong>定小標 ＋ 一句話說明</li>
+      <li><strong>主題：</strong>金句化、好記易流傳</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============ 第三課 ============ -->
+<h2 id="c3">第三課：邏輯表達的 PREPA 架構</h2>
+
+<div class="grid-3">
+  <div class="card green"><div class="card-title"><span class="ico">🔥</span>為觀點下標題</div></div>
+  <div class="card green"><div class="card-title"><span class="ico">🔥</span>簡潔的說明</div></div>
+  <div class="card green"><div class="card-title"><span class="ico">🔥</span>佐證、舉例、說故事</div></div>
+</div>
+
+<div class="card pink">
+  <div class="card-title">PREPA 五步驟完整版</div>
+  <ol>
+    <li>
+      <strong>① 用一句話陳述觀點</strong>（我認為…）
+      <ul>
+        <li>Ⓐ <strong>Point</strong> — 用 1 句話敘述觀點（我的看法是 / 我的觀點是）</li>
+        <li>Ⓑ <strong>Reason</strong> — 提出 3 個理由說明
+          <ol type="①"><li>主要的原因是（事實）</li><li>而且（邏輯脈絡）</li><li>除此之外（感覺與感受）</li></ol>
+        </li>
+      </ul>
+    </li>
+    <li><strong>② 提出原因、理由說明</strong>（根據…）
+      <ul><li>❶ 合乎主題意義</li><li>❷ 貼近聽者經驗</li><li>➌ 真實故事</li></ul>
+    </li>
+    <li><strong>③ 舉個例子來說</strong>（例如…）</li>
+    <li><strong>④ 再次重申觀點</strong>（所以我認為…）</li>
+    <li><strong>⑤ 呼籲行動</strong>（請大家…）
+      <ul><li>❶ <strong>簡單化：</strong>計畫越簡單越容易推動</li><li>❷ <strong>微改變：</strong>在既有習慣中改變</li></ul>
+    </li>
+  </ol>
+</div>
+
+<!-- ============ 第四課 ============ -->
+<h2 id="c4">第四課：以人為本的 4F 表達策略</h2>
+
+<div class="grid-4">
+  <div class="card red"><div class="card-title">1️⃣ Fact</div><p>根據事實</p></div>
+  <div class="card orange"><div class="card-title">2️⃣ Feeling</div><p>變得更好</p></div>
+  <div class="card green"><div class="card-title">3️⃣ Finding</div><p>連結經驗</p></div>
+  <div class="card blue"><div class="card-title">4️⃣ Future</div><p>解決問題</p></div>
+</div>
+
+<h3>1️⃣ 根據事實 Fact（5W1H 自我檢核）</h3>
+<div class="card">
+  <ul>
+    <li><strong>Who：</strong>你的身分是否適合說這些話？→ 酸民？專家？</li>
+    <li><strong>What：</strong>如果是意見，有足夠根據嗎？如果是事實，是否有所保留？→ 意見？事實？</li>
+    <li><strong>When：</strong>什麼時候是最適當的表達時間？→ 事前？事後？</li>
+    <li><strong>Where：</strong>哪裡是最適合的表達地點？→ 公開？私下？</li>
+    <li><strong>How：</strong>你表達時候的態度如何？→ 理性？感性？</li>
+    <li><strong>Why：</strong>你是否有立場？是否刻意在美化或醜化？→ 善意？惡意？</li>
+  </ul>
+</div>
+
+<h3>2️⃣ 變得更好 Feeling（四感建立）</h3>
+<div class="card orange">
+  <ol><li>存在感</li><li>意義感</li><li>價值感</li><li>希望感</li></ol>
+</div>
+
+<h3>3️⃣ 連結經驗 Finding（六個內在維度）</h3>
+<div class="card green">
+  <ol>
+    <li><strong>感受：</strong>身體的感受、情緒的感受</li>
+    <li><strong>情緒後的決定：</strong>面對、逃避</li>
+    <li><strong>期待：</strong>對自己的、對他人的、來自他人的</li>
+    <li><strong>觀點：</strong>概念、經驗、成見、信念、假設、預設立場、主觀現實、認知</li>
+    <li><strong>渴望：</strong>被愛、可愛的、被接納、被認同、有意義、有價值</li>
+    <li><strong>自我：</strong>生命力、精神、靈性、核心、本質</li>
+  </ol>
+</div>
+
+<h3>4️⃣ 解決問題 Future（行動四階）</h3>
+<div class="card blue">
+  <ol>
+    <li><strong>願景 Vision</strong></li>
+    <li><strong>目標 Goal</strong></li>
+    <li><strong>任務 Mission</strong></li>
+    <li><strong>開始行動 Action</strong></li>
+  </ol>
+</div>
+
+<!-- ============ 第五課 ============ -->
+<h2 id="c5">第五課：運用邏輯表達工具發表課程心得</h2>
+
+<div class="grid-3">
+  <div class="card pink">
+    <div class="card-title">4P 魅力表達（PREPA 加成）</div>
+    <ol>
+      <li><strong>Power：</strong>口語表現（聲音）能力</li>
+      <li><strong>Picture：</strong>將描述視覺化</li>
+      <li><strong>Passion：</strong>傳達真摯的信念</li>
+    </ol>
+  </div>
+  <div class="card yellow">
+    <div class="card-title">AHA：不只蒐集知識，更要蒐集 AHA</div>
+    <ol>
+      <li><strong>說法：</strong>復述聽到的</li>
+      <li><strong>想法：</strong>激發更多的</li>
+      <li><strong>做法：</strong>推導出你的</li>
+    </ol>
+  </div>
+  <div class="card green">
+    <div class="card-title">心得分享 6 步驟</div>
+    <ol>
+      <li>向大家問候 ＋ 自報家門</li>
+      <li>停頓一下，等待回應</li>
+      <li>分享前面講者的一個觀點（價值感）</li>
+      <li>感謝前面講者帶給你的啟發（意義感）</li>
+      <li>接著說自己的觀點（存在感）</li>
+      <li>感謝大家的聆聽（情感連線）</li>
+    </ol>
+  </div>
+</div>
+
+<div class="closing">
+  最重要的不是說了什麼，而是對方理解了什麼。
+</div>
+
+<p class="src-note">資料來源：<a href="https://www.notion.so/chennaicheng/66-648a4eeeef164021a818def18ca24ad0" target="_blank" rel="noopener">📚 第 66 期邏輯表達力筆記（Notion 原檔）</a>　·　講師：周震宇</p>
+
+<div class="footer-back">
+  <a href="index.html">← 回成果網站</a>
+  <a href="lesson-shs.html">高中三教案（PREPA-A）</a>
+  <a href="readme.html">📘 專案 README</a>
+</div>
+
+</div>
+</body>
+</html>
