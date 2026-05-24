@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>客觀事實與主觀意見 + 面對假訊息｜AIPACK 媒體識讀</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#FBF7EF; --cream:#F5EBD7; --ink:#1F2937; --rust:#C2410C;
+    --gold:#B45309; --navy:#1E3A5F; --line:rgba(196,65,12,0.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Noto Sans TC',sans-serif; line-height:1.8; }
+  .topbar { background:var(--navy); color:#F5EBD7; padding:.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+  .topbar .crumb { font-size:.95rem; }
+  .topbar .crumb .tag { background:var(--rust); color:white; padding:.15rem .55rem; border-radius:999px; font-size:.7rem; letter-spacing:.05em; font-weight:700; margin-right:.6rem; }
+  .topbar a { color:#FCD34D; text-decoration:none; font-size:.85rem; }
+  .topbar a:hover { color:#FDE68A; }
+  .container { max-width:920px; margin:0 auto; padding:2.5rem 1.5rem 6rem; }
+  h1 { font-family:'Noto Serif TC',serif; font-size:2rem; color:var(--ink); border-bottom:3px solid var(--rust); padding-bottom:.6rem; margin-bottom:.4rem; }
+  .sub { color:#6B7280; font-size:.9rem; margin-bottom:2.5rem; }
+  h2 { font-family:'Noto Serif TC',serif; font-size:1.4rem; color:var(--ink); border-left:5px solid var(--rust); padding-left:.7rem; margin-top:2.5rem; margin-bottom:1rem; }
+  h3 { font-size:1.1rem; color:var(--gold); margin-top:1.5rem; margin-bottom:.5rem; }
+  h4 { font-size:1rem; color:var(--rust); margin:1rem 0 .4rem; }
+  p { margin:.6rem 0; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden; font-size:.88rem; }
+  th, td { padding:.55rem .7rem; text-align:left; vertical-align:top; border:1px solid var(--line); }
+  thead th, tr:first-child td { background:var(--cream); font-weight:700; color:var(--rust); }
+  ul, ol { padding-left:1.6rem; }
+  li { margin:.25rem 0; }
+  blockquote { border-left:4px solid var(--gold); background:rgba(245,235,215,0.55); margin:1rem 0; padding:.8rem 1rem; border-radius:0 8px 8px 0; color:#4B5563; }
+  code { background:#FEF3C7; color:#92400E; padding:.1rem .35rem; border-radius:4px; font-size:.85em; }
+  pre { background:#1F2937; color:#FCD34D; padding:1rem 1.25rem; border-radius:8px; overflow-x:auto; font-size:.82rem; line-height:1.6; }
+  strong { color:#1F2937; }
+  .pandoc-content > p:first-child { font-size:1.05rem; background:var(--cream); padding:1rem 1.25rem; border-left:4px solid var(--rust); border-radius:0 8px 8px 0; }
+  .footer-back { text-align:center; margin-top:3.5rem; padding-top:1.5rem; border-top:1px dashed var(--line); }
+  .footer-back a { display:inline-block; margin:0 .5rem; color:var(--rust); text-decoration:none; font-weight:600; padding:.4rem .9rem; border:1px solid var(--line); border-radius:6px; }
+  .footer-back a:hover { background:var(--cream); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="crumb"><span class="tag">國中 8 下</span>客觀事實與主觀意見 + 面對假訊息</div>
+  <a href="index.html">← 回成果網站</a>
+</div>
+
+<div class="container">
+
+<h1>國中 8 下｜客觀事實與主觀意見＋面對假訊息</h1>
+<div class="sub">3 節 9 活動 · 翰林 P92-95＋P94-95＋P178-187 · NotebookLM + Padlet + Google 反搜 + Canva + Mentimeter</div>
+
+<div class="pandoc-content">
+<p><strong>單元課程示例編號：</strong>閱讀SONG讀 2025-001</p>
+<p><strong>夢N講師數位協力計畫─AIPACK教學示例(單元課程)</strong></p>
+<p><strong>教學示例名稱：媒體識讀三層次教學設計——客觀事實×資訊失序×倡議行動（國中八下示例
+2）</strong></p>
+<p>AIPACK教學示例有「單一活動」與「單元課程」兩種：前者係指「一節課中的一個活動」，後者則是由「數個活動」組成的「主題或單元」課程。</p>
+<p>(一) 教學示例概述</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 3%" />
+<col style="width: 9%" />
+<col style="width: 6%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 6%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
+<tbody>
+<tr>
+<td colspan="2"
+style="text-align: center;">數位工具促進學科內容理解</td>
+<td style="text-align: center;"></td>
+<td colspan="6"
+style="text-align: center;">數位工具促進教學策略運用</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td colspan="2"
+style="text-align: center;">數位工具整合教學的應用層次</td>
+<td style="text-align: center;">替代</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">改善</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">重新設計</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p>重新</p>
+<p>定義</p></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td colspan="10"
+style="text-align: left;"><strong>使用AI工具：</strong>運用「Claude工具一起備課」</td>
+</tr>
+<tr>
+<td colspan="10" style="text-align: left;"><p>設計理念：</p>
+<p>運用「NotebookLM、Padlet、Google反搜＋網址檢核、Canva、學習吧」五大數位工具，</p>
+<p>導入「ORID
+焦點討論法／四角辯論／PREPA表達架構／反方建造者」四大教學策略，</p>
+<p>學習「資訊失序辨識／媒體再現解構／議論文舉例寫作」三大學科內容知識。</p>
+<p>以方律元媒體識讀三層次（事實→立場→思辨倡議）為理論骨架，</p>
+<p>扣合翰林8下〈閱讀思考—讀懂客觀事實與主觀意見〉、〈寫作進階—議論文本的舉例〉、〈自學選文二—面對假訊息〉三大課本素材，讓學生從「會分辨」到「會發聲」。</p></td>
+</tr>
+<tr>
+<td colspan="10" style="text-align: left;"><p>教案簡述：</p>
+<p>學生（S）先以NotebookLM上傳同題異源新聞，運用5W識讀法解剖客觀事實與主觀意見，並完成四欄閱讀筆記（SS）。接著教師（T）示範媒體產製六格圖與資訊失序三類型，學生以四角辯論討論「同溫層該不該打破」（SSs），並用Padlet上傳立場宣言相互評議。最後師生（TS）共讀〈良言一句三冬暖〉議論文結構，學生分組以PREPA架構撰寫倡議稿，用Canva製作反假訊息倡議卡，並上傳Padlet，進行上台口頭發表，由同學與教師依評量規準回饋（SSs）。</p></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>學習領域 /科目</strong></td>
+<td colspan="6"
+style="text-align: center;"><strong>學習階段 /年級</strong></td>
+<td colspan="3"
+style="text-align: center;"><strong>課程設計者</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">國文（議題融入：媒體素養）</td>
+<td colspan="6"
+style="text-align: center;">第四學習階段／國中八年級</td>
+<td colspan="3" style="text-align: center;"><p>陳乃誠</p>
+<p>宋怡慧、陳茂松</p>
+<p>溫展浩、馬孟平</p>
+<p>賴秋江、趙蕙英</p></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>節數</strong></td>
+<td colspan="9"
+style="text-align: center;"><strong>配合單元/教材</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">3節(共9活動)，每節45分</td>
+<td colspan="9" style="text-align: center;"><p>翰林版國中國文 8下：</p>
+<p>P92-93 閱讀思考〈讀懂客觀事實與主觀意見〉</p>
+<p>P94-95 寫作進階〈議論文本的舉例〉</p>
+<p>P178-187 自學選文二〈面對假訊息，其實我可以這麼做〉</p></td>
+</tr>
+<tr>
+<td colspan="5"
+style="text-align: center;"><strong>核心素養</strong></td>
+<td colspan="5"
+style="text-align: center;"><strong>學習重點</strong></td>
+</tr>
+<tr>
+<td colspan="5" rowspan="2" style="text-align: left;"><p>國-J-A2
+透過欣賞與評析作品，培養思辨能力</p>
+<p>國-J-B2 運用科技、資訊及多媒體，提升學習效能與生活品質</p>
+<p>國-J-C2 運用語文表達，與他人溝通互動</p>
+<p>議題媒體素養JU3 能思辨媒體內容的品質、觀點、意圖及影響力</p>
+<p>議題媒體素養JU6 能適切表達意見，並能尊重他人意見</p></td>
+<td colspan="5" style="text-align: left;"><p>學習表現：</p>
+<p>5-IV-1 比較不同標題、文章結構及寫作風格之特色</p>
+<p>5-IV-3 理解各類文本內容、形式與寫作特色</p>
+<p>5-IV-5
+大量閱讀多元文本，理解議題內涵及其與個人生活、社會結構的關聯</p>
+<p>6-IV-2 寫出結構完整、主旨明確、文辭優美的文章</p>
+<p>6-IV-6 善用各種資料及多元的表現形式</p></td>
+</tr>
+<tr>
+<td colspan="5" style="text-align: left;"><p>學習內容：</p>
+<p>Ad-IV-3 議論文本的結構與寫作手法</p>
+<p>Ca-IV-1 各類文本中的文化內涵</p>
+<p>Cb-IV-1 各類文本中的個人經驗、社會結構、群我關係等社會議題</p>
+<p>Cb-IV-2 各類文本中所反映的個人與家庭、鄉里、國族及全球的關係</p></td>
+</tr>
+<tr>
+<td colspan="10"
+style="text-align: center;"><strong>學習目標</strong>(條列式)</td>
+</tr>
+<tr>
+<td colspan="10" style="text-align: left;"><p>1.
+能運用5W識讀法與媒體產製六格圖，辨識新聞中的客觀事實與主觀意見。</p>
+<p>2.
+能解讀資訊失序三類型（錯誤／不實／惡意訊息）及假訊息七形式，完成四欄閱讀筆記。</p>
+<p>3.
+能透過ORID焦點討論與四角辯論，覺察同溫層效應，產出個人立場宣言。</p>
+<p>4. 能運用PREPA表達架構結合議論文舉例三段，撰寫反假訊息倡議稿。</p>
+<p>5.
+能以Canva製作倡議視覺作品，並以口語上台發表，向家人或同儕傳達識讀責任。</p></td>
+</tr>
+<tr>
+<td colspan="2"
+style="text-align: center;"><strong>使用的數位工具</strong></td>
+<td colspan="5"
+style="text-align: center;"><strong>使用流程</strong></td>
+<td colspan="3"
+style="text-align: center;"><strong>教育部選購名單</strong>✔</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;">NotebookLM</td>
+<td colspan="5" style="text-align: center;">活動一</td>
+<td colspan="3" style="text-align: center;">✔ 免費</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;">Padlet</td>
+<td colspan="5" style="text-align: center;">活動一、二、三</td>
+<td colspan="3" style="text-align: center;">✔ 選購</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;">Google 反搜＋網址檢核</td>
+<td colspan="5" style="text-align: center;">活動一、二</td>
+<td colspan="3" style="text-align: center;">✔ 免費</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;">學習吧</td>
+<td colspan="5" style="text-align: center;">活動一、二、三</td>
+<td colspan="3" style="text-align: center;">✔ 選購</td>
+</tr>
+</tbody>
+</table>
+<p>(二)教學活動設計</p>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 31%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 3%" />
+<col style="width: 10%" />
+<col style="width: 22%" />
+</colgroup>
+<tbody>
+<tr>
+<td colspan="7"
+style="text-align: center;"><strong>學生先備知能</strong></td>
+</tr>
+<tr>
+<td colspan="3" style="text-align: center;">學科</td>
+<td colspan="4" style="text-align: center;">數位</td>
+</tr>
+<tr>
+<td colspan="3"
+style="text-align: center;"><p>已學過記敘文、議論文基本結構；已能辨識文本主旨與作者觀點。</p>
+<p>已讀過〈三人成虎〉、〈曾參殺人〉等古文，認識「謠言／盲從」概念。</p></td>
+<td colspan="4"
+style="text-align: center;"><p>會使用平板登入學校單一簽入系統。</p>
+<p>會用 Google圖片反搜。</p>
+<p>已操作過Padlet留言與按讚。</p>
+<p>會基本拍照與截圖。</p></td>
+</tr>
+<tr>
+<td colspan="7"
+style="text-align: center;"><p><strong>活動一／第一節：真假新聞偵察隊</strong></p>
+<p><strong>（文本:翰林 P92-93 閱讀思考＋P178-181
+自學選文前半）</strong></p></td>
+</tr>
+<tr>
+<td rowspan="2" style="text-align: center;"><p><strong>學習</strong></p>
+<p><strong>目標</strong></p></td>
+<td colspan="2" rowspan="2"
+style="text-align: center;"><p>1.能用5W識讀法（Who/What/When/Where/Why）拆解新聞文本。</p>
+<p>2.能區辨客觀事實與主觀意見，並判斷網域可信度。</p>
+<p>3.能完成四欄閱讀筆記（源頭／內容／立場／我的判斷）。</p></td>
+<td style="text-align: center;"><p><strong>學習</strong></p>
+<p><strong>表現</strong></p></td>
+<td colspan="3" style="text-align: center;"><p>5-IV-3
+理解各類文本內容、形式與寫作特色</p>
+<p>5-IV-5 大量閱讀多元文本</p></td>
+</tr>
+<tr>
+<td style="text-align: center;"><p><strong>學習</strong></p>
+<p><strong>內容</strong></p></td>
+<td colspan="3" style="text-align: center;"><p>Cb-IV-1
+各類文本中的社會議題</p>
+<p>Ad-IV-3 議論文本的結構</p></td>
+</tr>
+<tr>
+<td colspan="2" rowspan="2"
+style="text-align: center;"><strong>教學流程</strong></td>
+<td rowspan="2" style="text-align: center;"><p><strong>教學</strong></p>
+<p><strong>時間</strong></p></td>
+<td colspan="4"
+style="text-align: center;"><strong>教學流程對應之數位工具及其效益</strong></td>
+</tr>
+<tr>
+<td colspan="3"
+style="text-align: center;"><p><strong>數位工具</strong></p>
+<p><strong>(平台/軟體/硬體)</strong></p></td>
+<td style="text-align: center;"><strong>數位效益</strong></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: left;"><p><strong>【1-1
+開場破題：媒體產製六格圖】</strong></p>
+<p><strong>(配合附件一 媒體產製六格圖學習單)</strong></p>
+<p>1.教師（T）展示媒體產製六格圖，提問：「同一件事，為什麼三家媒體標題完全不同？」</p>
+<p>2.學生（S）觀看〈外來寄生蟲入侵高麗菜〉〈荔枝椿象噴臭液〉兩則新聞（翰林P92-93），個別圈出客觀事實與主觀意見字句</p>
+<p>3.師生（TS）對答整理：客觀事實＝可被驗證／主觀意見＝立場用語</p></td>
+<td style="text-align: left;">10</td>
+<td colspan="3" style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: left;"><p><strong>【1-2
+5W識讀＋NotebookLM同題異源】</strong></p>
+<p><strong>(配合附件二 四欄閱讀筆記學習單)</strong></p>
+<p>1.教師（T）展示5W識讀法海報：Who/What/When/Where/Why。</p>
+<p>2.學生（SS）分6組，每組從學習吧推送的三則同主題新聞（聯合報／自由時報／中央社／內容農場）上傳到
+NotebookLM。</p>
+<p>3.學生（SS）對 NotebookLM
+提問三題：共同事實、各家詮釋、最不可信原因。</p>
+<p>4.各組（SS）將AI回答與自己判斷比對，填入四欄閱讀筆記前兩欄。</p></td>
+<td style="text-align: left;">20</td>
+<td colspan="3" style="text-align: left;"><p>NotebookLM</p>
+<p>學習吧</p></td>
+<td
+style="text-align: left;"><p>NotebookLM：學生上傳同題異源新聞後，AI即時生成共同事實與差異點摘要，重新設計同題比對教學流程，建立不盲信AI的識讀能力（M修改）。</p>
+<p>學習吧：推送三則同題異源新聞至各組平板，改善印發紙本費時的限制（A改善）。</p></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: left;"><p><strong>【1-3
+網域判讀＋Chrome鎖頭辨識】</strong></p>
+<p><strong>(附件三網域判讀＋Chrome鎖頭辨識學習單)</strong></p>
+<p>1.教師（T）發「先看尾巴」識讀小卡：.gov／.edu／.org／.com／.idv</p>
+<p>2.學生（S）對自己組三則新聞網址，用
+Google反搜工具列查WHOIS註冊單位、Chrome鎖頭符號（🔒安全／ⓘ資訊或不安全／⚠不安全或危險）</p>
+<p>3.
+學生（SS）將判讀結果填入四欄筆記後兩欄（立場／我的判斷），組內互評</p>
+<p>4. 教師（T）結語：事實層次不是相信誰，是「為什麼相信」</p></td>
+<td style="text-align: left;">15</td>
+<td colspan="3" style="text-align: left;"><p>Google反搜＋網址檢核</p>
+<p>Padlet</p></td>
+<td
+style="text-align: left;"><p>Google反搜：一鍵查WHOIS與網址溯源，重新定義網域判讀，讓國中生也能進行專業級查證（R重新定義）。</p>
+<p>Padlet：各組四欄筆記即時上傳，全班互看比對（A改善）。</p></td>
+</tr>
+<tr>
+<td colspan="7"
+style="text-align: center;"><p><strong>活動二／第二節：媒體框架透視鏡—立場層次：解讀多元觀點，產出自己觀點</strong></p>
+<p>（對應翰林 P178-187 自學選文＋資訊失序三類＋媒體再現）</p></td>
+</tr>
+<tr>
+<td rowspan="2" style="text-align: center;"><strong>學習<br />
+目標</strong></td>
+<td colspan="2" rowspan="2"
+style="text-align: center;"><p>1.能說明資訊失序三類型（錯誤／不實／惡意訊息）與假訊息七形式</p>
+<p>2.能用 ORID 焦點討論法解讀同一事件的多元立場</p>
+<p>3.能透過四角辯論覺察同溫層效應，產出個人立場宣言</p></td>
+<td colspan="2" style="text-align: center;"><p><strong>學習</strong></p>
+<p><strong>表現</strong></p></td>
+<td colspan="2" style="text-align: center;"><p>5-IV-5
+大量閱讀多元文本，理解議題內涵</p>
+<p>6-IV-6 善用各種資料及多元的表現形式</p></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;"><p><strong>學習</strong></p>
+<p><strong>內容</strong></p></td>
+<td colspan="2" style="text-align: center;">Cb-IV-1
+各類文本中的個人經驗、社會結構、群我關係等社會議題</td>
+</tr>
+<tr>
+<td colspan="2" rowspan="2"
+style="text-align: center;"><strong>教學流程</strong></td>
+<td rowspan="2" style="text-align: center;"><p><strong>教學</strong></p>
+<p><strong>時間</strong></p></td>
+<td colspan="4"
+style="text-align: center;"><strong>教學流程對應之數位工具及其效益</strong></td>
+</tr>
+<tr>
+<td colspan="3"
+style="text-align: center;"><p><strong>數位工具</strong></p>
+<p><strong>(平台/軟體/硬體)</strong></p></td>
+<td style="text-align: center;"><strong>數位效益</strong></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: left;"><p><strong>【2-1
+資訊失序＋媒體再現三類】</strong></p>
+<p>1.教師（T）導入資訊失序三類型：</p>
+<p>錯誤訊息（無惡意）</p>
+<p>不實訊息（有惡意但符合事實）</p>
+<p>惡意訊息（有惡意捏造）</p>
+<p>2.教師（T）補充媒體再現三類：</p>
+<p>誤導誤報</p>
+<p>刻板印象</p>
+<p>置入行銷</p>
+<p>3.學生（S）觀看〈大數據工具化與精準行銷〉短片片段，用 Mentimeter
+即時投票：「你最常被哪一類影響？」</p>
+<p>4.全班看即時長條圖，教師（T）回應結果</p></td>
+<td style="text-align: left;">12</td>
+<td colspan="3" style="text-align: left;">Mentimeter</td>
+<td
+style="text-align: center;">即時匿名投票讓害羞學生願意表態，改善傳統舉手投票的同儕壓力（A改善）。</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: left;"><p><strong>【2-2
+ORID焦點討論—解剖一則風向新聞】</strong></p>
+<p><strong>(附件四ORID焦點討論學習單)</strong></p>
+<p>1.
+教師（T）發放案例：學生真實討論過的「巴黎奧運性別爭議」「八家將諧音標籤」「原住民愛喝酒刻板印象」三選一</p>
+<p>2. 學生（SS）分組依ORID四階段填寫學習吧任務單：</p>
+<p>O客觀事實：報導陳述了什麼？</p>
+<p>R主觀感受：第一直覺是什麼？</p>
+<p>I詮釋意義：誰被忽略？誰得利？洩漏立場的字詞？</p>
+<p>D行動決定：會不會轉發？為什麼？</p>
+<p>3.各組（SS）將ORID四欄答案上傳 Padlet，組間互看</p></td>
+<td style="text-align: left;">18</td>
+<td colspan="3" style="text-align: left;"><p>學習吧</p>
+<p>Padlet</p></td>
+<td
+style="text-align: center;"><p>學習吧：結構化任務單推送至每位學生平板，改善紙本回收時效落差（A
+改善）。</p>
+<p>Padlet：組間結果即時互看（A 改善）。</p></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: left;"><p><strong>【2-3
+四角辯論＋立場宣言】</strong></p>
+<p><strong>(附件五 四角辯論＋立場宣言學習單)</strong></p>
+<p>1.教師（T）拋議題：「演算法推薦的同溫層，該不該主動打破？」</p>
+<p>2.學生（S）依立場走到教室四角：強烈同意／同意／不同意／強烈不同意</p>
+<p>3.
+每角選1位代表（S）30秒陳述理由，其他人可中途換邊（需說明被誰打動）</p>
+<p>4.每位學生（S）寫一則 60 字立場宣言上傳 Padlet：「我的立場是
+_______，因為 _______，但我願意聽 _______ 的聲音。」</p>
+<p>5.教師（T）結語：立場層次不是中立，是「透明的主觀」</p></td>
+<td style="text-align: left;">15</td>
+<td colspan="3" style="text-align: left;">Padlet</td>
+<td
+style="text-align: center;">60字立場宣言全班即時可見，修改傳統全班討論只有少數人發言的問題（M
+修改）。</td>
+</tr>
+<tr>
+<td colspan="7"
+style="text-align: center;"><p>活動三／第三節：思辨與倡議層次—從讀者變作者：多元觀點＋PREPA
+鷹架＋上台倡議</p>
+<p>（對應翰林 P94-95 寫作進階〈議論文本的舉例〉＋〈良言一句三冬暖〉PREPA
+鷹架）</p></td>
+</tr>
+<tr>
+<td rowspan="2" style="text-align: center;"><strong>學習<br />
+目標</strong></td>
+<td colspan="2" rowspan="2"
+style="text-align: left;"><p>1.能整合議論文舉例三段（說明論點→正反例→歸納結論）撰寫倡議文稿</p>
+<p>2. 能運用 PREPA
+表達架構（Point-Reason-Example-Point-Action）上台發表</p>
+<p>3. 能以 Canva
+製作反假訊息倡議視覺作品，向家人或同儕傳達識讀責任</p></td>
+<td colspan="2" style="text-align: center;"><p><strong>學習</strong></p>
+<p><strong>表現</strong></p></td>
+<td colspan="2" style="text-align: center;"><p>6-IV-2
+寫出結構完整、主旨明確的文章</p>
+<p>6-IV-6 善用各種資料及多元的表現形式</p></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;"><p><strong>學習</strong></p>
+<p><strong>內容</strong></p></td>
+<td colspan="2" style="text-align: center;">Ad-IV-3
+議論文本的結構與寫作手法</td>
+</tr>
+<tr>
+<td colspan="2" rowspan="2"
+style="text-align: center;"><strong>教學流程</strong></td>
+<td rowspan="2" style="text-align: center;"><p><strong>教學</strong></p>
+<p><strong>時間</strong></p></td>
+<td colspan="4"
+style="text-align: center;"><strong>教學流程對應之數位工具及其效益</strong></td>
+</tr>
+<tr>
+<td colspan="3"
+style="text-align: center;"><p><strong>數位工具</strong></p>
+<p><strong>(平台/軟體/硬體)</strong></p></td>
+<td style="text-align: center;"><strong>數位效益</strong></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: left;"><p><strong>【3-1
+議論文舉例＋PREPA 鷹架】</strong></p>
+<p>1.教師（T）導入〈良言一句三冬暖〉議論文舉例三段結構：說明論點→提出論據（棒球教練/甲乙獵人妻子/凱末爾正反例）→歸納結論。</p>
+<p>2.教師（T）對照 PREPA 架構：Point 主張／Reason 理由／Example
+案例／Point 重申／Action 行動呼籲。</p>
+<p>3.學生（SS）小組對應〈良言一句三冬暖〉每個段落填入PREPA五格，發現議論文與口語表達同骨架。</p></td>
+<td style="text-align: left;">12</td>
+<td colspan="3" style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: left;"><p><strong>【3-2
+反方建造者＋倡議稿撰寫】</strong></p>
+<p><strong>(附件六PREPA 倡議稿模板學習單)</strong></p>
+<p>1.學生（SS）以小組為單位，選定一個倡議主題（三選一）：反假訊息給家人／反網路霸凌給同學／反刻板印象給社群朋友。</p>
+<p>2.每組（SS）先用「反方建造者」策略：先寫出對立意見最強的三個論點，再寫自己的回應。</p>
+<p>3.學生（SS）用 PREPA 五格在學習吧任務單完成倡議稿（150
+字內）。</p></td>
+<td style="text-align: left;">18</td>
+<td colspan="3" style="text-align: left;">學習吧</td>
+<td
+style="text-align: left;">結構化五格任務單讓不擅長寫作的學生也能完成議論稿，修改傳統作文白紙一張無從下手的痛點（M
+修改）。</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: left;"><p><strong>【3-3 Canva
+倡議卡＋口頭發表＋互評】</strong></p>
+<p><strong>(附件七 Canva 倡議卡＋發表互評學習單)</strong></p>
+<p>1.學生（SS）用Canva教育版範本，把PREPA稿濃縮成倡議卡（IG方形圖+LINE
+直式圖）。</p>
+<p>2.每組（SS）派代表上台 90 秒口頭發表，採 PREPA 架構。</p>
+<p>3.其他學生（S）依評量規準（內容紮實／結構清晰／語調穩定／視覺吸睛）在
+Padlet 互評，未發言者可補充意見加分</p>
+<p>4.學生（S）將最終倡議卡發送給一位家人或同學（家庭作業：拍對方收到後的回應截圖）。</p>
+<p>5.教師（T）結語：從「會分辨」到「會發聲」，識讀的終點是行動。</p></td>
+<td style="text-align: left;">15</td>
+<td colspan="3" style="text-align: left;"><p>Canva（教育版）</p>
+<p>Padlet</p></td>
+<td
+style="text-align: left;"><p>Canva：一鍵套版讓國中生產出專業級視覺，修改「想倡議但作品醜沒人看」的問題。</p>
+<p>Padlet
+評量區：即時互評讓回饋當下發生，改善傳統發表後評語遲到的時差。</p></td>
+</tr>
+<tr>
+<td colspan="7"
+style="text-align: center;"><p><strong>教學示例相關資源</strong></p>
+<p><strong>（推薦的數位工具操作影片、自錄的教學示例……）</strong></p></td>
+</tr>
+<tr>
+<td colspan="7" style="text-align: center;"><p>【數位工具操作影片】</p>
+<p>• NotebookLM 教學：https://notebooklm.google/</p>
+<p>• Padlet 入門：https://padlet.com/dashboard</p>
+<p>• Google
+圖片反搜：https://images.google.com／TinEye：https://tineye.com</p>
+<p>• Canva 教育版申請：https://www.canva.com/zh_tw/education/</p>
+<p>• 學習吧任務單模板：https://www.learnmode.net/</p>
+<p>【查證網站】</p>
+<p>• 台灣事實查核中心 tfc-taiwan.org.tw</p>
+<p>• MyGoPen 麥擱騙</p>
+<p>• Cofacts 真的假的</p>
+<p>• 趨勢科技防詐達人</p>
+<p>【延伸閱讀（教師備課）】</p>
+<p>• 方律元〈不只是事實查核：台灣高中教育現場沒教的媒體識讀三層次〉The
+News Lens</p>
+<p>• 翰林版國中國文 8 下備課用書 P178-187 自學選文二</p>
+<p>• 周震宇〈邏輯表達力〉PREPA 架構</p>
+<p>【學生作業檔（附件）】</p>
+<p>• 四欄閱讀筆記模板（活動一）</p>
+<p>• ORID 焦點討論任務單（活動二）</p>
+<p>• PREPA 倡議稿模板＋Canva 倡議卡（活動三）</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>■自我檢視評估表 單元課程示例編號：</strong>閱讀SONG讀002</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 16%" />
+<col style="width: 25%" />
+<col style="width: 24%" />
+<col style="width: 6%" />
+<col style="width: 18%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>項次</strong></td>
+<td colspan="4"
+style="text-align: center;"><strong>檢視標的</strong></td>
+<td style="text-align: center;"><strong>請打</strong>✔</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>１</strong></td>
+<td colspan="4"
+style="text-align: left;"><strong>示例設計能達成學習目標</strong></td>
+<td style="text-align: center;">✔</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>２</strong></td>
+<td colspan="4"
+style="text-align: left;"><strong>數位工具能促進學科內容理解</strong></td>
+<td style="text-align: center;">✔</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>３</strong></td>
+<td colspan="4"
+style="text-align: left;"><strong>數位工具能促進教學策略運用</strong></td>
+<td style="text-align: center;">✔</td>
+</tr>
+<tr>
+<td colspan="6"
+style="text-align: center;"><strong>數位工具整合教學的應用層次</strong></td>
+</tr>
+<tr>
+<td colspan="2"
+style="text-align: center;"><strong>Substitution</strong></td>
+<td style="text-align: center;"><strong>Augmentation</strong></td>
+<td style="text-align: center;"><strong>Modification</strong></td>
+<td colspan="2"
+style="text-align: center;"><strong>Redefinition</strong></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;">學習吧</td>
+<td style="text-align: center;"><p>Padlet</p>
+<p>Mentimeter</p></td>
+<td style="text-align: center;"><p>NotebookLM</p>
+<p>Canva</p></td>
+<td colspan="2" style="text-align: center;">Google 反搜＋網址檢核</td>
+</tr>
+<tr>
+<td colspan="2"
+style="text-align: center;"><strong>AIPACK團隊成員</strong></td>
+<td colspan="4"
+style="text-align: left;">宋怡慧、陳茂松、溫展浩、馬孟平、賴秋江、趙蕙英</td>
+</tr>
+<tr>
+<td colspan="2"
+style="text-align: center;"><strong>工作坊外部專家</strong></td>
+<td colspan="4" style="text-align: left;">陳乃誠</td>
+</tr>
+</tbody>
+</table>
+<p>數位工具&amp;數位效益</p>
+<table style="width:77%;">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 52%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><p>數位工具</p>
+<p>(平台/軟體/硬體)</p></td>
+<td style="text-align: center;">數位效益</td>
+</tr>
+<tr>
+<td style="text-align: left;"><blockquote>
+<p>「語音備忘錄」App</p>
+</blockquote></td>
+<td style="text-align: center;"><ol type="1">
+<li><p>學生能保留學習歷程。</p></li>
+<li><p>教師能快速匯整學生的學習結果。</p></li>
+</ol></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><p>數位工具</p>
+<p>(平台/軟體/硬體)</p></td>
+<td style="text-align: center;">數位效益</td>
+</tr>
+<tr>
+<td style="text-align: center;">學習吧</td>
+<td style="text-align: center;">課程資源統整及展示</td>
+</tr>
+<tr>
+<td style="text-align: center;">Scratch</td>
+<td
+style="text-align: center;">運用Scratch自編教材更容易的展現幾何圖形的千變萬化。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Padlet</td>
+<td
+style="text-align: left;">學生分組討論後、可以快速上傳討論成果，並可全面為其他組別進行評分回饋。</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><p>數位工具</p>
+<p>(平台/軟體/硬體)</p></td>
+<td style="text-align: center;">數位效益</td>
+</tr>
+<tr>
+<td style="text-align: center;"><p>平板或chromebook</p>
+<p>搜尋資料Jamboard</p></td>
+<td
+style="text-align: center;"><p>1.改善紙本化教學，學生需回家完成資料蒐集及彙整，能在課堂上完整學習。</p>
+<p>2.增進學生互動討論共學的學習效益。</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>附件一 媒體產製六格圖偵察任務學習單操作說明</strong></p>
+<p>（活動一／第一節 事實層次 1-1 開場破題使用）</p>
+<p><strong>一、教學說明</strong></p>
+<p>從事件發生到你看到新聞，中間經過 5
+次篩選。每一格都有「守門人」決定什麼通過、什麼被擋下。這就是「媒體再現」（media
+representation）的核心：你看到的新聞不是真相，而是「被選擇過的版本」。</p>
+<p><strong>二、六格產製流程圖</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p><strong>1. 新聞事件發生</strong></p>
+<p>當事人／現場<br />
+誰看到？誰錯過？</p></th>
+<th><p><strong>2. 新聞探訪</strong></p>
+<p>記者派遣<br />
+訪誰？漏訪誰？</p></th>
+<th><p><strong>3. 撰寫新聞</strong></p>
+<p>記者下筆<br />
+放什麼？刪什麼？用什麼字？</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>4. 主管編輯／定稿</strong></p>
+<p>編輯改寫<br />
+標題、版位、頭條決定</p></td>
+<td><p><strong>5. 新聞資訊呈現</strong></p>
+<p>製播與美編<br />
+配圖、剪輯、節奏</p></td>
+<td><p><strong>6. 閱聽人收看</strong></p>
+<p>你和我<br />
+接收、解讀、轉發</p></td>
+</tr>
+</tbody>
+</table>
+<p>流程：[1]→[2]→[3]→[4]→[5]→[6]　每格之間都有一道「篩選關卡」</p>
+<p><strong>三、三大觀念延伸</strong></p>
+<p>1.
+守門人理論（Gatekeeping）：每一格都有「守門人」決定什麼通過、什麼被擋下。</p>
+<p>2. 議題設定（Agenda Setting）：第 4
+格主管定稿那一刻，決定了今天大家會討論什麼話題。</p>
+<p>3.
+媒體再現（Representation）：鏡頭怎麼帶、字怎麼下，背後都有政治、經濟、文化結構在運作。</p>
+<p><strong>四、教學流程（建議 8 分鐘）</strong></p>
+<p>0-1 分　展示六格圖（投影或印發）</p>
+<p>1-3 分　學生 2 人一組討論：「哪一格最關鍵？」</p>
+<p>3-5 分　各組舉手投票，教師統計</p>
+<p>5-7 分　教師收尾：「其實沒有最關鍵—每一格都有篩選」</p>
+<p>7-8 分　拋金句：「你看到的新聞≠真相，是『被選擇過的版本』」</p>
+<p><strong>附件一 媒體產製六格圖偵察任務學習單</strong></p>
+<p>班級：________　座號：________　姓名：________</p>
+<p><strong>【任務說明】</strong></p>
+<p>選一則最近三天內你看過的新聞，沿著六格產製流程，找出每一格可能的「篩選」。</p>
+<p><strong>【我選的新聞】</strong></p>
+<p>標題：____________________________________________</p>
+<p>媒體：____________　日期：____________　網址：__________________</p>
+<p><strong>【六格偵察】</strong></p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 45%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>六格偵察向度</strong></th>
+<th style="text-align: left;"><strong>可能發生的篩選</strong></th>
+<th style="text-align: left;"><strong>我看到的線索</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1 事件發生</td>
+<td style="text-align: left;">哪些現場細節沒被記錄到？</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">2 新聞探訪</td>
+<td style="text-align: left;">記者訪了誰？沒訪誰？</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">3 撰寫新聞</td>
+<td style="text-align: left;">用了哪些帶立場的字？</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">4 編輯定稿</td>
+<td style="text-align: left;">這則放在頭版還是內頁？標題改了什麼？</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">5 資訊呈現</td>
+<td style="text-align: left;">配了什麼圖？影片怎麼剪？</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">6 閱聽人</td>
+<td
+style="text-align: left;">你的家人看完會有什麼反應？跟你一樣嗎？</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>【我的判斷】</strong></p>
+<p>這則新聞最大的「篩選」發生在第 ___ 格，因為
+____________________________</p>
+<p>如果我是記者／編輯，我會怎麼做不一樣？</p>
+<p>________________________________________________________________</p>
+<p>________________________________________________________________</p>
+<p><strong>【金句反思】</strong></p>
+<p>「你看到的新聞≠真相，是『被選擇過的版本』」這句話，看完這則新聞後，你會說：</p>
+<p>________________________________________________________________</p>
+<p>________________________________________________________________</p>
+<p><strong>【教師評語】</strong></p>
+<p>____________________________________________________________________</p>
+<p>____________________________________________________________________</p>
+<p><strong>附件二 四欄閱讀筆記學習單操說明</strong></p>
+<p>（活動一／第一節 事實層次 1-2 NotebookLM 同題異源使用）</p>
+<p><strong>一、教學說明</strong></p>
+<p>面對網路上一則陌生新聞，最快的識讀方法是用「四欄筆記」拆解它：源頭、內容、立場、我的判斷。這個模板可以重複使用一輩子，從國中到大學、從新聞到論文都適用。</p>
+<p><strong>二、四欄定義表</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>欄位</strong></th>
+<th><strong>核心問題</strong></th>
+<th><strong>查證工具／線索</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>【源頭】</strong></td>
+<td>媒材類型？網域？作者是誰？發布日期？</td>
+<td>.gov/.edu/.org/.com 判讀／WHOIS 查註冊／Wayback Machine 看歷史</td>
+</tr>
+<tr>
+<td><strong>【內容】</strong></td>
+<td>5W1H？哪些是客觀事實？哪些是主觀觀點？引用了誰？</td>
+<td>事實＝可被驗證／觀點＝立場用語／引述來源是否權威</td>
+</tr>
+<tr>
+<td><strong>【立場】</strong></td>
+<td>站在誰的角度？誰被忽略？洩漏立場的字詞？</td>
+<td>查媒體立場光譜／找對立面報導／注意形容詞與動詞</td>
+</tr>
+<tr>
+<td><strong>【我的判斷】</strong></td>
+<td>真／假／信任度幾分？是否轉發？為什麼？</td>
+<td>綜合前三欄／套用韓非「指其術之原」原則</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三、為什麼是「四欄」不是「三欄」或「五欄」</strong></p>
+<p>• 三欄（源頭/內容/判斷）不夠—會跳過「立場」</p>
+<p>• 五欄會過長—國中生 5 分鐘寫不完</p>
+<p>•
+四欄對應方律元媒體識讀三層次＋個人行動：源頭+內容＝事實層次、立場＝立場層次、判斷＝批判層次的微型實踐</p>
+<p><strong>四、教學流程（建議 15 分鐘）</strong></p>
+<p>0-2
+分　展示四欄定義表＋兩個示範案例（一則官方新聞、一則內容農場文）</p>
+<p>2-5 分　教師示範填寫第一張筆記（思考出聲）</p>
+<p>5-12 分　學生分組對 NotebookLM 推送的三則同題新聞各填一張</p>
+<p>12-15 分　組間互評：哪一則最值得轉發？為什麼？</p>
+<p><strong>五、評分規準（教師參考）</strong></p>
+<p>• 源頭欄至少填到 3 項：4 分</p>
+<p>• 內容欄能區分事實 vs 觀點：4 分</p>
+<p>• 立場欄能指出 1 個被忽略的角色或立場字詞：4 分</p>
+<p>• 我的判斷欄有理由（不是只勾選）：4 分</p>
+<p>• 三張筆記都完成：4 分</p>
+<p>合計 20 分</p>
+<p><strong>附件二 四欄閱讀筆記學習單</strong></p>
+<p>班級：________　座號：________　姓名：________　小組：________</p>
+<p><strong>【任務說明】</strong></p>
+<p>教師會在 NotebookLM
+推送三則「同一事件、不同媒體」的新聞。請每則填一張四欄筆記，最後比對哪一則最值得轉發。</p>
+<p><strong>第一則新聞</strong></p>
+<p>標題：____________________________________________</p>
+<p>媒體名稱：____________　網址：__________________</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>欄位</strong></th>
+<th><strong>我的判讀</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>【源頭】</strong><br />
+網域類型 / 作者 / 日期 / WHOIS</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>【內容】</strong><br />
+5W1H / 客觀事實 / 主觀觀點</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>【立場】</strong><br />
+站誰角度 / 誰被忽略 / 立場字詞</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>【我的判斷】</strong><br />
+真 / 假 / 信任度 _ /10 / 是否轉發＋理由</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>第二則新聞</strong></p>
+<p>標題：____________________________________________</p>
+<p>媒體名稱：____________　網址：__________________</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>欄位</strong></th>
+<th><strong>我的判讀</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>【源頭】</strong><br />
+網域類型 / 作者 / 日期 / WHOIS</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>【內容】</strong><br />
+5W1H / 客觀事實 / 主觀觀點</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>【立場】</strong><br />
+站誰角度 / 誰被忽略 / 立場字詞</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>【我的判斷】</strong><br />
+真 / 假 / 信任度 _ /10 / 是否轉發＋理由</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>第三則新聞</strong></p>
+<p>標題：____________________________________________</p>
+<p>媒體名稱：____________　網址：__________________</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>欄位</strong></th>
+<th><strong>我的判讀</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>【源頭】</strong><br />
+網域類型 / 作者 / 日期 / WHOIS</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>【內容】</strong><br />
+5W1H / 客觀事實 / 主觀觀點</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>【立場】</strong><br />
+站誰角度 / 誰被忽略 / 立場字詞</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>【我的判斷】</strong><br />
+真 / 假 / 信任度 _ /10 / 是否轉發＋理由</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>【三則比較—我的最終判斷】</strong></p>
+<p>我認為最值得轉發的是第 ___ 則，因為：</p>
+<p>____________________________________________________________________</p>
+<p>____________________________________________________________________</p>
+<p>最不該轉發的是第 ___ 則，因為：</p>
+<p>____________________________________________________________________</p>
+<p>____________________________________________________________________</p>
+<p><strong>【NotebookLM 反向提問—我發現 AI
+也可能說錯的地方】</strong></p>
+<p>________________________________________________________________</p>
+<p>________________________________________________________________</p>
+<p><strong>【小組討論結論】</strong></p>
+<p>________________________________________________________________</p>
+<p>________________________________________________________________</p>
+<p><strong>【教師評語＋分數】</strong></p>
+<p>____________________________________________　分數：____ /20</p>
+<p><strong>附件三 網域判讀＋Chrome鎖頭辨識學習單操作說明</strong></p>
+<p>（活動一／第一節 事實層次 1-3 使用）</p>
+<p><strong>一、教學說明</strong></p>
+<p>看到一個新網址，第一秒能做什麼判斷？答案是「先看尾巴」。網域後綴 +
+Chrome 鎖頭 + WHOIS 三步驟，就能初步判斷可信度。</p>
+<p><strong>二、十六種網域屬性對照表</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>網域</strong></th>
+<th><strong>用途／類型</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.gov</td>
+<td>政府單位（最高可信）</td>
+</tr>
+<tr>
+<td>.edu</td>
+<td>教育學術機構（高可信）</td>
+</tr>
+<tr>
+<td>.org</td>
+<td>非營利組織</td>
+</tr>
+<tr>
+<td>.com</td>
+<td>商業／公司</td>
+</tr>
+<tr>
+<td>.net</td>
+<td>網路服務機構</td>
+</tr>
+<tr>
+<td>.idv</td>
+<td>個人網站（須查證）</td>
+</tr>
+<tr>
+<td>.info</td>
+<td>一般資訊用</td>
+</tr>
+<tr>
+<td>.museum</td>
+<td>博物館</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>網域</strong></th>
+<th><strong>用途／類型</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.int</td>
+<td>國際性組織</td>
+</tr>
+<tr>
+<td>.mil</td>
+<td>軍事單位</td>
+</tr>
+<tr>
+<td>.aero</td>
+<td>航空業</td>
+</tr>
+<tr>
+<td>.coop</td>
+<td>合作機構</td>
+</tr>
+<tr>
+<td>.jobs</td>
+<td>就業相關</td>
+</tr>
+<tr>
+<td>.name</td>
+<td>個人登錄</td>
+</tr>
+<tr>
+<td>.pro</td>
+<td>專業人士／機構</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三、口訣：先看尾巴</strong></p>
+<p>• 政府 .gov ── 公部門最權威</p>
+<p>• 學校 .edu ── 學術研究高可信</p>
+<p>• 組織 .org ── 非營利專業推廣</p>
+<p>• 公司 .com ── 賣東西為主</p>
+<p>• 個人 .idv ── 立場明顯需查證</p>
+<p><strong>四、Chrome 鎖頭三符號</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>符號</strong></th>
+<th><strong>意義</strong></th>
+<th><strong>風險</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔒 安全</td>
+<td>受信任憑證加密</td>
+<td>可安全輸入個資</td>
+</tr>
+<tr>
+<td>ⓘ 資訊或不安全</td>
+<td>無 SSL 加密</td>
+<td>個資可能被攔截</td>
+</tr>
+<tr>
+<td>⚠ 不安全或危險</td>
+<td>憑證錯誤或不受信</td>
+<td>可能是釣魚網站，立即離開</td>
+</tr>
+</tbody>
+</table>
+<p><strong>五、SSL 憑證三等級</strong></p>
+<p>• DV 網域驗證：程式自動驗，個人部落格用</p>
+<p>• OV 組織驗證：人工審+電話驗，公司網站用</p>
+<p>• EV 延伸驗證：會計師事務所驗文件，銀行/政府用</p>
+<p><strong>六、查證三工具</strong></p>
+<p>• WHOIS（whois.com）：查網域註冊單位與年資</p>
+<p>• Wayback Machine（web.archive.org）：看網站歷史版本</p>
+<p>• Google 圖片反搜：驗圖片真偽與原始來源</p>
+<p><strong>附件三 網域判讀＋Chrome鎖頭辨識學習單</strong></p>
+<p>班級：________　座號：________　姓名：________</p>
+<p><strong>【任務】挑五個你今天用過的網址，做網域＋鎖頭三步驟判讀。</strong></p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>網址</strong></th>
+<th><strong>網域後綴</strong></th>
+<th><strong>鎖頭符號</strong></th>
+<th><strong>可信度 1-10</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>【我發現】哪一個網址讓你最意外？為什麼？</strong></p>
+<p>________________________________________________________________</p>
+<p>________________________________________________________________</p>
+<p><strong>【行動】未來看到陌生網址，我會先做的三件事：</strong></p>
+<p>1. ____________________________________________</p>
+<p>2. ____________________________________________</p>
+<p>3. ____________________________________________</p>
+<p><strong>附件四 ORID焦點討論學習單操作說明</strong></p>
+<p>（活動二／第二節 立場層次 2-2 使用）</p>
+<p><strong>一、ORID是什麼</strong></p>
+<p>ORID焦點討論法（Focused Conversation
+Method）由加拿大文化事務協會（ICA）發展，四階段從「客觀」到「行動」逐步深入，避免討論流於主觀情緒。</p>
+<p><strong>二、四階段對照</strong></p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 25%" />
+<col style="width: 24%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>階段</strong></th>
+<th><strong>代表</strong></th>
+<th><strong>核心問題</strong></th>
+<th><strong>示例提問</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O</td>
+<td>Objective 客觀事實</td>
+<td>看到/聽到什麼？</td>
+<td>這則報導陳述了哪些可驗證的事實？</td>
+</tr>
+<tr>
+<td>R</td>
+<td>Reflective 主觀感受</td>
+<td>感覺是什麼？</td>
+<td>看完第一個反應是什麼？哪段最有共鳴？</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Interpretive 詮釋意義</td>
+<td>為什麼？意義是什麼？</td>
+<td>誰被忽略？誰得益？哪些字詞洩漏立場？</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Decisional 行動決定</td>
+<td>接下來怎麼做？</td>
+<td>會不會轉發？要不要查證？跟誰討論？</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三、為什麼用 ORID 而不是直接問感想</strong></p>
+<p>直接問「你覺得怎樣」會有兩個問題：1) 學生跳過事實直接情緒反應；2)
+沒看見立場結構就下判斷。ORID 強迫先做事實基底（O），再層層推進。</p>
+<p><strong>四、教學流程（建議 18 分鐘）</strong></p>
+<p>0-2 分　發放案例（從教師庫三選一）</p>
+<p>2-12 分　小組依序填 O→R→I→D 四欄</p>
+<p>12-15 分　各組 Padlet 上傳互看</p>
+<p>15-18 分　教師抽 2 組對比討論</p>
+<p><strong>五、教師案例庫（建議三選一）</strong></p>
+<p>案例 A：巴黎奧運性別爭議報導</p>
+<p>案例 B：八家將「8+9」諧音標籤新聞</p>
+<p>案例 C：原住民愛喝酒刻板印象報導</p>
+<p><strong>附件四 ORID焦點討論學習單</strong></p>
+<p>班級：________　座號：________　姓名：________　小組：________</p>
+<p><strong>【我選的案例】__________________________________________</strong></p>
+<p>出處／連結：____________________________________________</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>階段</strong></th>
+<th><strong>我的判讀</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O 客觀事實<br />
+報導陳述了什麼可驗證的事？</td>
+<td></td>
+</tr>
+<tr>
+<td>R 主觀感受<br />
+你的第一直覺是什麼？哪段最有感？</td>
+<td></td>
+</tr>
+<tr>
+<td>I 詮釋意義<br />
+誰被忽略？誰得益？哪些字詞洩漏立場？</td>
+<td></td>
+</tr>
+<tr>
+<td>D 行動決定<br />
+會不會轉發？要不要查證？跟誰討論？</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>【小組討論結論】最關鍵的一個發現：</strong></p>
+<p>________________________________________________________________</p>
+<p>________________________________________________________________</p>
+<p>【教師評語＋分數】 分數：____ /20</p>
+<p><strong>附件五 四角辯論＋立場宣言學習單操作說明</strong></p>
+<p>（活動二／第二節 立場層次 2-3 使用）</p>
+<p><strong>一、什麼是四角辯論</strong></p>
+<p>教室四個角分別代表四種立場：強烈同意／同意／不同意／強烈不同意。學生用「腳投票」站到立場上，再開放換邊。比舉手投票更有「身體承諾感」，比正反辯論更有「光譜思維」。</p>
+<p><strong>二、四角配置</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>教室角</strong></th>
+<th><strong>立場</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>右前</td>
+<td>強烈同意</td>
+</tr>
+<tr>
+<td>右後</td>
+<td>同意</td>
+</tr>
+<tr>
+<td>左後</td>
+<td>不同意</td>
+</tr>
+<tr>
+<td>左前</td>
+<td>強烈不同意</td>
+</tr>
+</tbody>
+</table>
+<p>（中央區可設「不確定」區供想觀察者站立）</p>
+<p><strong>三、流程（建議 15 分鐘）</strong></p>
+<p>0-1 分　教師拋議題（必須是兩面都有道理的）</p>
+<p>1-3 分　學生走到立場角</p>
+<p>3-9 分　每角選 1 代表 30 秒陳述（共 4 段，2 分鐘）＋每段後 30
+秒換邊（共 2 分鐘）</p>
+<p>9-13 分　每人寫 60 字立場宣言，Padlet 上傳</p>
+<p>13-15 分　教師收尾：「立場層次不是中立，是透明的主觀」</p>
+<p><strong>四、立場宣言句型</strong></p>
+<p><strong>我的立場是 ___，因為 ___，但我願意聽 ___
+的聲音。</strong></p>
+<p><strong>五、議題候選庫（國中適用）</strong></p>
+<p>• 演算法推薦的同溫層，該不該主動打破？</p>
+<p>• 學校該不該全面禁用手機？</p>
+<p>• 看到網路霸凌，路人有沒有責任介入？</p>
+<p>• AI 寫的作業，算不算作弊？</p>
+<p>• 限動只給好友看，是隱私還是排他？</p>
+<p><strong>附件五 四角辯論＋立場宣言學習單</strong></p>
+<p>班級：________　座號：________　姓名：________</p>
+<p><strong>【今日議題】______________________________________________</strong></p>
+<p><strong>【我的第一次選擇】（辯論前）</strong></p>
+<p>□ 非常同意 □ 同意 □ 不同意 □ 非常不同意</p>
+<p><strong>【我最有感的發言】（聽完四角代表後）</strong></p>
+<p>最打動我的是 ___ 角，因為他/她說：</p>
+<p>________________________________________________________________</p>
+<p>________________________________________________________________</p>
+<p><strong>【我有換邊嗎】</strong></p>
+<p>□ 沒有，立場不變　　□ 有，從 ___ 換到 ___</p>
+<p>換邊原因：____________________________________________</p>
+<p><strong>【我的立場宣言】（60 字以內）</strong></p>
+<p>我的立場是 ___________________________________________</p>
+<p>因為 _______________________________________________</p>
+<p>但我願意聽 _________________________________________ 的聲音。</p>
+<p>【教師評語＋分數】 分數：____ /15</p>
+<p><strong>附件六 PREPA 倡議稿模板學習單操作說明</strong></p>
+<p>（活動三／第三節 思辨倡議層次 3-2 使用）</p>
+<p><strong>一、PREPA 是什麼</strong></p>
+<p>PREPA是周震宇老師「邏輯表達力」課程的核心五段架構，從主張開始、提理由、舉案例、回扣主張、呼籲行動。對應翰林8下〈良言一句三冬暖〉議論文舉例三段結構（說明論點→提出論據→歸納結論），是同一套邏輯的口語進化版。</p>
+<p><strong>二、五格定義表</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>段</strong></th>
+<th><strong>代表</strong></th>
+<th><strong>核心動作</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P</td>
+<td>Point 主張</td>
+<td>一句話講清楚你的論點</td>
+</tr>
+<tr>
+<td>R</td>
+<td>Reason 理由</td>
+<td>為什麼？支撐主張的根本道理</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Example 案例</td>
+<td>具體場景、個人經驗、新聞事件、文本引用</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Point 重申</td>
+<td>回到主張，用不同說法強化</td>
+</tr>
+<tr>
+<td>A</td>
+<td>Action 行動呼籲</td>
+<td>聽眾／讀者可以做什麼</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三、反方建造者技巧</strong></p>
+<p>寫稿前先做「反方建造者」：列出對立意見最強的三個論點，再寫自己的回應。好處：自己論述變更強、避免被現場反問打亂、訓練同理對方。</p>
+<p><strong>四、議題三選一（節 3 倡議）</strong></p>
+<p>• 反假訊息：給家人的提醒</p>
+<p>• 反網路霸凌：給同學的呼籲</p>
+<p>• 反刻板印象：給社群朋友的提案</p>
+<p><strong>五、字數規定</strong></p>
+<p>總字數 150 字內，每格 30 字上下。逼學生講重點，不要灌水。</p>
+<p><strong>附件六 PREPA 倡議稿模板學習單</strong></p>
+<p>班級：________　座號：________　姓名：________　小組：________</p>
+<p><strong>【我的議題】（三選一）</strong></p>
+<p>□ 反假訊息（給家人）　□ 反網路霸凌（給同學）　□
+反刻板印象（給社群朋友）</p>
+<p><strong>【反方建造者—先寫反對意見】</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>#</strong></th>
+<th><strong>可能的反對意見</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>【PREPA 五格倡議稿】</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>段</strong></th>
+<th><strong>內容（30 字上下）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P 主張</td>
+<td></td>
+</tr>
+<tr>
+<td>R 理由</td>
+<td></td>
+</tr>
+<tr>
+<td>E 案例</td>
+<td></td>
+</tr>
+<tr>
+<td>P 重申</td>
+<td></td>
+</tr>
+<tr>
+<td>A 行動</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>總字數：____ 字（上限 150 字）</p>
+<p><strong>【組內互讀回饋】（同組同學給 1 句具體建議）</strong></p>
+<p>________________________________________________________________</p>
+<p>________________________________________________________________</p>
+<p>【教師評語＋分數】 分數：____ /25</p>
+<p><strong>附件七 Canva 倡議卡＋發表互評
+評量規準（Rubric）—教師用＋學生互評用操作說說明</strong></p>
+<p>（活動三／第三節 思辨倡議層次 3-3 使用）</p>
+<p><strong>一、評量四面向</strong></p>
+<p>1. 內容紮實（議題深度＋論據可信）</p>
+<p>2. 結構清晰（PREPA 五段對應）</p>
+<p>3. 視覺吸睛（Canva 設計＋可傳播性）</p>
+<p>4. 口語表達（語調穩定＋眼神接觸）</p>
+<p><strong>二、四級規準（每面向 1-4 分，總分 16 分）</strong></p>
+<p><strong>【面向 1 內容紮實】</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>等級</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 卓越</td>
+<td>議題具公共性，引用可查證來源 2 筆以上</td>
+</tr>
+<tr>
+<td>3 良好</td>
+<td>議題清楚，引用 1 筆可查證來源</td>
+</tr>
+<tr>
+<td>2 待加強</td>
+<td>議題模糊，無查證來源</td>
+</tr>
+<tr>
+<td>1 不及格</td>
+<td>議題與媒體識讀無關</td>
+</tr>
+</tbody>
+</table>
+<p><strong>【面向 2 結構清晰】</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>等級</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 卓越</td>
+<td>PREPA 五段完整，邏輯流暢</td>
+</tr>
+<tr>
+<td>3 良好</td>
+<td>PREPA 四段完整，少 1 段</td>
+</tr>
+<tr>
+<td>2 待加強</td>
+<td>PREPA 三段以下</td>
+</tr>
+<tr>
+<td>1 不及格</td>
+<td>結構散亂無邏輯</td>
+</tr>
+</tbody>
+</table>
+<p><strong>【面向 3 視覺吸睛】</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>等級</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 卓越</td>
+<td>視覺亮眼，文字精煉，3 秒看懂主訴求</td>
+</tr>
+<tr>
+<td>3 良好</td>
+<td>版面整齊，文字清楚</td>
+</tr>
+<tr>
+<td>2 待加強</td>
+<td>版面凌亂或文字過多</td>
+</tr>
+<tr>
+<td>1 不及格</td>
+<td>無設計或無法閱讀</td>
+</tr>
+</tbody>
+</table>
+<p><strong>【面向 4 口語表達】</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>等級</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 卓越</td>
+<td>語調穩定有節奏，眼神與聽眾接觸</td>
+</tr>
+<tr>
+<td>3 良好</td>
+<td>語調穩定，眼神偶爾接觸</td>
+</tr>
+<tr>
+<td>2 待加強</td>
+<td>稿件依賴度高，眼神少接觸</td>
+</tr>
+<tr>
+<td>1 不及格</td>
+<td>唸稿、語速失控、無互動</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三、加分項</strong></p>
+<p>• 同學發表時，主動補充意見：+1 分</p>
+<p>• 倡議卡實際發給家人並回收回饋（截圖）：+2 分</p>
+<p>• 發布到個人社群並蒐集 1 則真實留言：+3 分</p>
+<p><strong>附件七 Canva 倡議卡＋發表互評學習單</strong></p>
+<p>評分人：________　被評組別：________</p>
+<p><strong>【被評組別議題】______________________________________________</strong></p>
+<p><strong>【四面向評分】（每項 1-4 分）</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>面向</strong></th>
+<th><strong>分數 (1-4)</strong></th>
+<th><strong>具體觀察</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 內容紮實</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2 結構清晰</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3 視覺吸睛</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4 口語表達</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>總分：____ /16</p>
+<p><strong>【一句具體回饋】（給被評組）</strong></p>
+<p>________________________________________________________________</p>
+<p>________________________________________________________________</p>
+<p><strong>【我的學習】（看完別組後我學到什麼）</strong></p>
+<p>________________________________________________________________</p>
+<p>________________________________________________________________</p>
+<p><strong>【加分項勾選】（被評組可勾）</strong></p>
+<p>□ 同學發表時主動補充（+1）</p>
+<p>□ 倡議卡發給家人並回收回饋截圖（+2）</p>
+<p>□ 發布到社群並蒐集真實留言（+3）</p>
+<p>【教師最終分數】　　主分 ___ /16　＋　加分 ___　＝　總分 ___</p>
+
+</div>
+
+<div class="footer-back">
+  <a href="index.html">← 回成果網站</a>
+  <a href="readme.html">📘 專案 README</a>
+  <a href="worklog.html">📂 工作紀錄全集</a>
+</div>
+
+</div>
+</body>
+</html>

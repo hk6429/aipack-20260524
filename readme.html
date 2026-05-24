@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AIPACK 專案 README｜2025 媒體識讀教案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#FBF7EF; --cream:#F5EBD7; --ink:#1F2937; --rust:#C2410C;
+    --gold:#B45309; --navy:#1E3A5F; --line:rgba(196,65,12,0.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Noto Sans TC',sans-serif; line-height:1.75; }
+  .topbar { background:var(--navy); color:#F5EBD7; padding:.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; }
+  .topbar a { color:#FCD34D; text-decoration:none; font-size:.85rem; }
+  .topbar a:hover { color:#FDE68A; }
+  .container { max-width:880px; margin:0 auto; padding:2.5rem 1.5rem 6rem; }
+  h1 { font-family:'Noto Serif TC',serif; font-size:2rem; color:var(--ink); border-bottom:3px solid var(--rust); padding-bottom:.6rem; margin-bottom:.4rem; }
+  .sub { color:#6B7280; font-size:.9rem; margin-bottom:2.5rem; }
+  h2 { font-family:'Noto Serif TC',serif; font-size:1.4rem; color:var(--ink); border-left:5px solid var(--rust); padding-left:.7rem; margin-top:2.5rem; margin-bottom:1rem; }
+  h3 { font-size:1.05rem; color:var(--gold); margin-top:1.5rem; margin-bottom:.5rem; }
+  p { margin:.75rem 0; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden; font-size:.9rem; }
+  th { background:var(--cream); padding:.6rem .8rem; text-align:left; font-weight:700; color:var(--rust); }
+  td { padding:.55rem .8rem; border-top:1px solid var(--line); vertical-align:top; }
+  ul, ol { padding-left:1.5rem; }
+  li { margin:.3rem 0; }
+  code { background:#FEF3C7; color:#92400E; padding:.1rem .35rem; border-radius:4px; font-size:.85em; }
+  pre { background:#1F2937; color:#FCD34D; padding:1rem 1.25rem; border-radius:8px; overflow-x:auto; font-size:.82rem; line-height:1.6; }
+  pre code { background:transparent; color:inherit; padding:0; }
+  .pill { display:inline-block; background:var(--cream); color:var(--rust); padding:.15rem .55rem; border-radius:999px; font-size:.7rem; letter-spacing:.05em; font-weight:700; margin-right:.4rem; }
+  .meta-box { background:var(--cream); border-left:4px solid var(--rust); padding:1rem 1.25rem; border-radius:0 8px 8px 0; margin:1.5rem 0; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>📘 AIPACK 專案 README</span>
+  <a href="index.html">← 回成果網站</a>
+</div>
+
+<div class="container">
+
+<h1>2025-AIPACK 媒體識讀教案專案</h1>
+<div class="sub">陳乃誠（大乃老師）· 新竹市竹光國中　國文＋資訊組長 · 建立 2026-05-24</div>
+
+<h2>專案目標</h2>
+<p>以方律元媒體識讀三層次（事實 → 立場 → 批判倡議）為理論骨架，產出三個學程（國小 5 下／國中 8 下／高中三）共三份完整教案，符合夢 N AIPACK（原 TPACK）格式。</p>
+
+<h2>三層次架構</h2>
+<table>
+  <tr><th>層次</th><th>核心能力</th><th>對應節次</th></tr>
+  <tr><td>事實層次</td><td>判斷內容真偽（事實查核）</td><td>節 1 辨識</td></tr>
+  <tr><td>立場層次</td><td>辨識媒體框架與意識形態</td><td>節 2 思辨</td></tr>
+  <tr><td>批判層次</td><td>獨立思考媒體本身的局限性</td><td>節 3 行動寫作</td></tr>
+</table>
+<p>每節最多 3 小活動，三節共 9 活動。</p>
+
+<h2>三份教案總覽</h2>
+<table>
+  <tr><th>學程</th><th>主文本</th><th>工具組合</th><th>倡議任務</th></tr>
+  <tr><td>國小 5 下</td><td>〈懶人包大解密〉＋〈良言一句三冬暖〉</td><td>Padlet + Canva</td><td>反假訊息倡議卡（送家人）</td></tr>
+  <tr><td>國中 8 下</td><td>翰林 P92-95＋P178-187＋P94-95</td><td>Padlet + NotebookLM + Canva</td><td>反假訊息／反霸凌／反刻板印象</td></tr>
+  <tr><td>高中三</td><td>〈棘刺刻猴〉＋〈蘋果的滋味〉</td><td>Padlet + NotebookLM + Canva + CapCut</td><td>當代蘋果／當代棘刺批判作品</td></tr>
+</table>
+
+<h2>資料夾結構</h2>
+<pre><code>2025-AIPACK/
+├── 00-專案說明/         本檔 README
+├── 01-理論架構/         三層次理論 + 三民版 + 黃淑真 + 六格圖
+├── 02-素材庫/           課本 PDF、課文連結清單、新聞素材
+├── 03-教案-國中/        國中 8 下 docx（含附件一二）+ 完整版 MD
+├── 04-教案-國小/        國小 5 下 docx
+├── 05-教案-高中/        高中三 docx（含附錄一二全文）
+├── 06-公版範本/         夢 N 公版 docx
+├── 07-工作紀錄/         001-019 所有對話沉澱
+└── 08-成果網站/         本網站</code></pre>
+
+<h2>教案 docx 主檔</h2>
+<h3>國中</h3>
+<p><code>03-教案-國中/AIPACK 媒體識讀-國中示例1.docx</code> — 含附件一（六格圖＋學習單）、附件二（四欄筆記＋學習單）</p>
+<h3>國小</h3>
+<p><code>04-教案-國小/國小國語001-媒體識讀三層次-5下版.docx</code></p>
+<h3>高中</h3>
+<p><code>05-教案-高中/高中國文003-棘刺刻猴+蘋果的滋味-媒體識讀.docx</code> — 含附錄一（棘刺刻猴全文）、附錄二（蘋果的滋味文本資訊）</p>
+
+<h2>三大數位工具（跨學程通用）</h2>
+<ol>
+  <li><strong>Padlet</strong> — 互動討論、立場宣言、作品展</li>
+  <li><strong>NotebookLM</strong> — 同題異源新聞比對（國中以上）</li>
+  <li><strong>Canva（教育版）</strong> — 倡議卡、海報製作</li>
+  <li><strong>CapCut</strong> — 30 秒短影片（高中倡議用）</li>
+</ol>
+
+<h2>通用識讀工具</h2>
+<ul>
+  <li>四欄閱讀筆記：源頭 / 內容 / 立場 / 我的判斷</li>
+  <li>5W 識讀法（Schrock 2009）：Who／What／When／Where／Why</li>
+  <li>「先看尾巴」網域判讀：.gov／.edu／.org／.com／.idv</li>
+  <li>韓非子查核邏輯：指其術之原 ＋ 物理可能性</li>
+</ul>
+
+<h2>表達架構（依年級遞進）</h2>
+<ul>
+  <li><span class="pill">國小</span> PR 法（Point-Reason）</li>
+  <li><span class="pill">國中</span> PREPA（Point-Reason-Example-Point-Action）</li>
+  <li><span class="pill">高中</span> PREPA-A（含進階倡議行動）</li>
+</ul>
+
+<h2>參考來源（核心三份）</h2>
+<ul>
+  <li>方律元〈不只是事實查核：台灣高中教育現場沒教的媒體識讀三層次〉The News Lens</li>
+  <li>三民版《資訊素養與倫理》高中職第 3 版 Unit 1（吳清基、林宜隆）</li>
+  <li>黃淑真〈生活中的媒體識讀／公共意見〉技高公社試教教案</li>
+</ul>
+
+<h2>專案狀態</h2>
+<div class="meta-box">
+  <p><strong>建立日期：</strong>2026-05-24</p>
+  <p><strong>設計者：</strong>陳乃誠（大乃老師）</p>
+  <p><strong>服務單位：</strong>新竹市竹光國中（國文＋資訊組長）</p>
+  <p><strong>三層次理論：</strong>方律元</p>
+  <p><strong>教案格式：</strong>夢 N AIPACK 公版（從 TPACK 演進）</p>
+</div>
+
+<p style="text-align:center; margin-top:3rem;"><a href="worklog.html" style="color:var(--rust); text-decoration:none; font-weight:600;">📂 查看 19 篇工作紀錄全集 →</a></p>
+
+</div>
+</body>
+</html>
